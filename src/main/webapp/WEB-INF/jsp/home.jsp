@@ -6,7 +6,7 @@
 
     <p> Page home</p>
 
-    <p><a href='user'>Connexion</a></p>
+    <p><a href='formation'>Connexion</a></p>
 
 
 </div>

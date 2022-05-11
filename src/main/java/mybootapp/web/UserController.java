@@ -3,6 +3,7 @@ package mybootapp.web;
 
 import java.security.Principal;
 
+import mybootapp.model.Formation;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -33,10 +34,12 @@ public class UserController {
 
 
 
-    @RequestMapping(value = "/user", method = RequestMethod.GET)
-    public ModelAndView user(Principal p) {
 
-        return new ModelAndView("user", "p", p);
+    @ModelAttribute("formation")
+    @RequestMapping(value = "/formation", method = RequestMethod.GET)
+    public ModelAndView formationCollection(Principal p) {
+
+        return new ModelAndView("formationList","p",p);
     }
 
 
