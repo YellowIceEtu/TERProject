@@ -17,7 +17,7 @@ public class Composante implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private int idComposante;
 
     @Basic()
     @Column(name = "intitule")

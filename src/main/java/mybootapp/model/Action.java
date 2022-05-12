@@ -36,7 +36,7 @@ public class Action implements Serializable {
     private Date dateCrea;
 
     @OneToOne
-    @Column(name = "coordonnee")
+    @JoinColumn(name="idCoordonnee")
     private Coordonnee coordonnee;
 
     @Basic()
@@ -150,4 +150,8 @@ public class Action implements Serializable {
     @Basic
     @Column(name = "preRequis")
     private boolean preRequis;
+
+    @ManyToOne
+    @JoinColumn( name="idSession" )
+    private Session session;
 }

@@ -16,7 +16,7 @@ public class Adresse implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private int idAdresse;
 
     @Basic()
     @Column(name = "nom")

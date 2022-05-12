@@ -16,6 +16,6 @@ public class Session implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private int idSession;
 
 }

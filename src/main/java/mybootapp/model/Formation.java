@@ -17,7 +17,7 @@ public class Formation implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private int idFormation;
 
     @Basic()
     @Column(name = "codeFormation")
@@ -66,6 +66,6 @@ public class Formation implements Serializable {
     private int CERTIFINFO;
 
     @OneToOne
-    @Column(name = "action")
+    @JoinColumn( name="idAction" )
     private Action action;
 }
