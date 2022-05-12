@@ -35,7 +35,7 @@ public class Formation implements Serializable {
     @Basic()
     @Temporal(TemporalType.DATE)
     @Column(name = "dateCrea")
-    private String dateCrea;
+    private Date dateCrea;
 
     @Basic()
     @Column(name = "intitule")
@@ -68,9 +68,4 @@ public class Formation implements Serializable {
     @OneToOne
     @Column(name = "action")
     private Action action;
-
-
-
-
-
 }

@@ -4,7 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
+import java.util.Collection;
 
 @Entity
 @Data
@@ -25,7 +25,7 @@ public class Composante implements Serializable {
 
     @OneToMany
     @Column(name = "formations")
-    private List<Formation> formations;
+    private Collection<Formation> formations;
 
 
 }
