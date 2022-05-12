@@ -18,4 +18,15 @@ public class Utilisateur implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idUtilisateur;
 
+    @Basic
+    @Column(name = "nom")
+    private String nom;
+
+    @Basic
+    @Column(name = "prenom")
+    private String prenom;
+
+    @Basic
+    @Column(name = "estAdmin")
+    private boolean estAdmin;
 }

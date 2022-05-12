@@ -23,8 +23,12 @@ public class Composante implements Serializable {
     @Column(name = "intitule")
     private String intitule;
 
+    @OneToOne
+    @JoinColumn( name="idUtilisateur" )
+    private Utilisateur utilisateur;
+
     @OneToMany
-    @Column(name = "formations")
+    @JoinColumn( name="idFormation" )
     private Collection<Formation> formations;
 
 
