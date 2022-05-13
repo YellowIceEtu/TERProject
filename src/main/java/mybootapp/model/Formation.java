@@ -15,6 +15,8 @@ import java.util.Date;
 @Table(name="formation")
 public class Formation implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idFormation;

@@ -15,6 +15,8 @@ import java.util.Collection;
 @Table(name="composante")
 public class Composante implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idComposante;
