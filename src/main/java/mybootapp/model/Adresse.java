@@ -96,4 +96,9 @@ public class Adresse implements Serializable {
     @Basic()
     @Column(name = "conformiteReglementaire")
     private int conformiteReglementaire;
+
+    @NotNull(message = "le champ ne doit pas être vide")
+    @OneToOne
+    @JoinColumn(name="idCoordonnee")
+    private Coordonnee coordonnee;
 }
