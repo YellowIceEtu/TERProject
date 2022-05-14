@@ -1,1 +1,35 @@
 h1 { color: blue; }
+
+
+nav {
+    color: white;
+    height: 80px;
+    justify-content: space-between;
+    background-color: gray;
+}
+
+div.menu{
+margin-right: 1000px;
+
+}
+
+ul{
+    display: inline-flex;
+    justify-content: space-between;
+    margin-right: 100px;
+}
+
+li{
+    margin-top: 15px;
+    margin-right:50px ;
+    list-style: none;
+}
+
+
+a.navbar-brand{
+    color: black;
+}
+
+a.home{
+    color: black;
+}

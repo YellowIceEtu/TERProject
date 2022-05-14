@@ -2,6 +2,10 @@
 
 
 
+<div>
+    <%@ include file="/WEB-INF/jsp/nav.jsp"%>
+</div>
+
 <div class="container">
     <h1>Formations  </h1>
     <p><a href='logout/cas'>Logout</a></p>

@@ -2,6 +2,8 @@
 
 <c:url var="list" value="/course/list" />
 
+
+
 <div class="container">
 	<h1>Spring boot application</h1>
 	<p>
