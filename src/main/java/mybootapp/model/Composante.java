@@ -3,6 +3,8 @@ package mybootapp.model;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Collection;
 
@@ -21,13 +23,16 @@ public class Composante implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idComposante;
 
+
+    @NotNull(message = "le champ ne doit pas être vide")
+    @Size(max = 250, message = "max 250 caractères")
     @Basic()
     @Column(name = "intitule")
     private String intitule;
 
     @OneToOne
     @JoinColumn( name="idUtilisateur" )
-    private Utilisateur utilisateur;
+    private Utilisateur correspondant;
 
     @OneToMany
     @JoinColumn( name="idFormation" )

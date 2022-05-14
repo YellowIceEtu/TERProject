@@ -48,11 +48,11 @@ public class Action implements Serializable {
     @Column(name = "dateCrea")
     private Date dateCrea;
 
-    //liste deroulante
+    //checkbox non/oui -> 0/1
     @NotNull(message = "une réponse doit être choisie")
     @Basic
     @Column(name = "niveauObligatoire")
-    private boolean niveauObligatoire;
+    private int niveauObligatoire;
 
     //liste deroulante
     @NotNull(message = "une réponse doit être choisie")
@@ -167,11 +167,11 @@ public class Action implements Serializable {
     @Column(name = "fraisANPEC")
     private int fraisANPEC;
 
-    //liste deroulante
+    //checkbox non/oui -> 0/1
     @NotNull(message = "le champ ne doit pas être vide")
     @Basic
     @Column(name = "fraisInclusANPEC")
-    private boolean fraisInclusANPEC;
+    private int fraisInclusANPEC;
 
     @Size(max = 3000, message = "max 3000 caractères")
     @Basic
@@ -209,11 +209,11 @@ public class Action implements Serializable {
     @Column(name = "fraisTTC")
     private int fraisTTC;
 
-    //liste deroulante
+    //checkbox non/oui -> 0/1
     @NotNull(message = "le champ ne doit pas être vide")
     @Basic
     @Column(name = "preRequis")
-    private boolean preRequis;
+    private int preRequis;
 
     @ManyToOne
     @JoinColumn( name="idSession" )
