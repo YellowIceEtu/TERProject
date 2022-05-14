@@ -3,6 +3,7 @@ package mybootapp.model;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -20,6 +21,12 @@ public class Session implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idSession;
+
+    //autoremplit
+    @Size(max = 30)
+    @Basic()
+    @Column(name = "numero")
+    private int numero;
 
     @Basic()
     @Column(name = "codeSession")
