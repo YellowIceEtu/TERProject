@@ -68,4 +68,22 @@ public class Formation implements Serializable {
     @OneToOne
     @JoinColumn( name="idAction" )
     private Action action;
+
+
+    public Formation(int codeFormation, String etatEdition, Date dateMaj, Date dateCrea, String intitule, String objectif, String resultatsAttendus, String contenu, int typeParcours, int objectifGeneral, int CERTIFINFO,
+                     Action action){
+
+        super();
+        this.codeFormation = codeFormation;
+        this.etatEdition = etatEdition;
+        this.dateMaj = dateMaj;
+        this.dateCrea = dateCrea;
+        this.intitule = intitule;
+        this.objectif = objectif;
+        this.resultatsAttendus = resultatsAttendus;
+        this.contenu = contenu;
+        this.typeParcours = typeParcours;
+        this.objectifGeneral = objectifGeneral;
+        this.action = action;
+    }
 }
