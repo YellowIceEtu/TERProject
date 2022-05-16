@@ -3,33 +3,64 @@ h1 { color: blue; }
 
 nav {
     color: white;
-    height: 80px;
+    height: 100px;
+    display: flex;
     justify-content: space-between;
-    background-color: gray;
+    align-items: center;
+}
+.nav-bar .nav-title {
+    background: linear-gradient(to right, lightblue, lightcyan );
+    padding: 20px;
+    height: 15px;
+    border: 1px solid #1c1c1e;
+    border-radius: 40px;
+
 }
 
-div.menu{
-margin-right: 1000px;
+.nav-bar .nav-title:hover{
+    animation: pulsate 1s ease-in-out;
+    background: lightblue;
+    transform: translateY(-7px);
+    box-shadow: 0px 10px 25px #1c1c1e;
+}
+.nav-bar .nav-search{
+    background-color: #1c1c1e;
+    height: 45px ;
 
+    flex:0.3;
+    display: flex;
+    border-radius: 50px;
+    align-items: center;
+}
+.nav-bar .nav-search .searchInput{
+    background-color: transparent;
+    border: transparent;
+    width: 50%;
+    outline: transparent;
+    color: whitesmoke;
+    font-size: 16px;
 }
 
-ul{
-    display: inline-flex;
-    justify-content: space-between;
-    margin-right: 100px;
+.nav-bar .nav-search .btnSearchInput{
+    margin: 5px;
+    border-radius: 50px;
+}
+nav div a{
+    color: white;
 }
 
-li{
-    margin-top: 15px;
-    margin-right:50px ;
-    list-style: none;
+@keyframes pulsate {
+    0% {
+        box-shadow: 0 0 25px #33d6eb, 0 0 50px #000;
+    }
+}
+body{
+    background: linear-gradient(to right,deepskyblue,#33d6eb,lightblue );
+    padding: 20px;
+    min-height: 100vh;
+    max-width: 100vw;
 }
 
 
-a.navbar-brand{
-    color: black;
-}
 
-a.home{
-    color: black;
-}
+

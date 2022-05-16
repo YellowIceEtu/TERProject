@@ -1,6 +1,5 @@
 <%@ include file="/WEB-INF/jsp/header.jsp"%>
 
-<c:url var="list" value="/course/list" />
 
 
 
