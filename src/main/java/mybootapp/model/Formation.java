@@ -27,7 +27,7 @@ public class Formation implements Serializable {
     @Column(name = "etatEdition")
     private String etatEdition;
 
-    @Basic()
+    /*@Basic()
     @Temporal(TemporalType.DATE)
     @Column(name = "dateMaj")
     private Date dateMaj;
@@ -35,13 +35,13 @@ public class Formation implements Serializable {
     @Basic()
     @Temporal(TemporalType.DATE)
     @Column(name = "dateCrea")
-    private Date dateCrea;
+    private Date dateCrea;*/
 
     @Basic()
     @Column(name = "intitule")
     private String intitule;
 
-    @Basic()
+    /*@Basic()
     @Column(name = "objectif")
     private String objectif;
 
@@ -67,5 +67,5 @@ public class Formation implements Serializable {
 
     @OneToOne
     @JoinColumn( name="idAction" )
-    private Action action;
+    private Action action;*/
 }

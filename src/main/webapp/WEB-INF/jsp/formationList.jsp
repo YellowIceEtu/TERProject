@@ -12,48 +12,19 @@
     <table class="table table-hover">
 
         <tr>
-
-            <td> Formations : </td>
-
-
             <td>codeFormation :</td>
             <td>etatEdition :</td>
-            <td> dateMaj :</td>
-            <td>dateCrea :</td>
             <td> Intitule :</td>
-            <td>Objectif :</td>
         <tr>
 
-            <td><c:out value="${}" /> </td>
-            <td>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <c:out value="${}" />
-            </td>
-            <td>
+            <c:forEach items="${formation}" var="formation">
+        <tr>
+            <td><c:out value="${formation.intitule}" /></td>
+            <td><c:out value="${formation.codeFormation}" /></td>
+            <td><c:out value="${formation.etatEdition}" /></td>
 
-                <c:out value="${}" />
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            </td>
-
-            <td>
-
-                <c:out value="${}" />
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            </td>
-            <td>
-                <c:out value="${}" />
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            </td>
-            <td>
-                <c:out value="${}" />
-
-            </td>
-
-            <td>
-                <c:out value="${}" />
-
-            </td>
+        </tr>
+        </c:forEach>
 
 
         </tr>
