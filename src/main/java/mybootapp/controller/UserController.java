@@ -5,15 +5,14 @@ import java.security.Principal;
 import java.util.Collection;
 
 
+import mybootapp.model.Adresse;
 import mybootapp.model.Formation;
+import mybootapp.repo.AdresseRepo;
 import mybootapp.repo.FormationRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.PostConstruct;
@@ -25,6 +24,9 @@ public class UserController {
     @Autowired
     FormationRepo formationRepo;
 
+    @Autowired
+    AdresseRepo adresseRepo;
+
     @PostConstruct
     public void init() {
         for(int i = 0; i < 4; i++){
@@ -33,6 +35,12 @@ public class UserController {
             f.setEtatEdition("essai");
             f.setIntitule("formation".concat(Integer.toString(i)));
             formationRepo.save(f);
+
+            Adresse adresse = new Adresse();
+            adresse.setNom("adresse"+i);
+            adresse.setLigne1("ligne1" + i);
+            adresse.setCodePostal(13000+i);
+            adresseRepo.save(adresse);
         }
     }
 
@@ -63,6 +71,20 @@ public class UserController {
         return new ModelAndView("formationList", "formation", persons);
     }
 
+
+    @ModelAttribute("formation")
+    @RequestMapping(value = "/formationDetails", method = RequestMethod.GET)
+    public ModelAndView printPerson(@RequestParam(value = "id",defaultValue = "0") int id){
+        Formation formation = formationRepo.findAll().get(id);
+        return new ModelAndView("formationDetails", "formation", formation);
+    }
+
+
+    @RequestMapping(value = "/adresseList", method = RequestMethod.GET)
+    public ModelAndView listAdresse() {
+        Collection<Adresse> adresses = adresseRepo.findAll();
+        return new ModelAndView("adresseList", "adresse", adresses);
+    }
 
 
 
