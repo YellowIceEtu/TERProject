@@ -2,11 +2,15 @@ package mybootapp.web;
 
 
 import java.security.Principal;
+import java.text.Format;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Optional;
 
 
 import mybootapp.model.Adresse;
 import mybootapp.model.Formation;
+import mybootapp.model.Utilisateur;
 import mybootapp.repo.AdresseRepo;
 import mybootapp.repo.FormationRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpSession;
 
 @RequestMapping("/")
 @Controller
@@ -74,10 +79,16 @@ public class UserController {
 
     @ModelAttribute("formation")
     @RequestMapping(value = "/formationDetails", method = RequestMethod.GET)
-    public ModelAndView printPerson(@RequestParam(value = "id",defaultValue = "0") int id){
-        Formation formation = formationRepo.findAll().get(id);
+    public ModelAndView printFormation(@RequestParam(value = "id") int id){
+
+
+        int test = formationRepo.findAll().get(id).getCodeFormation();
+        Formation formation = formationRepo.findAll().get(test);
+
         return new ModelAndView("formationDetails", "formation", formation);
     }
+
+
 
 
     @RequestMapping(value = "/adresseList", method = RequestMethod.GET)
