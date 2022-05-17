@@ -2,51 +2,25 @@ h1 { color: blue; }
 
 
 nav {
-    color: white;
-    height: 100px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.nav-bar .nav-title {
-    background: linear-gradient(to right, lightblue, lightcyan );
-    padding: 20px;
-    height: 15px;
-    border: 1px solid #1c1c1e;
-    border-radius: 40px;
+
+    height: 80px;
+
+    background-color: gray;
 
 }
 
-.nav-bar .nav-title:hover{
-    animation: pulsate 1s ease-in-out;
-    background: lightblue;
-    transform: translateY(-7px);
-    box-shadow: 0px 10px 25px #1c1c1e;
+button.composante-button{
+    margin-right: 50px;
 }
-.nav-bar .nav-search{
-    background-color: #1c1c1e;
-    height: 45px ;
-
-    flex:0.3;
-    display: flex;
-    border-radius: 50px;
-    align-items: center;
-}
-.nav-bar .nav-search .searchInput{
-    background-color: transparent;
-    border: transparent;
-    width: 50%;
-    outline: transparent;
-    color: whitesmoke;
-    font-size: 16px;
+li{
+    list-style: none;
 }
 
-.nav-bar .nav-search .btnSearchInput{
-    margin: 5px;
-    border-radius: 50px;
+button.logout-button{
+    margin-left: 100px;
 }
 nav div a{
-    color: white;
+    color: black;
 }
 
 @keyframes pulsate {
@@ -56,9 +30,12 @@ nav div a{
 }
 body{
     background: linear-gradient(to right,deepskyblue,#33d6eb,lightblue );
-    padding: 20px;
-    min-height: 100vh;
-    max-width: 100vw;
+
+
+}
+
+.table{
+    margin-top: 100px;
 }
 
 

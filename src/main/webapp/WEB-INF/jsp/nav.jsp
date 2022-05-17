@@ -2,19 +2,26 @@
 
 <c:url var="home" value="/" />
 
-<nav class="nav-bar">
-    <div class="nav-title">
-        <a  href="${home}">
-            CPF Manager
-        </a>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <a class="navbar-brand">CPF Manager</a>
+        <form class="right-navbar">
 
-    </div>
+            <button class="admin-button"><a href=#>Admin</a></button>
+            <button class="composante-button"><a href=#>Composante</a></button>
+            <input
+                    type="search"
+                    class="input-search"
+                    placeholder="Search"
+                    aria-label="Search"
+                    aria-describedby="search-addon"
+            />
+
+               <button class="search-button">Find</button>
 
 
-    <div class="nav-search" >
-        <form action="${search}" id="searchForm" >
-            <button class="btnSearchInput" type="button"><i class="fas fa-search"></i></button>
-            <input  class="searchInput" type="search" placeholder="Rechercher..." aria-label="Search" name="name">
+            <button class="logout-button"><a href='logout/cas'>Logout</a></button>
         </form>
+
     </div>
 </nav>

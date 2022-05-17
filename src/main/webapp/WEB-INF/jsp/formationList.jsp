@@ -8,17 +8,17 @@
 
 <div class="container">
     <h1>Formations  </h1>
-    <p><a href='logout/cas'>Logout</a></p>
-    <table class="table table-hover">
+
+    <table class="table">
 
         <tr>
-            <td>codeFormation :</td>
-            <td>etatEdition :</td>
-            <td> Intitule :</td>
-        <tr>
+            <th>codeFormation :</th>
+            <th>etatEdition :</th>
+            <th> Intitule :</th>
+        </tr>
 
-            <c:forEach items="${formation}" var="formation">
-        <tr>
+        <tr>    <c:forEach items="${formation}" var="formation">
+
             <td><c:out value="${formation.intitule}" /></td>
             <td><c:out value="${formation.codeFormation}" /></td>
             <td><c:out value="${formation.etatEdition}" /></td>
@@ -27,7 +27,7 @@
         </c:forEach>
 
 
-        </tr>
+
 
 
 
