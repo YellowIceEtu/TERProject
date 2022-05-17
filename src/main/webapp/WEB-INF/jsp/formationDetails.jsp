@@ -6,28 +6,14 @@
     <%@ include file="/WEB-INF/jsp/nav.jsp"%>
 </div>
 
-<div class="container">
-    <h1> Details de la formation </h1>
+<div class="personCard">
+    <div class="card">
+        <p><c:out value="${formation.codeFormation}" /></p>
+        <p> <c:out value="${formation.etatEdition}" /> </p>
+        <p><c:out value="${formation.intitule}" /></p>
 
 
-    <p>
-        codeFormation:
-        <c:out value="${formation.codeFormation}" />
-    </p>
-    <p>
-        Etat Edition :
-        <c:out value="${formation.etatEdition}" />
-    </p>
-    <p>
-        Intitule :
-        <c:out value="${formation.intitule}" />
-    </p>
-
-
-
-
-
-
+    </div>
 </div>
 
 <%@ include file="/WEB-INF/jsp/footer.jsp"%>

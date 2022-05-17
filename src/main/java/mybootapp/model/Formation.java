@@ -26,8 +26,8 @@ public class Formation implements Serializable {
     @Basic()
     @Column(name = "etatEdition")
     private String etatEdition;
-
-    /*@Basic()
+/*
+    @Basic()
     @Temporal(TemporalType.DATE)
     @Column(name = "dateMaj")
     private Date dateMaj;
@@ -40,8 +40,8 @@ public class Formation implements Serializable {
     @Basic()
     @Column(name = "intitule")
     private String intitule;
-
-    /*@Basic()
+/*
+    @Basic()
     @Column(name = "objectif")
     private String objectif;
 
