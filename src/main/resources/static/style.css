@@ -1,13 +1,17 @@
-h1 { color: blue; }
+h1 { color: black; }
 
 
 nav {
 
     height: 80px;
 
-    background-color: gray;
+    background:linear-gradient(to right, steelblue, skyblue,lightskyblue );
 
 }
+
+
+
+
 
 button.composante-button{
     margin-right: 50px;
@@ -29,7 +33,7 @@ nav div a{
     }
 }
 body{
-    background: linear-gradient(to right,deepskyblue,#33d6eb,lightblue );
+    background: linear-gradient(to right, steelblue, skyblue,lightskyblue );
 
 
 }

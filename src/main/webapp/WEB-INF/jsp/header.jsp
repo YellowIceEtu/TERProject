@@ -18,6 +18,7 @@
 		<link rel="stylesheet" href="${bootstrap_css}">
 	<script src="${bootstrap_js}"></script>
 		<script src="${jquery_js}"></script>
+		<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 </head>
 <body>
 

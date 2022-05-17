@@ -4,8 +4,11 @@
 
 <nav class="navbar navbar-default">
     <div class="container-fluid">
-        <a class="navbar-brand">CPF Manager</a>
+        <div class="navbar-title">
+        <a href="${formationList}" class="navbar-brand">CPF Manager</a>
+        </div>
         <form class="right-navbar">
+
 
             <button class="admin-button"><a href=#>Admin</a></button>
             <button class="composante-button"><a href=#>Composante</a></button>
