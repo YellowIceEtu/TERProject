@@ -8,10 +8,10 @@ import java.util.Collection;
 import java.util.Optional;
 
 
-import mybootapp.model.Adresse;
+//import mybootapp.model.Adresse;
 import mybootapp.model.Formation;
-import mybootapp.model.Utilisateur;
-import mybootapp.repo.AdresseRepo;
+//import mybootapp.model.Utilisateur;
+//import mybootapp.repo.AdresseRepo;
 import mybootapp.repo.FormationRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -29,8 +29,8 @@ public class UserController {
     @Autowired
     FormationRepo formationRepo;
 
-    @Autowired
-    AdresseRepo adresseRepo;
+    /*@Autowired
+    AdresseRepo adresseRepo;*/
 
     @PostConstruct
     public void init() {
@@ -41,11 +41,11 @@ public class UserController {
             f.setIntitule("formation".concat(Integer.toString(i)));
             formationRepo.save(f);
 
-            Adresse adresse = new Adresse();
-            adresse.setNom("adresse"+i);
-            adresse.setLigne1("ligne1" + i);
-            adresse.setCodePostal(13000+i);
-            adresseRepo.save(adresse);
+//            Adresse adresse = new Adresse();
+//            adresse.setNom("adresse"+i);
+//            adresse.setLigne1("ligne1" + i);
+//            adresse.setCodePostal(13000+i);
+//            adresseRepo.save(adresse);
         }
     }
 
@@ -91,11 +91,11 @@ public class UserController {
 
 
 
-    @RequestMapping(value = "/adresseList", method = RequestMethod.GET)
-    public ModelAndView listAdresse() {
-        Collection<Adresse> adresses = adresseRepo.findAll();
-        return new ModelAndView("adresseList", "adresse", adresses);
-    }
+//    @RequestMapping(value = "/adresseList", method = RequestMethod.GET)
+//    public ModelAndView listAdresse() {
+//        Collection<Adresse> adresses = adresseRepo.findAll();
+//        return new ModelAndView("adresseList", "adresse", adresses);
+//    }
 
 
 

@@ -27,13 +27,17 @@ nav div a{
     color: black;
 }
 
+nav{
+    background: #2e6280;
+}
+
 @keyframes pulsate {
     0% {
         box-shadow: 0 0 25px #33d6eb, 0 0 50px #000;
     }
 }
 body{
-    background: linear-gradient(to right, steelblue, skyblue,lightskyblue );
+    background: linear-gradient(to right, #1d465a, skyblue,lightskyblue );
 
 
 }
