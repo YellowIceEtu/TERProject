@@ -13,15 +13,15 @@
     <table class="table">
 
         <tr>
+            <th> Intitule :</th>
             <th>codeFormation :</th>
             <th>etatEdition :</th>
-            <th> Intitule :</th>
             <th> IdFormation :</th>
             <th> Profile : </th>
         </tr>
 
-        <tr>    <c:forEach items="${formation}" var="formation">
-
+        <tr>
+            <c:forEach items="${formation}" var="formation">
             <td><c:out value="${formation.intitule}" /></td>
             <td><c:out value="${formation.codeFormation}" /></td>
             <td><c:out value="${formation.etatEdition}" /></td>
