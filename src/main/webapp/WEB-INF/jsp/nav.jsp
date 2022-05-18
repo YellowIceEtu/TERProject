@@ -5,7 +5,7 @@
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-title">
-        <a href="${formationList}" class="navbar-brand">CPF Manager</a>
+        <a href="http://localhost:8081/formationList" class="navbar-brand">CPF Manager</a>
         </div>
         <form class="right-navbar">
 

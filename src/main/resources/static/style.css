@@ -46,10 +46,22 @@ a:hover {
 }
 
 
+.formationCard{
+    display: flex;
+    margin-top: 100px;
+    padding-bottom: 20px ;
+    justify-content: center;
+    align-content: center;
+}
+.formationCard p.title{
+    font-weight: bold;
+    text-decoration-line: underline;
+}
+
 .card{
 
     color: white;
-    background: linear-gradient(to bottom, #ff5f6d, #1c1c1e );
+    background: linear-gradient(to bottom, steelblue, #1c1c1e );
     border-radius: 20px;
     width: 400px;
     height: 250px;
