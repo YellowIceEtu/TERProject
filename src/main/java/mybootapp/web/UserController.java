@@ -81,9 +81,7 @@ public class UserController {
     @RequestMapping(value = "/formationDetails", method = RequestMethod.GET)
     public ModelAndView printFormation(@RequestParam(value = "id") int id){
 
-
-        int test = formationRepo.findAll().get(id).getCodeFormation();
-        Formation formation = formationRepo.findAll().get(test);
+        Formation formation = formationRepo.findAll().get(id);
 
         return new ModelAndView("formationDetails", "formation", formation);
     }
