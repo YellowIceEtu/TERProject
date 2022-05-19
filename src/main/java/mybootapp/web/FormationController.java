@@ -13,9 +13,11 @@ import java.util.Optional;
 
 
 //import mybootapp.model.Adresse;
+import mybootapp.model.Composante;
 import mybootapp.model.Formation;
 //import mybootapp.model.Utilisateur;
 //import mybootapp.repo.AdresseRepo;
+import mybootapp.repo.ComposanteRepo;
 import mybootapp.repo.FormationRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -34,26 +36,32 @@ public class FormationController {
     @Autowired
     FormationRepo formationRepo;
 
-    /*@Autowired
-    AdresseRepo adresseRepo;*/
+    @Autowired
+    ComposanteRepo composanteRepo;
 
     @PostConstruct
     public void init() throws ParseException {
-        for(int i = 0; i < 4; i++){
-            Formation f = new Formation();
-            f.setCodeFormation(i);
-            f.setEtatEdition("essai");
-            f.setIntitule("formation".concat(Integer.toString(i)));
-            f.setDateCrea(getCurrentDate());
-            f.setDateCrea(getCurrentDate());
-            formationRepo.save(f);
-
+        for(int i = 0; i < 2; i++){
+            Composante c = new Composante();
+            c.setIntitule("composante".concat(Integer.toString(i)));
+            c.setFormations(new ArrayList<>());
+            for(int j = 0; j < 2; j++){
+                Formation f = new Formation();
+                f.setCodeFormation(2*i + j);
+                f.setEtatEdition("essai");
+                f.setIntitule("formation".concat(Integer.toString(2*i + j)));
+                f.setDateCrea(getCurrentDate());
+                f.setDateCrea(getCurrentDate());
+                formationRepo.save(f);
+                c.addFormation(f);
+            }
+            composanteRepo.save(c);
+        }
 //            Adresse adresse = new Adresse();
 //            adresse.setNom("adresse"+i);
 //            adresse.setLigne1("ligne1" + i);
 //            adresse.setCodePostal(13000+i);
 //            adresseRepo.save(adresse);
-        }
     }
 
     @Value("${application.message:Hello World}")
@@ -79,8 +87,8 @@ public class FormationController {
 
     @RequestMapping(value = "/formationList", method = RequestMethod.GET)
     public ModelAndView listFormations() {
-        Collection<Formation> persons = formationRepo.findAll();
-        return new ModelAndView("formationList", "formation", persons);
+        Collection<Composante> composantes = composanteRepo.findAll();
+        return new ModelAndView("formationList", "composante", composantes);
     }
 
 
