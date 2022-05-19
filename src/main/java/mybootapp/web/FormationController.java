@@ -2,9 +2,13 @@ package mybootapp.web;
 
 
 import java.security.Principal;
+import java.text.DateFormat;
 import java.text.Format;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.Optional;
 
 
@@ -33,12 +37,15 @@ public class FormationController {
     AdresseRepo adresseRepo;*/
 
     @PostConstruct
-    public void init() {
+    public void init() throws ParseException {
         for(int i = 0; i < 4; i++){
             Formation f = new Formation();
             f.setCodeFormation(i);
             f.setEtatEdition("essai");
             f.setIntitule("formation".concat(Integer.toString(i)));
+            f.setDateCrea(getCurrentDate());
+            f.setDateCrea(getCurrentDate());
+            System.out.println(f.getDateCrea().toString());
             formationRepo.save(f);
 
 //            Adresse adresse = new Adresse();
@@ -84,6 +91,14 @@ public class FormationController {
         Formation formation = formationRepo.findAll().get(id);
 
         return new ModelAndView("formationDetails", "formation", formation);
+    }
+
+    public String getCurrentDate() throws ParseException {
+        Date date = new Date();
+        SimpleDateFormat DateFor = new SimpleDateFormat("yyyy/MM/dd hh:mm");
+        String stringDate= DateFor.format(date);
+        System.out.println(stringDate);
+        return stringDate;
     }
 
 

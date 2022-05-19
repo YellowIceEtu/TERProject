@@ -18,7 +18,6 @@
             <th> Intitule :</th>
             <th>codeFormation :</th>
             <th>etatEdition :</th>
-            <th> IdFormation :</th>
             <th> Profile : </th>
         </tr>
 
@@ -27,8 +26,7 @@
             <td><c:out value="${formation.intitule}" /></td>
             <td><c:out value="${formation.codeFormation}" /></td>
             <td><c:out value="${formation.etatEdition}" /></td>
-            <td><c:out value="${formation.idFormation}" /></td>
-            <td> <a href="${view}?id=${formation.codeFormation}"> <i class="fas fa-eye"></i></a></td>
+            <td> <a href="${view}?id=${formation.id}"> <i class="fas fa-eye"></i></a></td>
 
         </tr>
         </c:forEach>

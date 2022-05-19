@@ -1,6 +1,7 @@
 package mybootapp.model;
 
 import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -17,7 +18,7 @@ public class Formation implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
 
     @Basic()
     @Column(name = "codeFormation")
@@ -27,15 +28,12 @@ public class Formation implements Serializable {
     @Column(name = "etatEdition")
     private String etatEdition;
 
-    @Basic()
-    @Temporal(TemporalType.DATE)
     @Column(name = "dateMaj")
-    private Date dateMaj;
+    private String dateMaj;
 
-    /*@Basic()
-    @Temporal(TemporalType.DATE)
+    @Basic()
     @Column(name = "dateCrea")
-    private Date dateCrea;*/
+    private String dateCrea;
 
     @Basic()
     @Column(name = "intitule")

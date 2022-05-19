@@ -16,6 +16,8 @@
         <p><c:out value="${formation.codeFormation}" /></p>
         <p class="title"><c:out value="Etat d'edition" /></p>
         <p> <c:out value="${formation.etatEdition}" /> </p>
+        <p class="title"><c:out value="Date de création" /></p>
+        <p> <c:out value="${formation.dateCrea}" /> </p>
 
 
 
