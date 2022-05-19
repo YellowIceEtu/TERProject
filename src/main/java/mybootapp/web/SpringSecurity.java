@@ -1,4 +1,4 @@
-package mybootapp.security;
+package mybootapp.web;
 
 
 import org.jasig.cas.client.session.SingleSignOutFilter;

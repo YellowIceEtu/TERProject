@@ -45,7 +45,6 @@ public class FormationController {
             f.setIntitule("formation".concat(Integer.toString(i)));
             f.setDateCrea(getCurrentDate());
             f.setDateCrea(getCurrentDate());
-            System.out.println(f.getDateCrea().toString());
             formationRepo.save(f);
 
 //            Adresse adresse = new Adresse();
@@ -86,9 +85,9 @@ public class FormationController {
 
     @ModelAttribute("formation")
     @RequestMapping(value = "/formationDetails", method = RequestMethod.GET)
-    public ModelAndView printFormation(@RequestParam(value = "id") int id){
+    public ModelAndView printFormation(@RequestParam(value = "id") Long id){
 
-        Formation formation = formationRepo.findAll().get(id);
+        Formation formation = formationRepo.getById(id);
 
         return new ModelAndView("formationDetails", "formation", formation);
     }

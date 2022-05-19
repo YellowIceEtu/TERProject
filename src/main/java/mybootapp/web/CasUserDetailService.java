@@ -1,4 +1,4 @@
-package mybootapp.security;
+package mybootapp.web;
 
 import java.util.ArrayList;
 import java.util.Collection;

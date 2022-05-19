@@ -1,4 +1,4 @@
-package mybootapp.security;
+package mybootapp.web;
 
 
 
