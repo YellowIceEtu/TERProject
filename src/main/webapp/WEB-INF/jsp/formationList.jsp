@@ -2,6 +2,7 @@
 
 
 <c:url var="view" value="/formationDetails" />
+<c:url var="edit" value="formationDetails/edit" />
 
 <div>
     <%@ include file="/WEB-INF/jsp/nav.jsp"%>
@@ -15,10 +16,10 @@
     <table class="table">
 
         <tr>
-            <th> Intitule :</th>
-            <th>codeFormation :</th>
-            <th>etatEdition :</th>
-            <th> Profile : </th>
+            <th> Intitulé :</th>
+            <th>Code formation :</th>
+            <th>État d'édition :</th>
+            <th> Détails : </th>
         </tr>
 
         <tr>
@@ -26,7 +27,7 @@
             <td><c:out value="${formation.intitule}" /></td>
             <td><c:out value="${formation.codeFormation}" /></td>
             <td><c:out value="${formation.etatEdition}" /></td>
-            <td> <a href="${view}?id=${formation.id}"> <i class="fas fa-eye"></i></a></td>
+                <td> <a href="${view}?id=${formation.id}"> <i class="fas fa-eye"></i></a></td>
 
         </tr>
         </c:forEach>

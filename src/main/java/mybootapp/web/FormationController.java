@@ -20,6 +20,7 @@ import mybootapp.repo.FormationRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -100,6 +101,25 @@ public class FormationController {
         return stringDate;
     }
 
+
+    @ModelAttribute("formation")
+    @RequestMapping(value = "formationDetails/edit", method = RequestMethod.GET)
+    public ModelAndView editFormation( @RequestParam(value = "id") Long id) {
+        Formation formation = formationRepo.getById(id);
+        return new ModelAndView("formationForm", "formation", formation);
+    }
+
+
+
+    @RequestMapping(value = "formationDetails/edit", method = RequestMethod.POST)
+    public String saveProduct(@ModelAttribute Formation formation, BindingResult result) {
+
+        if (result.hasErrors()) {
+            return "formationForm";
+        }
+        formationRepo.save(formation);
+        return "redirect:/formationList";
+    }
 
 
 

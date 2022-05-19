@@ -2,7 +2,7 @@
 
 <%@ include file="/WEB-INF/jsp/header.jsp"%>
 
-
+<c:url var="edit" value="formationDetails/edit" />
 
 <div>
     <%@ include file="/WEB-INF/jsp/nav.jsp"%>
@@ -23,5 +23,10 @@
 
     </div>
 </div>
+
+<p>
+    <a class="btn btn-info" href="${edit}?id=${formation.id}">Edit Formation</a>
+</p>
+
 
 <%@ include file="/WEB-INF/jsp/footer.jsp"%>
