@@ -2,9 +2,13 @@ package mybootapp.web;
 
 
 import java.security.Principal;
+import java.text.DateFormat;
 import java.text.Format;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.Optional;
 
 
@@ -16,6 +20,7 @@ import mybootapp.repo.FormationRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -24,7 +29,7 @@ import javax.servlet.http.HttpSession;
 
 @RequestMapping("/")
 @Controller
-public class UserController {
+public class FormationController {
 
     @Autowired
     FormationRepo formationRepo;
@@ -33,12 +38,14 @@ public class UserController {
     AdresseRepo adresseRepo;*/
 
     @PostConstruct
-    public void init() {
+    public void init() throws ParseException {
         for(int i = 0; i < 4; i++){
             Formation f = new Formation();
             f.setCodeFormation(i);
             f.setEtatEdition("essai");
             f.setIntitule("formation".concat(Integer.toString(i)));
+            f.setDateCrea(getCurrentDate());
+            f.setDateCrea(getCurrentDate());
             formationRepo.save(f);
 
 //            Adresse adresse = new Adresse();
@@ -79,15 +86,40 @@ public class UserController {
 
     @ModelAttribute("formation")
     @RequestMapping(value = "/formationDetails", method = RequestMethod.GET)
-    public ModelAndView printFormation(@RequestParam(value = "id") int id){
+    public ModelAndView printFormation(@RequestParam(value = "id") Long id){
 
-
-        int test = formationRepo.findAll().get(id).getCodeFormation();
-        Formation formation = formationRepo.findAll().get(test);
+        Formation formation = formationRepo.getById(id);
 
         return new ModelAndView("formationDetails", "formation", formation);
     }
 
+    public String getCurrentDate() throws ParseException {
+        Date date = new Date();
+        SimpleDateFormat DateFor = new SimpleDateFormat("yyyy/MM/dd hh:mm");
+        String stringDate= DateFor.format(date);
+        System.out.println(stringDate);
+        return stringDate;
+    }
+
+
+    @ModelAttribute("formation")
+    @RequestMapping(value = "formationDetails/edit", method = RequestMethod.GET)
+    public ModelAndView editFormation( @RequestParam(value = "id") Long id) {
+        Formation formation = formationRepo.getById(id);
+        return new ModelAndView("formationForm", "formation", formation);
+    }
+
+
+
+    @RequestMapping(value = "formationDetails/edit", method = RequestMethod.POST)
+    public String saveProduct(@ModelAttribute Formation formation, BindingResult result) {
+
+        if (result.hasErrors()) {
+            return "formationForm";
+        }
+        formationRepo.save(formation);
+        return "redirect:/formationList";
+    }
 
 
 
