@@ -24,7 +24,7 @@ import javax.servlet.http.HttpSession;
 
 @RequestMapping("/")
 @Controller
-public class UserController {
+public class FormationController {
 
     @Autowired
     FormationRepo formationRepo;

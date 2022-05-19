@@ -17,7 +17,7 @@ public class Formation implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idFormation;
+    private int id;
 
     @Basic()
     @Column(name = "codeFormation")
@@ -26,13 +26,13 @@ public class Formation implements Serializable {
     @Basic()
     @Column(name = "etatEdition")
     private String etatEdition;
-/*
+
     @Basic()
     @Temporal(TemporalType.DATE)
     @Column(name = "dateMaj")
     private Date dateMaj;
 
-    @Basic()
+    /*@Basic()
     @Temporal(TemporalType.DATE)
     @Column(name = "dateCrea")
     private Date dateCrea;*/

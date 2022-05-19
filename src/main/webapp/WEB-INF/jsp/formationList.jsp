@@ -7,6 +7,8 @@
     <%@ include file="/WEB-INF/jsp/nav.jsp"%>
 </div>
 
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <div class="container">
     <h1>Formations  </h1>
 
