@@ -10,14 +10,17 @@
 
 <div class="formationCard">
     <div class="card">
-        <p class="title"><c:out value="Intitulé" /></p>
-        <p><c:out value="${formation.intitule}" /></p>
-        <p class="title"><c:out value="Code formation" /></p>
-        <p><c:out value="${formation.codeFormation}" /></p>
-        <p class="title"><c:out value="Etat d'edition" /></p>
-        <p> <c:out value="${formation.etatEdition}" /> </p>
         <p class="title"><c:out value="Date de création" /></p>
         <p> <c:out value="${formation.dateCrea}" /> </p>
+        <p class="title"><c:out value="Date de modification" /></p>
+        <p> <c:out value="${formation.dateMaj}" /> </p>
+        <p class="title"><c:out value="Intitulé" /></p>
+        <p><c:out value="${formation.intitule}" /></p>
+        <p class="title"><c:out value="Code de la formation" /></p>
+        <p><c:out value="${formation.code}" /></p>
+        <p class="title"><c:out value="Etat d'edition" /></p>
+        <p> <c:out value="${formation.etatEdition}" /> </p>
+
 
 
 

@@ -47,11 +47,9 @@ public class FormationController {
             c.setFormations(new ArrayList<>());
             for(int j = 0; j < 2; j++){
                 Formation f = new Formation();
-                f.setCodeFormation(2*i + j);
+                f.setCode(2*i + j);
                 f.setEtatEdition("essai");
                 f.setIntitule("formation".concat(Integer.toString(2*i + j)));
-                f.setDateCrea(getCurrentDate());
-                f.setDateCrea(getCurrentDate());
                 formationRepo.save(f);
                 c.addFormation(f);
             }
