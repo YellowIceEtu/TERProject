@@ -9,7 +9,11 @@
 
         <form:errors path="*" cssClass="alert alert-danger" element="div" />
 
-
+        <div class="form-group">
+            <label for="code">Code Formation:</label>
+            <form:input class="form-control" path="code" />
+            <form:errors path="code" cssClass="alert alert-warning" element="div" />
+        </div>
         <div class="form-group">
             <label for="etatEdition">Etat Edition:</label>
             <form:textarea class="form-control" path="etatEdition" rows="4" />

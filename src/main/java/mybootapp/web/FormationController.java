@@ -2,21 +2,16 @@ package mybootapp.web;
 
 
 import java.security.Principal;
-import java.text.DateFormat;
-import java.text.Format;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
-import java.util.Optional;
 
 
-//import mybootapp.model.Adresse;
 import mybootapp.model.Composante;
 import mybootapp.model.Formation;
-//import mybootapp.model.Utilisateur;
-//import mybootapp.repo.AdresseRepo;
 import mybootapp.repo.ComposanteRepo;
 import mybootapp.repo.FormationRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +35,7 @@ public class FormationController {
     ComposanteRepo composanteRepo;
 
     @PostConstruct
-    public void init() throws ParseException {
+    public void init(){
         for(int i = 0; i < 2; i++){
             Composante c = new Composante();
             c.setIntitule("composante".concat(Integer.toString(i)));
@@ -123,7 +118,6 @@ public class FormationController {
         if (result.hasErrors()) {
             return "formationForm";
         }
-        formationRepo.save(formation);
         return "redirect:/formationList";
     }
 

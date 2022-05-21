@@ -17,6 +17,8 @@ import java.util.Date;
 @Table(name="formation")
 public class Formation extends BaseData implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -55,9 +57,13 @@ public class Formation extends BaseData implements Serializable {
 
     @Basic()
     @Column(name = "CERTIFINFO")
-    private int CERTIFINFO;
+    private int CERTIFINFO;*/
 
     @OneToOne
     @JoinColumn( name="idAction" )
-    private Action action;*/
+    private Action action;
+
+    @ManyToOne
+    @JoinColumn( name="idAdresse" )
+    private Adresse adresse;
 }

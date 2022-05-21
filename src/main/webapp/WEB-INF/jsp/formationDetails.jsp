@@ -16,7 +16,7 @@
         <p> <c:out value="${formation.dateMaj}" /> </p>
         <p class="title"><c:out value="Intitulé" /></p>
         <p><c:out value="${formation.intitule}" /></p>
-        <p class="title"><c:out value="Code de la formation" /></p>
+        <p class="title"><c:out value="Code formation" /></p>
         <p><c:out value="${formation.code}" /></p>
         <p class="title"><c:out value="Etat d'edition" /></p>
         <p> <c:out value="${formation.etatEdition}" /> </p>
