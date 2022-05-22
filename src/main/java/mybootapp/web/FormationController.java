@@ -3,6 +3,7 @@ package mybootapp.web;
 
 import java.security.Principal;
 
+import java.text.Normalizer;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -87,20 +88,10 @@ public class FormationController {
     @ModelAttribute("formation")
     @RequestMapping(value = "/formationDetails", method = RequestMethod.GET)
     public ModelAndView printFormation(@RequestParam(value = "id") Long id){
-
         Formation formation = formationRepo.getById(id);
 
         return new ModelAndView("formationDetails", "formation", formation);
     }
-
-    public String getCurrentDate() throws ParseException {
-        Date date = new Date();
-        SimpleDateFormat DateFor = new SimpleDateFormat("yyyy/MM/dd hh:mm");
-        String stringDate= DateFor.format(date);
-        System.out.println(stringDate);
-        return stringDate;
-    }
-
 
     @ModelAttribute("formation")
     @RequestMapping(value = "formationDetails/edit", method = RequestMethod.GET)
@@ -113,7 +104,7 @@ public class FormationController {
 
     @RequestMapping(value = "formationDetails/edit", method = RequestMethod.POST)
     public String saveProduct(@ModelAttribute Formation formation, BindingResult result) {
-
+        formationRepo.save(formation);
         if (result.hasErrors()) {
             return "formationForm";
         }
@@ -134,18 +125,9 @@ public class FormationController {
         Collection<Composante> composantes = composanteRepo.findAll();
         return new ModelAndView("correspondant", "composante",composantes);
     }
-
-
-
-
 //    @RequestMapping(value = "/adresseList", method = RequestMethod.GET)
 //    public ModelAndView listAdresse() {
 //        Collection<Adresse> adresses = adresseRepo.findAll();
 //        return new ModelAndView("adresseList", "adresse", adresses);
 //    }
-
-
-
-
-
 }
