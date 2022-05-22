@@ -34,4 +34,10 @@ class DataTest {
 
     }
 
+    @Test
+    public void adresseComposante(){
+      //  assertEquals("163 Av. de Luminy, 13009 Marseille", composanteRepo.findAll().get(0).getAdresses());
+       // assertEquals(2, composanteRepo.findAll().get(0).);
+    }
+
 }

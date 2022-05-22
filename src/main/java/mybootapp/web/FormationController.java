@@ -48,11 +48,24 @@ public class FormationController {
                 f.setIntitule("formation".concat(Integer.toString(2*i + j)));
                 formationRepo.save(f);
                 c.addFormation(f);
+
+                Adresse adresse = new Adresse();
+                adresse.setAdresse("163 Av. de Luminy, 13009 Marseille");
+
+                c.addAdresse(adresse);
             }
+           /*     Collection<Adresse> adresses = new ArrayList<>();
+
+                    Adresse adresse = new Adresse();
+                    adresse.setAdresse("163 Av. de Luminy, 13009 Marseille");
+                     Adresse adresse2 = new Adresse();
+                    adresse2.setAdresse("52 Av. Escadrille Normandie Niemen, 13013 Marseille");
+
+                   c.setAdresse(adresses);*/
+
             composanteRepo.save(c);
         }
-          Adresse adresse = new Adresse();
-          adresse.setAdresse("163 Av. de Luminy, 13009 Marseille");
+
 
     }
 

@@ -48,4 +48,8 @@ public class Composante implements Serializable {
     public void addFormation(Formation f){
         formations.add(f);
     }
+
+    public void addAdresse(Adresse a){
+        adresses.add(a);
+    }
 }
