@@ -50,12 +50,12 @@ public class FormationController {
                 formationRepo.save(f);
                 c.addFormation(f);
 
-                Adresse adresse = new Adresse();
-                adresse.setAdresse("163 Av. de Luminy, 13009 Marseille");
-
-                c.addAdresse(adresse);
+//                 Adresse adresse = new Adresse();
+//                adresse.setAdresse("163 Av. de Luminy, 13009 Marseille");
+//
+//                c.addAdresse(adresse);
             }
-           /*     Collection<Adresse> adresses = new ArrayList<>();
+               /*Collection<Adresse> adresses = new ArrayList<>();
 
                     Adresse adresse = new Adresse();
                     adresse.setAdresse("163 Av. de Luminy, 13009 Marseille");
@@ -118,6 +118,19 @@ public class FormationController {
     @RequestMapping(value = "formationDetails/edit", method = RequestMethod.POST)
     public String saveProduct(@ModelAttribute Formation formation, BindingResult result) {
         formationRepo.save(formation);
+        Collection<Composante> composantes = composanteRepo.findAll();
+        for (Composante c: composantes){
+            Collection<Formation> formations = c.getFormations();
+            for (Formation f: formations){
+                if(f.getId().equals(formation.getId())){
+                    formations.remove(f);
+                    formations.add(formation);
+                    c.setFormations(formations);
+                    composanteRepo.save(c);
+                }
+            }
+
+            }
         if (result.hasErrors()) {
             return "formationForm";
         }

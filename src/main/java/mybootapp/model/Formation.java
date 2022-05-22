@@ -63,7 +63,7 @@ public class Formation extends BaseData implements Serializable {
     @JoinColumn( name="idAction" )
     private Action action;
 
-    @ManyToOne
+    /*@ManyToOne
     @JoinColumn( name="idAdresse" )
-    private Adresse adresse;
+    private Adresse adresse;*/
 }
