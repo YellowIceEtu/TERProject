@@ -30,7 +30,9 @@
             <table class="table">
                 <h1> Liste des adresses de la composante :  </h1>
                 <tr>
-
+                    <c:forEach items="${composante}" var="composante">
+                        <h3> <c:out value="${composante.adresses}"/></h3>
+                    </c:forEach>
 
                 </tr>
 

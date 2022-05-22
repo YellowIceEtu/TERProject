@@ -92,3 +92,8 @@ button.exporter-données-button{
     cursor: text;
     text-decoration: none;
 }
+button.a.nav-link:link
+{
+    color: #fb3f00;
+    text-decoration: none;
+}
