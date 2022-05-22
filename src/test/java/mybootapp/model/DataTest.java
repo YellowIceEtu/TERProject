@@ -6,6 +6,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -25,19 +28,19 @@ class DataTest {
     @Test
     public void formationGenerator(){
         assertEquals(4, formationRepo.findAll().size());
-
     }
 
     @Test
     public void composanteGenerator(){
         assertEquals(2, composanteRepo.findAll().size());
-
     }
+
 
     @Test
     public void adresseComposante(){
-      //  assertEquals("163 Av. de Luminy, 13009 Marseille", composanteRepo.findAll().get(0).getAdresses());
-       // assertEquals(2, composanteRepo.findAll().get(0).);
+        Adresse adresse = new Adresse("163 Av. de Luminy, 13009 Marseille");
+        Collection<Adresse> compoAdresse = composanteRepo.findAll().get(0).getAdresses();
+        assertTrue(compoAdresse.contains(adresse));
     }
 
 }

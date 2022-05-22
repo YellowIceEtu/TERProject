@@ -5,6 +5,8 @@ import mybootapp.model.base.BaseData;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -23,7 +25,6 @@ public class Formation extends BaseData implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Basic()
     @Column(name = "codeFormation")
     private int code;
 
@@ -31,7 +32,9 @@ public class Formation extends BaseData implements Serializable {
     @Column(name = "etatEdition")
     private String etatEdition;
 
-    @Basic()
+    @NotNull
+    @Size(min = 1, max = 255, message = "le champ doit contenir entre 1 et 255 caractères")
+    @Basic
     @Column(name = "intitule")
     private String intitule;
 /*
@@ -59,9 +62,9 @@ public class Formation extends BaseData implements Serializable {
     @Column(name = "CERTIFINFO")
     private int CERTIFINFO;*/
 
-    @OneToOne
+    /*@OneToOne
     @JoinColumn( name="idAction" )
-    private Action action;
+    private Action action;*/
 
     /*@ManyToOne
     @JoinColumn( name="idAdresse" )

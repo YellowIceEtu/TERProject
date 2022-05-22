@@ -25,6 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 @RequestMapping("/")
 @Controller
@@ -50,10 +51,7 @@ public class FormationController {
                 formationRepo.save(f);
                 c.addFormation(f);
 
-//                 Adresse adresse = new Adresse();
-//                adresse.setAdresse("163 Av. de Luminy, 13009 Marseille");
-//
-//                c.addAdresse(adresse);
+
             }
                /*Collection<Adresse> adresses = new ArrayList<>();
 
@@ -63,6 +61,10 @@ public class FormationController {
                     adresse2.setAdresse("52 Av. Escadrille Normandie Niemen, 13013 Marseille");
 
                    c.setAdresse(adresses);*/
+            Adresse adresse = new Adresse();
+            adresse.setAdresse("163 Av. de Luminy, 13009 Marseille");
+
+            c.addAdresse(adresse);
 
             composanteRepo.save(c);
         }
@@ -116,7 +118,7 @@ public class FormationController {
 
 
     @RequestMapping(value = "formationDetails/edit", method = RequestMethod.POST)
-    public String saveProduct(@ModelAttribute Formation formation, BindingResult result) {
+    public String saveProduct(@ModelAttribute @Valid Formation formation, BindingResult result) {
         formationRepo.save(formation);
         Collection<Composante> composantes = composanteRepo.findAll();
         for (Composante c: composantes){
@@ -129,8 +131,7 @@ public class FormationController {
                     composanteRepo.save(c);
                 }
             }
-
-            }
+        }
         if (result.hasErrors()) {
             return "formationForm";
         }
