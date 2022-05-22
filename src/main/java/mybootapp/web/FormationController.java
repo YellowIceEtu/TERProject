@@ -122,6 +122,22 @@ public class FormationController {
     }
 
 
+    @RequestMapping(value = "admin", method = RequestMethod.GET)
+    public ModelAndView adminPage() {
+
+        Collection<Composante> composantes = composanteRepo.findAll();
+        return new ModelAndView("admin", "composante",composantes);
+    }
+
+    @RequestMapping(value = "correspondant", method = RequestMethod.GET)
+    public ModelAndView correspondantPage() {
+
+        Collection<Composante> composantes = composanteRepo.findAll();
+        return new ModelAndView("correspondant", "composante",composantes);
+    }
+
+    
+
 
 //    @RequestMapping(value = "/adresseList", method = RequestMethod.GET)
 //    public ModelAndView listAdresse() {
