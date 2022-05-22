@@ -10,6 +10,7 @@ import java.util.Collection;
 import java.util.Date;
 
 
+import mybootapp.model.Adresse;
 import mybootapp.model.Composante;
 import mybootapp.model.Formation;
 import mybootapp.repo.ComposanteRepo;
@@ -50,11 +51,9 @@ public class FormationController {
             }
             composanteRepo.save(c);
         }
-//            Adresse adresse = new Adresse();
-//            adresse.setNom("adresse"+i);
-//            adresse.setLigne1("ligne1" + i);
-//            adresse.setCodePostal(13000+i);
-//            adresseRepo.save(adresse);
+          Adresse adresse = new Adresse();
+          adresse.setAdresse("163 Av. de Luminy, 13009 Marseille");
+
     }
 
     @Value("${application.message:Hello World}")
@@ -136,7 +135,7 @@ public class FormationController {
         return new ModelAndView("correspondant", "composante",composantes);
     }
 
-    
+
 
 
 //    @RequestMapping(value = "/adresseList", method = RequestMethod.GET)

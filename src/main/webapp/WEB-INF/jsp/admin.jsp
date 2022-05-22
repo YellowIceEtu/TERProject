@@ -14,11 +14,11 @@
     <ul>
         <li>
     <table class="table">
-        <h1> Liste des composantes :  </h1>
         <tr>
-            <th> Composante :</th>
+        <th> <h1> Liste des composantes :  </h1> </th>
         </tr>
         <tr>
+
             <td>
             <c:forEach items="${composante}" var="composante">
        <h3> <c:out value="${composante.intitule}"/></h3>

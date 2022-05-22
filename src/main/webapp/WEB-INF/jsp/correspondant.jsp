@@ -28,15 +28,10 @@
 
             </table>
             <table class="table">
-                <h1> Liste des formations de la composante :  </h1>
+                <h1> Liste des adresses de la composante :  </h1>
                 <tr>
-                    <th> Composante :</th>
-                </tr>
-                <tr>
-                    <td>
-                        <c:forEach items="${composante}" var="composante">
-                            <h3> <c:out value="${composante.intitule}"/></h3>
-                        </c:forEach></td>
+
+
                 </tr>
 
 
@@ -47,7 +42,7 @@
 
 
 
-        <button class="exporter-données-button"><a href=#>Exporter les données</a></button>
+        <button class="exporter-données-button"><a href=#>Ajouter une addresse</a></button>
 
 </div>
 
