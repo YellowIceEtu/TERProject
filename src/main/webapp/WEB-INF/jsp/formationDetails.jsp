@@ -20,6 +20,8 @@
         <p><c:out value="${formation.code}" /></p>
         <p class="title"><c:out value="Etat d'edition" /></p>
         <p> <c:out value="${formation.etatEdition}" /> </p>
+        <p class="title"><c:out value="Objectif" /></p>
+        <p><c:out value="${formation.objectif}" /></p>
 
 
 

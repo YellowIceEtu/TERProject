@@ -14,6 +14,7 @@ import java.util.Date;
 import mybootapp.model.Adresse;
 import mybootapp.model.Composante;
 import mybootapp.model.Formation;
+import mybootapp.repo.AdresseRepo;
 import mybootapp.repo.ComposanteRepo;
 import mybootapp.repo.FormationRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,9 @@ public class FormationController {
     @Autowired
     ComposanteRepo composanteRepo;
 
+    @Autowired
+    AdresseRepo adresseRepo;
+
     @PostConstruct
     public void init(){
         for(int i = 0; i < 2; i++){
@@ -48,23 +52,26 @@ public class FormationController {
                 f.setCode(2*i + j);
                 f.setEtatEdition("essai");
                 f.setIntitule("formation".concat(Integer.toString(2*i + j)));
+                f.setObjectif("objectif".concat(Integer.toString(2*i + j)));
                 formationRepo.save(f);
                 c.addFormation(f);
 
 
             }
-               /*Collection<Adresse> adresses = new ArrayList<>();
+               Collection<Adresse> adresses = new ArrayList<>();
 
-                    Adresse adresse = new Adresse();
+                 /*   Adresse adresse = new Adresse();
                     adresse.setAdresse("163 Av. de Luminy, 13009 Marseille");
                      Adresse adresse2 = new Adresse();
                     adresse2.setAdresse("52 Av. Escadrille Normandie Niemen, 13013 Marseille");
 
                    c.setAdresse(adresses);*/
-            Adresse adresse = new Adresse();
-            adresse.setAdresse("163 Av. de Luminy, 13009 Marseille");
 
-            c.addAdresse(adresse);
+            Adresse a = new Adresse();
+            c.setAdresses(adresses);
+            a.setAdresse("163 Av. de Luminy, 13009 Marseille");
+            adresseRepo.save(a);
+            c.addAdresse(a);
 
             composanteRepo.save(c);
         }

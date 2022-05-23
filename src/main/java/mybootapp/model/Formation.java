@@ -37,12 +37,14 @@ public class Formation extends BaseData implements Serializable {
     @Basic
     @Column(name = "intitule")
     private String intitule;
-/*
+
+    @NotNull(message = "le champ ne doit pas être vide")
+    @Size(max = 3000, message = "max 3000 caractères")
     @Basic()
     @Column(name = "objectif")
     private String objectif;
 
-    @Basic()
+    /*@Basic()
     @Column(name = "resultatsAttendus")
     private String resultatsAttendus;
 

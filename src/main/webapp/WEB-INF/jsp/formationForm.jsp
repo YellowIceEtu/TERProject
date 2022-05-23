@@ -4,26 +4,27 @@
 
 <div class="container">
     <h1>Edit Formation</h1>
+    <p class="title"><c:out value="Code formation" /></p>
+    <p><c:out value="${formation.code}" /></p>
+    <p class="title"><c:out value="Etat d'edition" /></p>
+    <p> <c:out value="${formation.etatEdition}" /> </p>
 
     <form:form method="POST" modelAttribute="formation">
 
         <form:errors path="*" cssClass="alert alert-danger" element="div" />
 
-        <div class="form-group">
-            <label for="code">Code Formation:</label>
-            <form:input class="form-control" path="code" />
-            <form:errors path="code" cssClass="alert alert-warning" element="div" />
-        </div>
-        <div class="form-group">
-            <label for="etatEdition">Etat Edition:</label>
-            <form:textarea class="form-control" path="etatEdition" rows="4" />
-            <form:errors path="etatEdition" cssClass="alert alert-warning"
-                         element="div" />
-        </div>
+
+
         <div class="form-group">
             <label for="intitule">Intitule :</label>
             <form:input path="intitule" class="form-control" />
             <form:errors path="intitule" cssClass="alert alert-warning"
+                         element="div" />
+        </div>
+        <div class="form-group">
+            <label for="objectif">Objectif :</label>
+            <form:textarea class="form-control" path="objectif" rows="4" />
+            <form:errors path="objectif" cssClass="alert alert-warning"
                          element="div" />
         </div>
         <div class="form-group">
