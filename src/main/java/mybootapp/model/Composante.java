@@ -41,7 +41,7 @@ public class Composante implements Serializable {
     @JoinColumn( name="idFormation" )
     private Collection<Formation> formations;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn( name="idAdresse" )
     private Collection<Adresse> adresses;
 

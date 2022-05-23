@@ -60,12 +60,6 @@ public class FormationController {
             }
                Collection<Adresse> adresses = new ArrayList<>();
 
-                 /*   Adresse adresse = new Adresse();
-                    adresse.setAdresse("163 Av. de Luminy, 13009 Marseille");
-                     Adresse adresse2 = new Adresse();
-                    adresse2.setAdresse("52 Av. Escadrille Normandie Niemen, 13013 Marseille");
-
-                   c.setAdresse(adresses);*/
 
             Adresse a = new Adresse();
             c.setAdresses(adresses);

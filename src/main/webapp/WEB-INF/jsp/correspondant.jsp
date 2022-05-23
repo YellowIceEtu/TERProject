@@ -15,15 +15,10 @@
         <li>
             <table class="table">
                 <h1> Liste des formations de la composante :  </h1>
-                <tr>
-                    <th> Composante :</th>
-                </tr>
-                <tr>
-                    <td>
                         <c:forEach items="${composante}" var="composante">
                             <h3> <c:out value="${composante.intitule}"/></h3>
-                        </c:forEach></td>
-                </tr>
+                        </c:forEach>
+
 
 
             </table>
