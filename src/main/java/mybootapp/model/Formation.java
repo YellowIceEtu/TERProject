@@ -1,9 +1,12 @@
 package mybootapp.model;
 
 import lombok.*;
+import mybootapp.model.base.BaseData;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -14,36 +17,34 @@ import java.util.Date;
 @Getter
 @Setter
 @Table(name="formation")
-public class Formation implements Serializable {
+public class Formation extends BaseData implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Basic()
     @Column(name = "codeFormation")
-    private int codeFormation;
+    private int code;
 
     @Basic()
     @Column(name = "etatEdition")
     private String etatEdition;
 
-    @Column(name = "dateMaj")
-    private String dateMaj;
-
-    @Basic()
-    @Column(name = "dateCrea")
-    private String dateCrea;
-
-    @Basic()
+    @NotNull
+    @Size(min = 1, max = 255, message = "le champ doit contenir entre 1 et 255 caractères")
+    @Basic
     @Column(name = "intitule")
     private String intitule;
-/*
+
+    @NotNull(message = "le champ ne doit pas être vide")
+    @Size(max = 3000, message = "max 3000 caractères")
     @Basic()
     @Column(name = "objectif")
     private String objectif;
 
-    @Basic()
+    /*@Basic()
     @Column(name = "resultatsAttendus")
     private String resultatsAttendus;
 
@@ -61,9 +62,13 @@ public class Formation implements Serializable {
 
     @Basic()
     @Column(name = "CERTIFINFO")
-    private int CERTIFINFO;
+    private int CERTIFINFO;*/
 
-    @OneToOne
+    /*@OneToOne
     @JoinColumn( name="idAction" )
     private Action action;*/
+
+    /*@ManyToOne
+    @JoinColumn( name="idAdresse" )
+    private Adresse adresse;*/
 }

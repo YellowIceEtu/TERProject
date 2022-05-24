@@ -73,3 +73,27 @@ a:hover {
 .card p{
     text-align: center;
 }
+
+.top{
+    margin-top: 100px;
+}
+
+button.ajouter-formation-button{
+    margin-left: 300px;
+}
+
+.bottom{
+    display: inline-grid;
+    margin-top: 50px;
+}
+
+button.exporter-données-button{
+    margin-top: 25px;
+    cursor: text;
+    text-decoration: none;
+}
+button.a.nav-link:link
+{
+    color: #fb3f00;
+    text-decoration: none;
+}
