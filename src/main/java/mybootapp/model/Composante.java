@@ -24,7 +24,7 @@ public class Composante implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
 
 
     //@NotBlank(message = "le champ ne doit pas être vide")

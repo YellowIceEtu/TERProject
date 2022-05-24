@@ -3,12 +3,11 @@ package mybootapp.web;
 
 import java.security.Principal;
 
+import java.text.Format;
 import java.text.Normalizer;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
+import java.util.*;
 
 
 import mybootapp.model.Adresse;
@@ -53,6 +52,7 @@ public class FormationController {
                 f.setEtatEdition("essai");
                 f.setIntitule("formation".concat(Integer.toString(2*i + j)));
                 f.setObjectif("objectif".concat(Integer.toString(2*i + j)));
+                f.setCERTIFINFO(i);
                 formationRepo.save(f);
                 c.addFormation(f);
 
@@ -123,35 +123,44 @@ public class FormationController {
     }
 
 
-
     @RequestMapping(value = "formationDetails/edit", method = RequestMethod.POST)
-    public String saveProduct(@ModelAttribute @Valid Formation formation, BindingResult result) {
-        formationRepo.save(formation);
-        Collection<Composante> composantes = composanteRepo.findAll();
-        for (Composante c: composantes){
-            Collection<Formation> formations = c.getFormations();
-            for (Formation f: formations){
-                if(f.getId().equals(formation.getId())){
-                    formations.remove(f);
-                    formations.add(formation);
-                    c.setFormations(formations);
-                    composanteRepo.save(c);
-                }
-            }
-        }
+    public String saveFormation(@ModelAttribute @Valid Formation formation, BindingResult result) {
         if (result.hasErrors()) {
             return "formationForm";
         }
+        formationRepo.save(formation);
         return "redirect:/formationList";
     }
 
-
     @RequestMapping(value = "admin", method = RequestMethod.GET)
     public ModelAndView adminPage() {
-
         Collection<Composante> composantes = composanteRepo.findAll();
         return new ModelAndView("admin", "composante",composantes);
     }
+
+    @ModelAttribute("composante")
+    @RequestMapping(value = "admin/formationCreate", method = RequestMethod.GET)
+    public ModelAndView addFormationForm(@RequestParam(value = "id") Long id) {
+        Composante composante = composanteRepo.getById(id);
+        Formation formation = new Formation();
+        formation.setEtatEdition("creation");
+        composante.addFormation(formation);
+        formationRepo.save(formation);
+        composanteRepo.save(composante);
+        return new ModelAndView("formationCreate", "formation", formation);
+    }
+
+    @RequestMapping(value = "admin/formationCreate", method = RequestMethod.POST)
+    public String saveFormationCreation(@ModelAttribute @Valid Formation formation, BindingResult result) {
+        if (result.hasErrors()) {
+            return "admin/formationCreate";
+        }
+        formation.setEtatEdition("brouillon");
+        cleanFormation();
+        formationRepo.save(formation);
+        return "redirect:/admin";
+    }
+
 
     @RequestMapping(value = "correspondant", method = RequestMethod.GET)
     public ModelAndView correspondantPage() {
@@ -164,4 +173,13 @@ public class FormationController {
 //        Collection<Adresse> adresses = adresseRepo.findAll();
 //        return new ModelAndView("adresseList", "adresse", adresses);
 //    }
+
+    public void cleanFormation(){
+        List<Formation> formations= formationRepo.findAll();
+        for (Formation f : formations){
+            if(f.getEtatEdition().equals("creation")){
+                formationRepo.delete(f);
+            }
+        }
+    }
 }

@@ -3,10 +3,7 @@ package mybootapp.model;
 import lombok.*;
 import mybootapp.model.base.BaseData;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
@@ -17,6 +14,10 @@ import java.io.Serializable;
 @Setter
 @Table(name="adresse")
 public class Adresse extends BaseData implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
     @Basic()
     @Column(name="adresse")
