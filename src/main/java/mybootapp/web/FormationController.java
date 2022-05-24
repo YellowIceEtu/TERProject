@@ -58,7 +58,7 @@ public class FormationController {
 
 
             }
-               Collection<Adresse> adresses = new ArrayList<>();
+            Collection<Adresse> adresses = new ArrayList<>();
 
 
             Adresse a = new Adresse();
@@ -120,8 +120,8 @@ public class FormationController {
 
     @RequestMapping(value = "formationDetails/edit", method = RequestMethod.POST)
     public String saveProduct(@ModelAttribute @Valid Formation formation, BindingResult result) {
-        formationRepo.save(formation);
-        Collection<Composante> composantes = composanteRepo.findAll();
+
+    /*    Collection<Composante> composantes = composanteRepo.findAll();
         for (Composante c: composantes){
             Collection<Formation> formations = c.getFormations();
             for (Formation f: formations){
@@ -132,10 +132,10 @@ public class FormationController {
                     composanteRepo.save(c);
                 }
             }
-        }
+        }*/
         if (result.hasErrors()) {
             return "formationForm";
-        }
+        }formationRepo.save(formation);
         return "redirect:/formationList";
     }
 
@@ -147,10 +147,12 @@ public class FormationController {
         return new ModelAndView("admin", "composante",composantes);
     }
 
+
     @RequestMapping(value = "correspondant", method = RequestMethod.GET)
     public ModelAndView correspondantPage() {
 
-        Collection<Composante> composantes = composanteRepo.findAll();
+        // Collection<Composante> composantes = composanteRepo.findAll();
+        Composante composantes = composanteRepo.findAll().get(0);
         return new ModelAndView("correspondant", "composante",composantes);
     }
 //    @RequestMapping(value = "/adresseList", method = RequestMethod.GET)
@@ -158,4 +160,29 @@ public class FormationController {
 //        Collection<Adresse> adresses = adresseRepo.findAll();
 //        return new ModelAndView("adresseList", "adresse", adresses);
 //    }
+
+    /*
+    @ModelAttribute("adresse")
+    @RequestMapping(value = "correspondant/addAdresse", method = RequestMethod.GET)
+    public ModelAndView addAdresseForm() {
+
+        Collection<Adresse> composantes = composanteRepo.findAll().get(0).getAdresses();
+        return new ModelAndView("adresseForm", "adresse",composantes);
+    }*/
+
+    @RequestMapping(value = "/correspondant/addAdresse", method = RequestMethod.GET)
+    public String addAdresse(@ModelAttribute Adresse adresse) {
+        return "adresseForm";
+    }
+
+    @RequestMapping(value = "/correspondant/addAdresse", method = RequestMethod.POST)
+    public String addAdresse(@ModelAttribute Adresse adresse, BindingResult result) {
+
+
+        if (result.hasErrors()) {
+            return "adresseForm";
+        }
+        adresseRepo.save(adresse);
+        return "redirect:";
+    }
 }
