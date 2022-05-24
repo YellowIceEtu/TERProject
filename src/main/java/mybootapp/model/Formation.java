@@ -4,7 +4,9 @@ import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
@@ -93,11 +95,11 @@ public class Formation implements Serializable {
     @Column(name = "objectifGeneral")
     private int objectifGeneral;
 
-    @NotNull(message = "le champ ne doit pas être vide")
-    @Size(max = 6, message = "max 6 caractères")
+    @NotBlank(message = "le champ doit être rempli")
+    @Pattern(regexp="[0-9 ]{6}", message="le code est composé au maximum de 6 chiffres")
     @Basic()
     @Column(name = "CERTIFINFO")
-    private int CERTIFINFO;
+    private String CERTIFINFO;
 
     @OneToOne
     @JoinColumn( name="idAction" )
