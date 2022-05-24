@@ -2,7 +2,6 @@
 
 
 <c:url var="view" value="/formationDetails" />
-<c:url var="add" value="correspondant/addAdresse" />
 
 <div>
     <%@ include file="/WEB-INF/jsp/nav.jsp"%>
@@ -11,13 +10,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <div class="container">
-
-    <h1> Liste des formations de la composante : </h1>
+    <h1>Formations  </h1>
 
     <ul>
-
-            <li>
-               </li>
+        <c:forEach items="${composante}" var="composante">
+            <li><h3>Composante : <c:out value="${composante.intitule}"/></h3></li>
             <li>
                 <table class="table">
                     <tr>
@@ -37,26 +34,10 @@
                     </c:forEach>
 
                 </table>
-
-                <table class="table">
-                    <h1> Liste des adresses de la composante :  </h1>
-
-
-                    <c:forEach items="${composante.adresses}" var="adresse">
-                        <h3> <c:out value="${adresse.adresse}"/></h3>
-                    </c:forEach>
-
-                </table>
             </li>
-
+        </c:forEach>
 
     </ul>
-
-
-
-
-        <button class="ajouter-adresse-button"><a href="${add}">Ajouter une addresse</a></button>
-
 </div>
 
 <%@ include file="/WEB-INF/jsp/footer.jsp"%>

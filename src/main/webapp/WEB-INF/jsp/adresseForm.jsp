@@ -5,7 +5,7 @@
 <div class="container">
     <h1>Ajout d'une adresse</h1>
 
-    <form:form method="POST" modelAttribute="adresse">
+    <form:form action="addAdresse" method="POST" modelAttribute="adresse" >
 
         <form:errors path="*" cssClass="alert alert-danger" element="div" />
 
@@ -13,7 +13,7 @@
 
         <div class="form-group">
             <label for="adresse">Adresse :</label>
-            <form:input path="adresse" class="form-control" />
+            <form:input path="adresse" type="text"  class="form-control" id="adresse" name="adresse" />
             <form:errors path="adresse" cssClass="alert alert-warning"
                          element="div" />
         </div>

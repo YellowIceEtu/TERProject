@@ -1,14 +1,10 @@
-package mybootapp.web;
+package mybootapp.controller;
 
 
 import java.security.Principal;
 
-import java.text.Normalizer;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
 
 
 import mybootapp.model.Adresse;
@@ -25,7 +21,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.PostConstruct;
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @RequestMapping("/")
@@ -97,7 +92,7 @@ public class FormationController {
     @RequestMapping(value = "/formationList", method = RequestMethod.GET)
     public ModelAndView listFormations() {
         Collection<Composante> composantes = composanteRepo.findAll();
-        return new ModelAndView("formationList", "composante", composantes);
+        return new ModelAndView("formation/formationList", "composante", composantes);
     }
 
 
@@ -106,14 +101,14 @@ public class FormationController {
     public ModelAndView printFormation(@RequestParam(value = "id") Long id){
         Formation formation = formationRepo.getById(id);
 
-        return new ModelAndView("formationDetails", "formation", formation);
+        return new ModelAndView("formation/formationDetails", "formation", formation);
     }
 
     @ModelAttribute("formation")
     @RequestMapping(value = "formationDetails/edit", method = RequestMethod.GET)
     public ModelAndView editFormation( @RequestParam(value = "id") Long id) {
         Formation formation = formationRepo.getById(id);
-        return new ModelAndView("formationForm", "formation", formation);
+        return new ModelAndView("formation/formationForm", "formation", formation);
     }
 
 
@@ -134,9 +129,9 @@ public class FormationController {
             }
         }*/
         if (result.hasErrors()) {
-            return "formationForm";
+            return "formation/formationForm";
         }formationRepo.save(formation);
-        return "redirect:/formationList";
+        return "formation/formationList";
     }
 
 
@@ -171,18 +166,21 @@ public class FormationController {
     }*/
 
     @RequestMapping(value = "/correspondant/addAdresse", method = RequestMethod.GET)
-    public String addAdresse(@ModelAttribute Adresse adresse) {
-        return "adresseForm";
-    }
+    public String addAdresse(@ModelAttribute Adresse adresse) {return "adresseForm";}
 
     @RequestMapping(value = "/correspondant/addAdresse", method = RequestMethod.POST)
-    public String addAdresse(@ModelAttribute Adresse adresse, BindingResult result) {
+    public String addAdresse(@ModelAttribute("adresse") Adresse adresse, BindingResult result) {
 
 
         if (result.hasErrors()) {
             return "adresseForm";
         }
         adresseRepo.save(adresse);
+        Composante c = composanteRepo.findAll().get(0);
+        c.addAdresse(adresse);
+        composanteRepo.save(c);
+        System.out.println("adresses:  "+c.getAdresses());
+
         return "redirect:";
     }
 }
