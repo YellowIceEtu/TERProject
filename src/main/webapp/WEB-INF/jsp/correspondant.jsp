@@ -2,6 +2,7 @@
 
 
 <c:url var="view" value="/formationDetails" />
+<c:url var="add" value="correspondant/addAdresse" />
 
 <div>
     <%@ include file="/WEB-INF/jsp/nav.jsp"%>
@@ -11,35 +12,48 @@
 
 <div class="container">
 
+    <h1> Liste des formations de la composante : </h1>
+
     <ul>
-        <li>
-            <table class="table">
-                <h1> Liste des formations de la composante :  </h1>
-                        <c:forEach items="${composante}" var="composante">
-                            <h3> <c:out value="${composante.intitule}"/></h3>
-                        </c:forEach>
 
+            <li>
+               </li>
+            <li>
+                <table class="table">
+                    <tr>
+                        <th> Intitule :</th>
+                        <th>codeFormation :</th>
+                        <th>etatEdition :</th>
+                        <th> Profil : </th>
+                    </tr>
+                    <tr>
+                        <c:forEach items="${composante.formations}" var="formation">
+                        <td><c:out value="${formation.intitule}" /></td>
+                        <td><c:out value="${formation.code}" /></td>
+                        <td><c:out value="${formation.etatEdition}" /></td>
+                        <td> <a href="${view}?id=${formation.id}"> <i class="fas fa-eye"></i></a></td>
 
-
-            </table>
-            <table class="table">
-                <h1> Liste des adresses de la composante :  </h1>
-                <tr>
-                    <c:forEach items="${composante}" var="composante">
-                        <h3> <c:out value="${composante.adresses}"/></h3>
+                    </tr>
                     </c:forEach>
 
-                </tr>
+                </table>
+
+                <table class="table">
+                    <h1> Liste des adresses de la composante :  </h1>
 
 
-            </table>
-        </li>
+                            <c:out value="${composante.adresses}"/>
+
+                </table>
+            </li>
+
+
     </ul>
 
 
 
 
-        <button class="exporter-données-button"><a href=#>Ajouter une addresse</a></button>
+        <button class="ajouter-adresse-button"><a href="${add}">Ajouter une addresse</a></button>
 
 </div>
 

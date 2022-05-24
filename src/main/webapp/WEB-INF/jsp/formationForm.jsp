@@ -11,8 +11,6 @@
 
     <form:form method="POST" modelAttribute="formation">
 
-        <form:errors path="*" cssClass="alert alert-danger" element="div" />
-
 
 
         <div class="form-group">
