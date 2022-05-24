@@ -1,6 +1,8 @@
 
 
 
+
+
 <%@ include file="/WEB-INF/jsp/header.jsp"%>
 <div>
     <%@ include file="/WEB-INF/jsp/nav.jsp"%>
