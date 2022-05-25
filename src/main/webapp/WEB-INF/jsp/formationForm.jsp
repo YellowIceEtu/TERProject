@@ -8,7 +8,7 @@
     <p class="title"><c:out value="Intitulé : " /><c:out value="${formation.intitule}" /></p>
     <p class="title"><c:out value="Code formation : " /><c:out value="${formation.code}" /></p>
     <p class="title"><c:out value="Etat d'edition : " /> <c:out value="${formation.etatEdition}" /> </p>
-    <p class="title"><c:out value="Code CERIFINFO : " /> <c:out value="${formation.CERTIFINFO}" /> </p>
+    <p class="title"><c:out value="Code CERTIFINFO : " /> <c:out value="${formation.CERTIFINFO}" /> </p>
 
     <form:form method="POST" modelAttribute="formation">
 

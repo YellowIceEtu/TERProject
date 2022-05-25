@@ -8,6 +8,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.text.Normalizer;
 import java.util.Collection;
 
 
@@ -48,6 +49,8 @@ public class Composante implements Serializable {
     public void addFormation(Formation f){
         formations.add(f);
     }
+
+    public void deleteFormation(Formation f){formations.remove(f);}
 
     public void addAdresse(Adresse a){
         adresses.add(a);

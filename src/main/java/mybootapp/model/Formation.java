@@ -75,4 +75,13 @@ public class Formation extends BaseData implements Serializable {
     @ManyToOne
     @JoinColumn( name="idComposante" )
     private Composante composante;
+
+    public void finalizeCreation(Formation f){
+        this.setIntitule(f.getIntitule());
+        this.setCERTIFINFO(f.getCERTIFINFO());
+        this.setCode(f.getCode());
+        this.setEtatEdition("brouillon");
+
+    }
+
 }

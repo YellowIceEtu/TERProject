@@ -17,7 +17,7 @@
     <div class="container">
         <h1>Ajout d'une formation</h1>
 
-        <form:form action="saveFormationCreation" method="POST" modelAttribute="formation" >
+        <form:form method="POST" modelAttribute="formation" >
 
             <form:errors path="*" cssClass="alert alert-danger" element="div" />
 

@@ -55,8 +55,6 @@ public class FormationController {
                 f.setCERTIFINFO(i);
                 formationRepo.save(f);
                 c.addFormation(f);
-
-
             }
                Collection<Adresse> adresses = new ArrayList<>();
 
@@ -144,6 +142,7 @@ public class FormationController {
         Composante composante = composanteRepo.getById(id);
         Formation formation = new Formation();
         formation.setEtatEdition("creation");
+        formation.setIntitule("test");
         composante.addFormation(formation);
         formationRepo.save(formation);
         composanteRepo.save(composante);
@@ -156,8 +155,16 @@ public class FormationController {
             return "admin/formationCreate";
         }
         formation.setEtatEdition("brouillon");
-        cleanFormation();
-        formationRepo.save(formation);
+        List<Composante> composantes = composanteRepo.findAll();
+        for (Composante c : composantes){
+            List<Formation> formations = new ArrayList<>(c.getFormations());
+            for (Formation f : formations){
+                if(f.getEtatEdition().equals("creation")){
+                    f.finalizeCreation(formation);
+                }
+                composanteRepo.save(c);
+            }
+        }
         return "redirect:/admin";
     }
 
