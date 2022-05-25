@@ -3,9 +3,7 @@ package mybootapp.controller;
 
 import java.security.Principal;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 
 import mybootapp.model.Adresse;
@@ -176,17 +174,27 @@ public class FormationController {
     @RequestMapping(value = "/admin/formationCreate", method = RequestMethod.GET)
     public String addFormationForm(@ModelAttribute Formation formation) {return "formationCreate";}
 
+    @ModelAttribute("ListComposantes")
+    public Map<Composante, String> ListComposantes() {
+        Map<Composante, String> compoList = new LinkedHashMap<>();
+        List<Composante> composantes = composanteRepo.findAll();
+        for(Composante c : composantes)
+            compoList.put(c, c.getIntitule());
+        return compoList;
+    }
 
 
-
-    @RequestMapping(value = "admin/formationCreate", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/formationCreate", method = RequestMethod.POST)
     public String saveFormationCreation(@ModelAttribute @Valid Formation formation, BindingResult result) {
         if (result.hasErrors()) {
-            return "admin/formationCreate";
+            return "formationCreate";
         }
         formation.setEtatEdition("brouillon");
         formationRepo.save(formation);
-        cleanFormation();
+        System.out.println(formation.getIdComposante().getIntitule());
+//        Composante c = composanteRepo.getById(formation.getComposante().getId());
+//        c.addFormation(formation);
+//        composanteRepo.save(c);
         return "redirect:/formationList";
     }
 

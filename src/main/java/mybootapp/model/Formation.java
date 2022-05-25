@@ -79,10 +79,6 @@ public class Formation extends BaseData implements Serializable {
     private Composante composante;
 
     public Formation() {
-        this.setIntitule("0");
-        this.setCERTIFINFO(0);
-        this.setCode(0);
-        this.setEtatEdition("brouillon");
     }
 
     public void create(int i){
@@ -100,4 +96,8 @@ public class Formation extends BaseData implements Serializable {
 
     }
 
+
+    public Composante getIdComposante() {
+        return this.composante;
+    }
 }

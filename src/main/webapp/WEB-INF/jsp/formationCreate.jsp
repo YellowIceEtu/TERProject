@@ -21,15 +21,15 @@
 
             <form:errors path="*" cssClass="alert alert-danger" element="div" />
 
-<%--            <div class="form-group">--%>
-<%--                <label for="idComposante">Choisissez une composante :</label>--%>
-<%--                <form:select path="idComposante" multiple="false" class="form-control">--%>
-<%--                    <form:option value="" label="--- Select ---" />--%>
-<%--                    <form:options items="${ListComposantes}" />--%>
-<%--                </form:select>--%>
-<%--                <form:errors path="idComposante" cssClass="alert alert-warning"--%>
-<%--                             element="div" />--%>
-<%--            </div>--%>
+            <div class="form-group">
+                <label for="idComposante">Choisissez une composante :</label>
+                <form:select path="idComposante" multiple="false" class="form-control">
+                    <form:option value="" label="--- Select ---" />
+                    <form:options items="${ListComposantes}" />
+                </form:select>
+                <form:errors path="idComposante" cssClass="alert alert-warning"
+                             element="div" />
+            </div>
 
             <div class="form-group">
                 <label for="CERTIFINFO">CERTIFINFO :</label>
