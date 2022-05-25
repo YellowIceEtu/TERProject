@@ -154,7 +154,7 @@ public class FormationController {
         composante.addFormation(formation);
         formationRepo.save(formation);
         composanteRepo.save(composante);
-        return new ModelAndView("formationCreate", "formation", formation);
+        return new ModelAndView("formation/formationCreate", "formation", formation);
     }
 
     @RequestMapping(value = "admin/formationCreate", method = RequestMethod.POST)
@@ -174,7 +174,7 @@ public class FormationController {
             }
 
         }
-        return "redirect:/admin";
+        return "redirect:/formationList";
     }
 
 
