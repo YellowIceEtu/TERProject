@@ -100,6 +100,7 @@ public class FormationController {
 
     @RequestMapping(value = "/formationList", method = RequestMethod.GET)
     public ModelAndView listFormations() {
+        cleanFormation();
         Collection<Composante> composantes = composanteRepo.findAll();
         return new ModelAndView("formationList", "composante", composantes);
     }
@@ -164,6 +165,7 @@ public class FormationController {
                 }
                 composanteRepo.save(c);
             }
+
         }
         return "redirect:/admin";
     }
