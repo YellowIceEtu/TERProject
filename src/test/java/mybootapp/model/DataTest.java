@@ -38,7 +38,9 @@ class DataTest {
 
     @Test
     public void adresseComposante(){
-        Adresse adresse = new Adresse("163 Av. de Luminy, 13009 Marseille");
+        Adresse adresse = new Adresse();
+        String ligne = "163 Av. de Luminy, 13009 Marseille";
+        adresse.setLigne(ligne);
        Collection<Adresse> compoAdresse = composanteRepo.findAll().get(0).getAdresses();
         assertTrue(compoAdresse.contains(adresse));
 

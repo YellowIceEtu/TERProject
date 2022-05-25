@@ -1,12 +1,12 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <%@ include file="/WEB-INF/jsp/header.jsp"%>
-
-<c:url var="edit" value="formationDetails/edit" />
-
 <div>
     <%@ include file="/WEB-INF/jsp/nav.jsp"%>
 </div>
+
+<c:url var="edit" value="formationDetails/edit" />
+
+
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <div class="formationCard">
     <div class="card">
@@ -22,15 +22,11 @@
         <p> <c:out value="${formation.etatEdition}" /> </p>
         <p class="title"><c:out value="Objectif" /></p>
         <p><c:out value="${formation.objectif}" /></p>
-
-
-
-
     </div>
 </div>
 
 <p>
-    <a class="btn btn-info" href="${edit}?id=${formation.id}">Edit Formation</a>
+    <a class="btn btn-info" href="${edit}?id=${formation.id}">Modifier la Formation</a>
 </p>
 
 

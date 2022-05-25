@@ -16,13 +16,16 @@ import mybootapp.repo.FormationRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.PostConstruct;
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 
+@Transactional
 @RequestMapping("/")
 @Controller
 public class FormationController {
@@ -54,7 +57,6 @@ public class FormationController {
 
             }
             Collection<Adresse> adresses = new ArrayList<>();
-
 
             Adresse a = new Adresse();
             c.setAdresses(adresses);
@@ -88,7 +90,6 @@ public class FormationController {
 
 
 
-
     @RequestMapping(value = "/formationList", method = RequestMethod.GET)
     public ModelAndView listFormations() {
         Collection<Composante> composantes = composanteRepo.findAll();
@@ -103,6 +104,7 @@ public class FormationController {
 
         return new ModelAndView("formation/formationDetails", "formation", formation);
     }
+
 
     @ModelAttribute("formation")
     @RequestMapping(value = "formationDetails/edit", method = RequestMethod.GET)
@@ -183,4 +185,29 @@ public class FormationController {
 
         return "redirect:";
     }
+
+    @RequestMapping(value = "/editAdress/{id}")
+    public String showNewAdress(@PathVariable Long id, Model model) {
+        model.addAttribute("id", id);
+        model.addAttribute("command", adresseRepo.findById(id).orElse(null));
+        return "editAdress";
+    }
+
+    @RequestMapping(value = "/editAdress/{id}", method = RequestMethod.POST)
+    public String editAdress(@PathVariable Long id, @ModelAttribute("adresse") Adresse adresse) {
+        Adresse newAdress = adresseRepo.findById(id).orElse(null);
+        newAdress.setLigne(adresse.getLigne());
+        adresseRepo.save(newAdress);
+        return "redirect:/correspondant";
+    }
+
+    @RequestMapping(value = "/deleteAdress/{id}")
+    public String deleteAdress(@PathVariable Long id) {
+        adresseRepo.deleteById(id);
+        return "redirect:/correspondant";
+    }
+
+
+
+
 }

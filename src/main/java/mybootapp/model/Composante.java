@@ -52,4 +52,16 @@ public class Composante implements Serializable {
     public void addAdresse(Adresse a){
         adresses.add(a);
     }
+
+    public void removeAdress(Adresse a){
+        adresses.remove(a);
+
+    }
+
+
+
+
+
+
+
 }

@@ -11,14 +11,13 @@
 
 <div class="container">
     <h1>Formations  </h1>
-
     <ul>
         <c:forEach items="${composante}" var="composante">
             <li><h3>Composante : <c:out value="${composante.intitule}"/></h3></li>
             <li>
                 <table class="table">
                     <tr>
-                        <th> Intitule :</th>
+                        <th>Intitule :</th>
                         <th>codeFormation :</th>
                         <th>etatEdition :</th>
                         <th> Profil : </th>
