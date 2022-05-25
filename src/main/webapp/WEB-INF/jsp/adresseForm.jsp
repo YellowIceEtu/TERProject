@@ -5,17 +5,14 @@
 <div class="container">
     <h1>Ajout d'une adresse</h1>
 
-    <form:form action="addAdresse" method="POST" modelAttribute="adresse" >
+    <form:form method="POST" modelAttribute="adresse" >
 
         <form:errors path="*" cssClass="alert alert-danger" element="div" />
 
-
-
         <div class="form-group">
-            <label for="adresse">Adresse :</label>
-            <form:input path="adresse" type="text"  class="form-control" id="adresse" name="adresse" />
-            <form:errors path="adresse" cssClass="alert alert-warning"
-                         element="div" />
+            <label for="ligne"> Tapez l'adresse : </label>
+            <form:input path="ligne" class="form-control" />
+            <form:errors path="ligne" cssClass="alert alert-warning" element="div" />
         </div>
 
         <div class="form-group">

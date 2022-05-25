@@ -58,7 +58,7 @@ public class FormationController {
 
             Adresse a = new Adresse();
             c.setAdresses(adresses);
-            a.setAdresse("163 Av. de Luminy, 13009 Marseille");
+            a.setLigne("163 Av. de Luminy, 13009 Marseille");
             adresseRepo.save(a);
             c.addAdresse(a);
 
@@ -165,10 +165,10 @@ public class FormationController {
         return new ModelAndView("adresseForm", "adresse",composantes);
     }*/
 
-    @RequestMapping(value = "/correspondant/addAdresse", method = RequestMethod.GET)
+    @RequestMapping(value = "/correspondant/addAdress", method = RequestMethod.GET)
     public String addAdresse(@ModelAttribute Adresse adresse) {return "adresseForm";}
 
-    @RequestMapping(value = "/correspondant/addAdresse", method = RequestMethod.POST)
+    @RequestMapping(value = "/correspondant/addAdress", method = RequestMethod.POST)
     public String addAdresse(@ModelAttribute("adresse") Adresse adresse, BindingResult result) {
 
 

@@ -20,5 +20,5 @@ public class Adresse extends BaseData implements Serializable {
 
     @Basic()
     @Column(name="adresse")
-    String adresse;
+    String ligne;
 }

@@ -11,8 +11,6 @@
 
     <form:form method="POST" modelAttribute="formation">
 
-
-
         <div class="form-group">
             <label for="intitule">Intitule :</label>
             <form:input path="intitule" class="form-control" />

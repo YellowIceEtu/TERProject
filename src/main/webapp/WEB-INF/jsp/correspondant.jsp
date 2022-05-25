@@ -2,23 +2,18 @@
 
 
 <c:url var="view" value="/formationDetails" />
-<c:url var="add" value="correspondant/addAdresse" />
+<c:url var="add" value="/correspondant/addAdress" />
 
 <div>
     <%@ include file="/WEB-INF/jsp/nav.jsp"%>
 </div>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <div class="container">
 
-    <h1> Liste des formations de la composante : </h1>
-
-    <ul>
-
-            <li>
-               </li>
-            <li>
+                <h1> Liste des formations de la composante : </h1>
                 <table class="table">
                     <tr>
                         <th> Intitule :</th>
@@ -40,20 +35,30 @@
 
                 <table class="table">
                     <h1> Liste des adresses de la composante :  </h1>
+                    <thead>
+                    <tr>
+                        <th scope="col">Ligne</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    </thead>
 
-
+                    <tbody>
                     <c:forEach items="${composante.adresses}" var="adresse">
-                        <h3> <c:out value="${adresse.adresse}"/></h3>
+                        <tr>
+
+                            <td><c:out value="${adresse.ligne}" /></td>
+
+                            <td><a class="btn btn-outline-primary"
+                                   href="/person/edit/${person.id}" role="submit">Modifier</a></td>
+                            <td><a href="/person/remove/${person.id}"
+                                   class="btn btn-outline-primary" type="submit">Supprimer</a></td>
+                        </tr>
                     </c:forEach>
+                    </tbody>
 
                 </table>
-            </li>
-
-
-    </ul>
-
-
-
 
         <button class="ajouter-adresse-button"><a href="${add}">Ajouter une addresse</a></button>
 
