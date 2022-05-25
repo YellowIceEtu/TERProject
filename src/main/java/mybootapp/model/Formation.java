@@ -2,11 +2,11 @@ package mybootapp.model;
 
 import lombok.*;
 import mybootapp.model.base.BaseData;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -25,6 +25,7 @@ public class Formation extends BaseData implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Basic()
     @Column(name = "codeFormation")
     private int code;
 
@@ -32,14 +33,10 @@ public class Formation extends BaseData implements Serializable {
     @Column(name = "etatEdition")
     private String etatEdition;
 
-    @NotNull
-    @Size(min = 1, max = 255, message = "le champ doit contenir entre 1 et 255 caractères")
-    @Basic
+    @Basic()
     @Column(name = "intitule")
     private String intitule;
 
-    @NotNull(message = "le champ ne doit pas être vide")
-    @Size(max = 3000, message = "max 3000 caractères")
     @Basic()
     @Column(name = "objectif")
     private String objectif;
@@ -58,17 +55,33 @@ public class Formation extends BaseData implements Serializable {
 
     @Basic()
     @Column(name = "objectifGeneral")
-    private int objectifGeneral;
+    private int objectifGeneral;*/
 
+    @Max(value = 99999, message = "6 caractères maximum")
+    @Min(value = 0, message = "au moins un caractère")
     @Basic()
     @Column(name = "CERTIFINFO")
-    private int CERTIFINFO;*/
+    private int CERTIFINFO;
 
-    /*@OneToOne
+    @OneToOne
     @JoinColumn( name="idAction" )
-    private Action action;*/
+    private Action action;
 
-    /*@ManyToOne
+    @ManyToOne
     @JoinColumn( name="idAdresse" )
-    private Adresse adresse;*/
+    private Adresse adresse;
+
+
+    @ManyToOne
+    @JoinColumn( name="idComposante" )
+    private Composante composante;
+
+    public void finalizeCreation(Formation f){
+        this.setIntitule(f.getIntitule());
+        this.setCERTIFINFO(f.getCERTIFINFO());
+        this.setCode(f.getCode());
+        this.setEtatEdition("brouillon");
+
+    }
+
 }

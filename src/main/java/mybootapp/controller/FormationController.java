@@ -5,6 +5,7 @@ import java.security.Principal;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 
 import mybootapp.model.Adresse;
@@ -91,6 +92,7 @@ public class FormationController {
 
     @RequestMapping(value = "/formationList", method = RequestMethod.GET)
     public ModelAndView listFormations() {
+        cleanFormation();
         Collection<Composante> composantes = composanteRepo.findAll();
         return new ModelAndView("formation/formationList", "composante", composantes);
     }
@@ -142,6 +144,39 @@ public class FormationController {
         return new ModelAndView("admin", "composante",composantes);
     }
 
+    @ModelAttribute("composante")
+    @RequestMapping(value = "admin/formationCreate", method = RequestMethod.GET)
+    public ModelAndView addFormationForm(@RequestParam(value = "id") Long id) {
+        Composante composante = composanteRepo.getById(id);
+        Formation formation = new Formation();
+        formation.setEtatEdition("creation");
+        formation.setIntitule("test");
+        composante.addFormation(formation);
+        formationRepo.save(formation);
+        composanteRepo.save(composante);
+        return new ModelAndView("formationCreate", "formation", formation);
+    }
+
+    @RequestMapping(value = "admin/formationCreate", method = RequestMethod.POST)
+    public String saveFormationCreation(@ModelAttribute @Valid Formation formation, BindingResult result) {
+        if (result.hasErrors()) {
+            return "admin/formationCreate";
+        }
+        formation.setEtatEdition("brouillon");
+        List<Composante> composantes = composanteRepo.findAll();
+        for (Composante c : composantes){
+            List<Formation> formations = new ArrayList<>(c.getFormations());
+            for (Formation f : formations){
+                if(f.getEtatEdition().equals("creation")){
+                    f.finalizeCreation(formation);
+                }
+                composanteRepo.save(c);
+            }
+
+        }
+        return "redirect:/admin";
+    }
+
 
     @RequestMapping(value = "correspondant", method = RequestMethod.GET)
     public ModelAndView correspondantPage() {
@@ -169,9 +204,7 @@ public class FormationController {
     public String addAdresse(@ModelAttribute Adresse adresse) {return "adresseForm";}
 
     @RequestMapping(value = "/correspondant/addAdress", method = RequestMethod.POST)
-    public String addAdresse(@ModelAttribute("adresse") Adresse adresse, BindingResult result) {
-
-
+    public String addAdresse(@ModelAttribute @Valid Adresse adresse, BindingResult result) {
         if (result.hasErrors()) {
             return "adresseForm";
         }
@@ -182,5 +215,14 @@ public class FormationController {
         System.out.println("adresses:  "+c.getAdresses());
 
         return "redirect:";
+    }
+
+    public void cleanFormation(){
+        List<Formation> formations= formationRepo.findAll();
+        for (Formation f : formations){
+            if(f.getEtatEdition().equals("creation")){
+                formationRepo.delete(f);
+            }
+        }
     }
 }
