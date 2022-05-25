@@ -15,7 +15,9 @@ import mybootapp.repo.ComposanteRepo;
 import mybootapp.repo.FormationRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -55,7 +57,6 @@ public class FormationController {
             }
             Collection<Adresse> adresses = new ArrayList<>();
 
-
             Adresse a = new Adresse();
             c.setAdresses(adresses);
             a.setLigne("163 Av. de Luminy, 13009 Marseille");
@@ -84,9 +85,6 @@ public class FormationController {
     public ModelAndView home2(Principal p) {
         return new ModelAndView("home", "message", p);
     }
-
-
-
 
 
     @RequestMapping(value = "/formationList", method = RequestMethod.GET)
@@ -182,5 +180,28 @@ public class FormationController {
         System.out.println("adresses:  "+c.getAdresses());
 
         return "redirect:";
+    }
+
+
+    @RequestMapping(value = "/editAdress/{id}")
+    public String showNewAdress(@PathVariable Long id, Model model) {
+        model.addAttribute("id", id);
+        model.addAttribute("command", adresseRepo.findById(id).orElse(null));
+        return "editAdress";
+    }
+
+    @RequestMapping(value = "/editAdress/{id}", method = RequestMethod.POST)
+    public String editAdress(@PathVariable Long id, @ModelAttribute("contact") Adresse adresse) {
+        Adresse newAdress = adresseRepo.findById(id).orElse(null);
+        newAdress.setLigne(adresse.getLigne());
+        adresseRepo.save(newAdress);
+        return "redirect:/correspondant";
+    }
+
+
+    @RequestMapping(value = "/deleteAdress/{id}")
+    public String deleteAdress(@PathVariable Long id) {
+        adresseRepo.deleteById(id);
+        return "redirect:/correspondant";
     }
 }
