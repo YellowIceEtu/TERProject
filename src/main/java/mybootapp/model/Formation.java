@@ -12,7 +12,6 @@ import java.util.Date;
 
 @Entity
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
@@ -25,6 +24,8 @@ public class Formation extends BaseData implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Max(value = 99999, message = "6 caractères maximum")
+    @Min(value = 0, message = "au moins un caractère")
     @Basic()
     @Column(name = "codeFormation")
     private int code;
@@ -33,6 +34,7 @@ public class Formation extends BaseData implements Serializable {
     @Column(name = "etatEdition")
     private String etatEdition;
 
+    @NotBlank(message = "le champ ne doit pas être vide")
     @Basic()
     @Column(name = "intitule")
     private String intitule;
@@ -75,6 +77,20 @@ public class Formation extends BaseData implements Serializable {
     @ManyToOne
     @JoinColumn( name="idComposante" )
     private Composante composante;
+
+    public Formation() {
+        this.setIntitule("0");
+        this.setCERTIFINFO(0);
+        this.setCode(0);
+        this.setEtatEdition("brouillon");
+    }
+
+    public void create(int i){
+        this.setCode(i);
+        this.setEtatEdition("brouillon");
+        this.setIntitule("formation".concat(Integer.toString(i)));
+        this.setObjectif("objectif".concat(Integer.toString(i)));
+    }
 
     public void finalizeCreation(Formation f){
         this.setIntitule(f.getIntitule());

@@ -5,6 +5,7 @@ import java.security.Principal;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 
 import mybootapp.model.Adresse;
@@ -15,7 +16,6 @@ import mybootapp.repo.ComposanteRepo;
 import mybootapp.repo.FormationRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -140,6 +140,57 @@ public class FormationController {
         return new ModelAndView("admin", "composante",composantes);
     }
 
+    /*@ModelAttribute("composante")
+    @RequestMapping(value = "admin/formationCreate", method = RequestMethod.GET)
+    public ModelAndView addFormationForm(@RequestParam(value = "id") Long id) {
+        Composante composante = composanteRepo.getById(id);
+        Formation formation = new Formation();
+        formation.setEtatEdition("creation");
+        composante.addFormation(formation);
+        formationRepo.save(formation);
+        composanteRepo.save(composante);
+        return new ModelAndView("formation/formationCreate", "formation", formation);
+    }
+
+    @RequestMapping(value = "admin/formationCreate", method = RequestMethod.POST)
+    public String saveFormationCreation(@ModelAttribute @Valid Formation formation, BindingResult result) {
+        if (result.hasErrors()) {
+            return "admin/formationCreate";
+        }
+        formation.setEtatEdition("brouillon");
+        List<Composante> composantes = composanteRepo.findAll();
+        for (Composante c : composantes) {
+            List<Formation> formations = new ArrayList<>(c.getFormations());
+            for (Formation f : formations) {
+                if (f.getEtatEdition().equals("creation")) {
+                    f.finalizeCreation(formation);
+                }
+                composanteRepo.save(c);
+            }
+        }
+        cleanFormation();
+        return "redirect:/formationList";
+    }*/
+
+
+    @RequestMapping(value = "/admin/formationCreate", method = RequestMethod.GET)
+    public String addFormationForm(@ModelAttribute Formation formation) {return "formationCreate";}
+
+
+
+
+    @RequestMapping(value = "admin/formationCreate", method = RequestMethod.POST)
+    public String saveFormationCreation(@ModelAttribute @Valid Formation formation, BindingResult result) {
+        if (result.hasErrors()) {
+            return "admin/formationCreate";
+        }
+        formation.setEtatEdition("brouillon");
+        formationRepo.save(formation);
+        cleanFormation();
+        return "redirect:/formationList";
+    }
+
+
 
     @RequestMapping(value = "correspondant", method = RequestMethod.GET)
     public ModelAndView correspondantPage() {
@@ -203,5 +254,14 @@ public class FormationController {
     public String deleteAdress(@PathVariable Long id) {
         adresseRepo.deleteById(id);
         return "redirect:/correspondant";
+    }
+
+    public void cleanFormation(){
+        List<Formation> formations= formationRepo.findAll();
+        for (Formation f : formations){
+            if(f.getEtatEdition().equals("creation")){
+                formationRepo.delete(f);
+            }
+        }
     }
 }
