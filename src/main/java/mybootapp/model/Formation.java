@@ -76,28 +76,8 @@ public class Formation extends BaseData implements Serializable {
 
     @ManyToOne
     @JoinColumn( name="idComposante" )
-    private Composante composante;
+    private Composante idComposante;
 
     public Formation() {
-    }
-
-    public void create(int i){
-        this.setCode(i);
-        this.setEtatEdition("brouillon");
-        this.setIntitule("formation".concat(Integer.toString(i)));
-        this.setObjectif("objectif".concat(Integer.toString(i)));
-    }
-
-    public void finalizeCreation(Formation f){
-        this.setIntitule(f.getIntitule());
-        this.setCERTIFINFO(f.getCERTIFINFO());
-        this.setCode(f.getCode());
-        this.setEtatEdition("brouillon");
-
-    }
-
-
-    public Composante getIdComposante() {
-        return this.composante;
     }
 }

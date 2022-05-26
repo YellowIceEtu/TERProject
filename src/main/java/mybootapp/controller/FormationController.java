@@ -191,10 +191,9 @@ public class FormationController {
         }
         formation.setEtatEdition("brouillon");
         formationRepo.save(formation);
-        System.out.println(formation.getIdComposante().getIntitule());
-//        Composante c = composanteRepo.getById(formation.getComposante().getId());
-//        c.addFormation(formation);
-//        composanteRepo.save(c);
+        Composante c = composanteRepo.getById(formation.getIdComposante().getId());
+        c.addFormation(formation);
+        composanteRepo.save(c);
         return "redirect:/formationList";
     }
 
