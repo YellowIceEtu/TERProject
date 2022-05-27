@@ -1,6 +1,7 @@
 package mybootapp.model;
 
 import lombok.*;
+import mybootapp.model.base.BaseData;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -14,34 +15,29 @@ import java.io.Serializable;
 @Getter
 @Setter
 @Table(name="utilisateur")
-public class Utilisateur implements Serializable {
+public class Utilisateur extends BaseData implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long idUtilisateur;
+    private Long id;
 
-    @NotBlank(message = "le champ ne doit pas être vide")
-    @NonNull
-    @Basic()
-    @Column(name = "idComposante")
-    private Long idComposante;
+    @ManyToOne
+    @JoinColumn( name="idComposante" )
+    private Composante idComposante;
 
-    @NotBlank(message = "le champ ne doit pas être vide")
-    @Size(max = 250, message = "max 250 caractères")
+
     @Basic()
     @Column(name = "nom")
     private String nom;
 
-    @NotBlank(message = "le champ ne doit pas être vide")
-    @Size(max = 250, message = "max 250 caractères")
+
     @Basic()
     @Column(name = "prenom")
     private String prenom;
 
-    @NotBlank(message = "le champ ne doit pas être vide")
-    @NonNull
+
     @Basic()
     @Column(name = "role")
     private boolean estAdmin;
