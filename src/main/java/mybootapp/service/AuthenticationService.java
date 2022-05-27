@@ -11,19 +11,22 @@ import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 
+@Service
 public class AuthenticationService {
 
     @PreAuthorize("admin")
     public void addAdmin(Utilisateur utilisateur){
-        utilisateur.setRole(true);
-        CasUserDetailService casUserDetailService = new CasUserDetailService();
+        utilisateur.setAdmin(true);
+
 
 
     }
     public void removeAdmin(Utilisateur utilisateur){}
     public void addCoreespondant(Composante composante, Utilisateur utilisateur){}
     public void removeCorrespondant(Composante composante, Utilisateur utilisateur){}
+
 }

@@ -21,7 +21,7 @@ public class Utilisateur implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idComposante;
+    private int idUtilisateur;
 
     @NotBlank(message = "le champ ne doit pas être vide")
     @Size(max = 250, message = "max 250 caractères")
@@ -35,10 +35,22 @@ public class Utilisateur implements Serializable {
     @Column(name = "prenom")
     private String prenom;
 
-    @NotBlank(message = "le champ ne doit pas être vide")
+    @NotBlank(message = "Choisir true ou false")
     @NotNull
     @Basic()
-    @Column(name = "role")
-    private boolean role;
+    @Column(name = "isAdmin")
+    private boolean isAdmin;
+
+    @ManyToOne
+    @JoinColumn( name="idComposante" )
+    private Composante idComposante;
+
+    @NotNull
+    @Basic
+    @Column(name = "idCAS")
+    private String idCAS;
+
+
 
 }
+
