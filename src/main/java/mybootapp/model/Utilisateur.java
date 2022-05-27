@@ -20,7 +20,13 @@ public class Utilisateur implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idComposante;
+    private Long idUtilisateur;
+
+    @NotBlank(message = "le champ ne doit pas être vide")
+    @NonNull
+    @Basic()
+    @Column(name = "idComposante")
+    private Long idComposante;
 
     @NotBlank(message = "le champ ne doit pas être vide")
     @Size(max = 250, message = "max 250 caractères")
@@ -33,4 +39,13 @@ public class Utilisateur implements Serializable {
     @Basic()
     @Column(name = "prenom")
     private String prenom;
+
+    @NotBlank(message = "le champ ne doit pas être vide")
+    @NonNull
+    @Basic()
+    @Column(name = "role")
+    private boolean estAdmin;
+
+
+
 }
