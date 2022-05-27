@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 
@@ -33,4 +34,11 @@ public class Utilisateur implements Serializable {
     @Basic()
     @Column(name = "prenom")
     private String prenom;
+
+    @NotBlank(message = "le champ ne doit pas être vide")
+    @NotNull
+    @Basic()
+    @Column(name = "role")
+    private boolean role;
+
 }
