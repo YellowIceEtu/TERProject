@@ -2,6 +2,7 @@
 
 
 <c:url var="addForm" value="admin/formationCreate" />
+<c:url var="userGestion" value="admin/gestionUtilisateur" />
 
 <div>
     <%@ include file="/WEB-INF/jsp/nav.jsp"%>
@@ -38,7 +39,7 @@
     </div>
 
     <div class="bottom">
-        <button class="gerer-utilisateur-button"><a href=#>Gérer les utilisateurs</a></button>
+        <button class="gerer-utilisateur-button"><a href="${userGestion}">Gérer les utilisateurs</a></button>
         <button class="exporter-données-button"><a href=#>Exporter les données</a></button>
     </div>
 </div>

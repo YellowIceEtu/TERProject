@@ -263,6 +263,8 @@ public class FormationController {
         return "redirect:/correspondant";
     }
 
+
+
     public void cleanFormation(){
         List<Formation> formations= formationRepo.findAll();
         for (Formation f : formations){
