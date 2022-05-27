@@ -172,7 +172,7 @@ public class FormationController {
 
 
     @RequestMapping(value = "/admin/formationCreate", method = RequestMethod.GET)
-    public String addFormationForm(@ModelAttribute Formation formation) {return "formationCreate";}
+    public String addFormationForm(@ModelAttribute Formation formation) {return "formation/formationCreate";}
 
     @ModelAttribute("ListComposantes")
     public Map<Composante, String> ListComposantes() {
@@ -187,7 +187,7 @@ public class FormationController {
     @RequestMapping(value = "/admin/formationCreate", method = RequestMethod.POST)
     public String saveFormationCreation(@ModelAttribute @Valid Formation formation, BindingResult result) {
         if (result.hasErrors()) {
-            return "formationCreate";
+            return "formation/formationCreate";
         }
         formation.setEtatEdition("brouillon");
         formationRepo.save(formation);
