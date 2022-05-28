@@ -23,15 +23,15 @@ public class PermissionManager {
     }
 
     public  void addCorrespondantToComposante (Utilisateur utilisateur, Composante composante){
-        if(utilisateur.getIdComposante().equals(composante.getId())) composante.setCorrespondant(utilisateur);
+        if(utilisateur.getComposante().equals(composante.getId())) composante.setCorrespondant(utilisateur);
     }
 
     public  void removeCorrespondantFromComposante (Utilisateur utilisateur, Composante composante){
-        if(utilisateur.getIdComposante().equals(composante)) utilisateur.setIdComposante(null);
+        if(utilisateur.getComposante().equals(composante)) utilisateur.setComposante(null);
     }
 
     public void moveCorrespondantToOtherComposante ( Utilisateur utilisateur, Composante composante, Composante other){
-        if(utilisateur.getIdComposante().equals(composante)) utilisateur.setIdComposante(other);
+        if(utilisateur.getComposante().equals(composante)) utilisateur.setComposante(other);
     }
 
 }

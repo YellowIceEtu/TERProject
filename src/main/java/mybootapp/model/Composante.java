@@ -34,15 +34,15 @@ public class Composante implements Serializable {
     private String intitule;
 
     @OneToOne
-    @JoinColumn( name="idUtilisateur" )
+    @JoinColumn( name="correspondant" )
     private Utilisateur correspondant;
 
     @OneToMany
-    @JoinColumn( name="idFormation" )
+    @JoinColumn( name="formations" )
     private Collection<Formation> formations;
 
     @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn( name="idAdresse" )
+    @JoinColumn( name="adresses" )
     private Collection<Adresse> adresses;
 
     public void addFormation(Formation f){

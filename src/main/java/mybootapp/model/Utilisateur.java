@@ -24,8 +24,8 @@ public class Utilisateur extends BaseData implements Serializable {
     private Long id;
 
     @ManyToOne
-    @JoinColumn( name="idComposante" )
-    private Composante idComposante;
+    @JoinColumn( name="Composante" )
+    private Composante Composante;
 
 
     @Basic()
