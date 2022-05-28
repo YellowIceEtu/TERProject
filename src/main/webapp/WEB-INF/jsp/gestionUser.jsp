@@ -13,6 +13,8 @@
 
 
 <div class="container">
+
+
     <table class="table">
         <h1> Liste des administrateurs : </h1>
         <thead>
@@ -22,7 +24,10 @@
         </tr>
         <thead>
         <tbody>
-
+        <c:forEach items="${composante}" var="composante">
+            <c:forEach items="${composante.correspondant}" var="utilisateur">
+                <td><c:out value="${utilisateur.nom}" /></td>
+                <td><c:out value="${utilisateur.prenom}" /></td>
 
             <tr>
                 <td></td>
@@ -30,7 +35,8 @@
 
                 <td><a href=#">Supprimer</a></td>
             </tr>
-
+            </c:forEach>
+        </c:forEach>
 
         </tbody>
     </table>

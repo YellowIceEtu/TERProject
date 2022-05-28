@@ -2,7 +2,9 @@ package mybootapp.controller;
 
 import mybootapp.model.Adresse;
 import mybootapp.model.Composante;
+import mybootapp.model.Formation;
 import mybootapp.model.Utilisateur;
+import mybootapp.repo.ComposanteRepo;
 import mybootapp.repo.UtilisateurRepo;
 import mybootapp.service.AuthenticationService;
 import mybootapp.web.CasUserDetailService;
@@ -22,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 
@@ -35,6 +38,8 @@ public class UtilisateurController {
     AuthenticationService authenticationService;
     @Autowired
     CasUserDetailService casUserDetailService;
+    @Autowired
+    ComposanteRepo composanteRepo;
 
     @PostConstruct
     public void init(){
@@ -49,6 +54,32 @@ public class UtilisateurController {
         utilisateur.setPrenom((String) attributes.get("givenName"));
         utilisateur.setNom((String) attributes.get("sn"));
         utilisateurRepo.save(utilisateur);*/
+
+
+      //  for(int i = 0; i < 2; i++){
+            Composante c = new Composante();
+          //  c.setIntitule("composanteForPermission".concat(Integer.toString(i)));
+        c.setIntitule("composante");
+            c.setFormations(new ArrayList<>());
+
+            Utilisateur utilisateurs = new Utilisateur();
+           // utilisateurs.setNom("Laporte".concat(Integer.toString(i)));
+           // utilisateurs.setPrenom("Laurent".concat(Integer.toString(i)));
+        utilisateurs.setNom("Laporte");
+       utilisateurs.setPrenom("Laurent");
+            utilisateurs.setAdmin(true);
+             utilisateurs.setIdComposante(c);
+
+            utilisateurRepo.save(utilisateurs);
+
+        //    c.addUser(utilisateurs.getPrenom(), utilisateurs.getNom());
+       // System.out.println("ici " + utilisateurs.getNom());
+            composanteRepo.save(c);
+        //    }
+
+
+
+
     }
 
 
@@ -56,8 +87,8 @@ public class UtilisateurController {
 
     @RequestMapping(value = "/gestionUtilisateur", method = RequestMethod.GET)
     public ModelAndView gestionUtilisateurPage() {
-
-        return new ModelAndView("gestionUser", "null",null);
+        Collection<Composante> composantes = composanteRepo.findAll();
+        return new ModelAndView("gestionUser", "composante",composantes);
     }
 
 

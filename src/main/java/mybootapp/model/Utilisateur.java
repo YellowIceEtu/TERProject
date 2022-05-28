@@ -23,29 +23,29 @@ public class Utilisateur implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idUtilisateur;
 
-    @NotBlank(message = "le champ ne doit pas être vide")
+
     @Size(max = 250, message = "max 250 caractères")
     @Basic()
     @Column(name = "nom")
     private String nom;
 
-    @NotBlank(message = "le champ ne doit pas être vide")
+
     @Size(max = 250, message = "max 250 caractères")
     @Basic()
     @Column(name = "prenom")
     private String prenom;
 
-    @NotBlank(message = "Choisir true ou false")
+
     @NotNull
     @Basic()
     @Column(name = "isAdmin")
     private boolean isAdmin;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
     @JoinColumn( name="idComposante" )
     private Composante idComposante;
 
-    @NotNull
+
     @Basic
     @Column(name = "idCAS")
     private String idCAS;

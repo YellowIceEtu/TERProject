@@ -58,6 +58,13 @@ public class Composante implements Serializable {
 
     }
 
+    /*
+    public void addUser( String prenom, String nom){
+        correspondant.setNom(nom);
+        correspondant.setPrenom(prenom);
+
+    }*/
+
 
 
 
