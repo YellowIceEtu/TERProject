@@ -18,7 +18,7 @@
             <form:errors path="ligne" cssClass="alert alert-warning" element="div" />
         </div>
         <div>
-            <td><input type="submit" value="Update" /></td>
+            <td><input type="submit" value="Valider" /></td>
         </div>
 
 

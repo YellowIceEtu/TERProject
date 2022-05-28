@@ -45,32 +45,28 @@ public class UtilisateurController {
         Utilisateur utilisateur3 = new Utilisateur();
 
 
-
-        utilisateur1.setEstAdmin(false);
-        utilisateur1.setComposante(c1);
-        utilisateur1.setNom("HALLAI");
-        utilisateur1.setPrenom("Katia");
-        utilisateur2.setEstAdmin(true);
-        utilisateur2.setComposante(c2);
-        utilisateur2.setNom("SELLAH");
-        utilisateur2.setPrenom("Lysa");
-        utilisateur3.setEstAdmin(false);
-        utilisateur3.setComposante(c1);
-        utilisateur3.setPrenom("miao");
         composanteRepo.save(c1);
         composanteRepo.save(c2);
+
+
+        utilisateur1.setEstAdmin(false);
+        utilisateur1.setIdComposante(c1);
+        utilisateur1.setNom("HALLAI");
+        utilisateur1.setPrenom("Katia");
+
+        utilisateur2.setEstAdmin(true);
+        utilisateur2.setIdComposante(c2);
+        utilisateur2.setNom("SELLAH");
+        utilisateur2.setPrenom("Lysa");
+
+        utilisateur3.setEstAdmin(false);
+        utilisateur3.setIdComposante(c1);
+        utilisateur2.setNom("miao");
+        utilisateur3.setPrenom("miao");
+
         utilisateurRepo.save(utilisateur1);
         utilisateurRepo.save(utilisateur2);
         utilisateurRepo.save(utilisateur3);
-
-        c1.setCorrespondant(utilisateur1);
-        c2.setCorrespondant(utilisateur2);
-        c1.setIntitule("c1");
-        c2.setIntitule("c2");
-
-
-        composanteRepo.save(c1);
-        composanteRepo.save(c2);
 
     }
 
@@ -87,12 +83,13 @@ public class UtilisateurController {
     }
 */
 
-    @RequestMapping(value = "/gestionDesRoles", method = RequestMethod.GET )
+
+
+    @RequestMapping(value = "/gestionDesRoles")
     public ModelAndView gestionDesRoles() {
-        Collection<Composante> composantes = composanteRepo.findAll();
-        return new ModelAndView("listUtilisateur", "composante", composantes);
+
+        return new ModelAndView("listUtilisateur", "utilisateurs", utilisateurRepo.findAll());
     }
+
+
 }
-
-
-
