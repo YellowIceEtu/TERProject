@@ -24,15 +24,14 @@
         </tr>
         </thead>
         <tbody>
-            <c:forEach items="${utilisateur}" var="utilisateur">
+            <c:forEach items="${utilisateurs}" var="utilisateur">
                 <tr>
-                <th scope="row">${utilisateur.id}</th>
                 <td><c:out value="${utilisateur.nom}" /></td>
                 <td><c:out value="${utilisateur.prenom}" /></td>
-                <td><c:out value="${utilisateur.composante}" /></td>
-                <td><c:out value="${utilisateur.estAdmin}" /></td>
-                <td><a class="btn btn-outline-primary" href="/utilisateur/addAdmin/${utilisateur.id}" role="submit"> Rendre administrateur</a></td>
-
+                <td><c:out value="${utilisateur.composante.intitule}" /></td>
+                    <td><c:out value="${utilisateur.estAdmin}" /></td>
+                <td><a class="btn btn-outline-primary" href="/utilisateur/addAdmin/${utilisateur.id}" role="submit"> Attribuer un nouveau role </a></td>
+                </tr>
             </c:forEach>
 
 

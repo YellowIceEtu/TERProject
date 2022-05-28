@@ -38,7 +38,9 @@ public class UtilisateurController {
     public void init(){
 
         Composante c1 = new Composante();
+        c1.setIntitule("Faculté des sciences");
         Composante c2 = new Composante();
+        c2.setIntitule("Faculté d'économie");
 
         Utilisateur utilisateur1 = new Utilisateur();
         Utilisateur utilisateur2 = new Utilisateur();
@@ -50,18 +52,18 @@ public class UtilisateurController {
 
 
         utilisateur1.setEstAdmin(false);
-        utilisateur1.setIdComposante(c1);
+        utilisateur1.setComposante(c1);
         utilisateur1.setNom("HALLAI");
         utilisateur1.setPrenom("Katia");
 
         utilisateur2.setEstAdmin(true);
-        utilisateur2.setIdComposante(c2);
+        utilisateur2.setComposante(c2);
         utilisateur2.setNom("SELLAH");
         utilisateur2.setPrenom("Lysa");
 
         utilisateur3.setEstAdmin(false);
-        utilisateur3.setIdComposante(c1);
-        utilisateur2.setNom("miao");
+        utilisateur3.setComposante(c1);
+        utilisateur3.setNom("miao");
         utilisateur3.setPrenom("miao");
 
         utilisateurRepo.save(utilisateur1);

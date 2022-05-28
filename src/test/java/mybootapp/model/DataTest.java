@@ -61,4 +61,12 @@ class DataTest {
         assertTrue(u.getComposante().getIntitule().equals("test"));
     }
 
+    /*
+    @Test void checkIfExist (){
+        Utilisateur u = new Utilisateur();
+        u.setNom("katia");
+        utilisateurRepo.save(u);
+        assertTrue(u.getNom().equals("katia"));
+    }*/
+
 }
