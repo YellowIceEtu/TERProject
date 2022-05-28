@@ -2,6 +2,7 @@ package mybootapp.model;
 
 import mybootapp.repo.ComposanteRepo;
 import mybootapp.repo.FormationRepo;
+import mybootapp.repo.UtilisateurRepo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -23,6 +24,9 @@ class DataTest {
     @Autowired
     ComposanteRepo composanteRepo;
 
+    @Autowired
+    UtilisateurRepo utilisateurRepo;
+
 
 
     @Test
@@ -43,7 +47,19 @@ class DataTest {
         adresse.setLigne(ligne);
        Collection<Adresse> compoAdresse = composanteRepo.findAll().get(0).getAdresses();
         assertTrue(compoAdresse.contains(adresse));
+    }
+
+    @Test
+    public void UtilisateurComposante(){
+        Utilisateur u = new Utilisateur();
+        u.setPrenom("test");
+        Composante c = composanteRepo.findAll().get(0);
+        c.setCorrespondant(u);
+        System.out.println("dvdddddddddddddddddddddddddddddddddddd"+c.getCorrespondant().getPrenom());
+        assertTrue(c.getCorrespondant().getPrenom().equals("test"));
 
     }
+
+
 
 }

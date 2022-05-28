@@ -9,9 +9,11 @@ import java.util.*;
 import mybootapp.model.Adresse;
 import mybootapp.model.Composante;
 import mybootapp.model.Formation;
+import mybootapp.model.Utilisateur;
 import mybootapp.repo.AdresseRepo;
 import mybootapp.repo.ComposanteRepo;
 import mybootapp.repo.FormationRepo;
+import mybootapp.repo.UtilisateurRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -44,27 +46,18 @@ public class FormationController {
             c.setFormations(new ArrayList<>());
             for(int j = 0; j < 2; j++){
                 Formation f = new Formation();
-                f.setCode(2*i + j);
-                f.setEtatEdition("essai");
-                f.setIntitule("formation".concat(Integer.toString(2*i + j)));
-                f.setObjectif("objectif".concat(Integer.toString(2*i + j)));
+                f.init(2 * i + j);
                 formationRepo.save(f);
                 c.addFormation(f);
-
-
             }
             Collection<Adresse> adresses = new ArrayList<>();
-
             Adresse a = new Adresse();
             c.setAdresses(adresses);
             a.setLigne("163 Av. de Luminy, 13009 Marseille");
             adresseRepo.save(a);
             c.addAdresse(a);
-
             composanteRepo.save(c);
         }
-
-
     }
 
     @Value("${application.message:Hello World}")
@@ -191,7 +184,7 @@ public class FormationController {
         }
         formation.setEtatEdition("brouillon");
         formationRepo.save(formation);
-        Composante c = composanteRepo.getById(formation.getIdComposante().getId());
+        Composante c = composanteRepo.getById(formation.getComposante().getId());
         c.addFormation(formation);
         composanteRepo.save(c);
         return "redirect:/formationList";

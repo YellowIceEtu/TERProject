@@ -15,21 +15,11 @@ import java.util.Date;
 @MappedSuperclass
 public abstract class BaseData {
 
-    private static final long serialVersionUID = 1L;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
     @Column(updatable = false)
     @CreationTimestamp
     private Date dateCrea;
     @UpdateTimestamp
     private Date dateMaj;
-
-    @Basic()
-    @Column(name = "intitule")
-    private String intitule;
 
     private String dateCreaString;
     private String dateMajString;

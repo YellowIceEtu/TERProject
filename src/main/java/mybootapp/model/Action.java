@@ -2,27 +2,25 @@ package mybootapp.model;
 
 import lombok.*;
 import mybootapp.model.base.BaseData;
+import org.hibernate.annotations.Cascade;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
 
-@Entity
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-@Table(name="action")
-public class Action extends BaseData implements Serializable {
+@Embeddable
+public class Action implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    @Basic
+    @Column(name="nom")
+    private String nom;
 
-    @OneToMany
-    @JoinColumn( name="idSession" )
+    @ElementCollection
+    @JoinColumn( name="sessions" )
     private Collection<Session> sessions;
 
 

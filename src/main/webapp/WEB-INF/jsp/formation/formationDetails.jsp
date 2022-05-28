@@ -22,6 +22,8 @@
         <p> <c:out value="${formation.etatEdition}" /> </p>
         <p class="title"><c:out value="Objectif" /></p>
         <p><c:out value="${formation.objectif}" /></p>
+        <p class="title"><c:out value="Action" /></p>
+        <p><c:out value="${formation.action.nom}" /></p>
     </div>
 </div>
 

@@ -39,14 +39,17 @@ public class Formation extends BaseData implements Serializable {
     @Column(name = "intitule")
     private String intitule;
 
+    @NotBlank(message = "le champ ne doit pas être vide")
     @Basic()
     @Column(name = "objectif")
     private String objectif;
 
-    /*@Basic()
+    @NotBlank(message = "le champ ne doit pas être vide")
+    @Basic()
     @Column(name = "resultatsAttendus")
     private String resultatsAttendus;
 
+    @NotBlank(message = "le champ ne doit pas être vide")
     @Basic()
     @Column(name = "contenu")
     private String contenu;
@@ -57,7 +60,7 @@ public class Formation extends BaseData implements Serializable {
 
     @Basic()
     @Column(name = "objectifGeneral")
-    private int objectifGeneral;*/
+    private int objectifGeneral;
 
     @Max(value = 99999, message = "6 caractères maximum")
     @Min(value = 0, message = "au moins un caractère")
@@ -65,19 +68,30 @@ public class Formation extends BaseData implements Serializable {
     @Column(name = "CERTIFINFO")
     private int CERTIFINFO;
 
-    @OneToOne
-    @JoinColumn( name="idAction" )
+    @Embedded
+    @JoinColumn( name="action" )
     private Action action;
 
     @ManyToOne
-    @JoinColumn( name="idAdresse" )
+    @JoinColumn( name="adresse" )
     private Adresse adresse;
 
 
     @ManyToOne
-    @JoinColumn( name="idComposante" )
-    private Composante idComposante;
+    @JoinColumn( name="composante" )
+    private Composante composante;
 
     public Formation() {
+        this.action = new Action();
+    }
+
+    public void init(int i){
+        this.setCode(i);
+        this.setEtatEdition("brouillon");
+        this.setIntitule("formation".concat(Integer.toString(i)));
+        this.setObjectif("objectif".concat(Integer.toString(i)));
+        this.setContenu("contenu".concat(Integer.toString(i)));
+        this.setResultatsAttendus("resultats".concat(Integer.toString(i)));
+        this.getAction().setNom("action".concat(Integer.toString(i)));
     }
 }
