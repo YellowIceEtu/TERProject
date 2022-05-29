@@ -106,13 +106,31 @@ public class UtilisateurController {
 
         return "redirect:";
     }
-
+/*
     @RequestMapping(value = "/gestionUtilisateur/addCorrespondant", method = RequestMethod.GET)
     public String addCorrespondantForm(Model model) {
         Collection<Composante> composantes = composanteRepo.findAll();
-        model.addAttribute("composante",composantes);
+        Collection<Utilisateur> utilisateur= utilisateurRepo.findAll();
+        model.addAttribute("composantes",composantes);
+        model.addAttribute("utilisateur", utilisateur);
         return "correspondantForm";
+    }*/
+
+@RequestMapping(value = "/gestionUtilisateur/addCorrespondant", method = RequestMethod.GET)
+public String addCorrespondantForm(@ModelAttribute Utilisateur utilisateur, Model model) {
+
+    Collection<Composante> composantes = composanteRepo.findAll();
+    model.addAttribute("composantes", composantes);
+    return "correspondantForm";
+}
+/*
+    @RequestMapping(value = "/gestionUtilisateur/addCorrespondant", method = RequestMethod.GET)
+    public ModelAndView addCorrespondantForm() {
+        //Collection<Composante> composantes = composanteRepo.findAll();
+        Collection<Utilisateur> test = utilisateurRepo.findAll();
+        return new ModelAndView("correspondantForm", "utilisateur",test);
     }
+*/
 
     @RequestMapping(value = "/gestionUtilisateur/addCorrespondant", method = RequestMethod.POST)
     public String addCorrespondantForm(@ModelAttribute("utilisateur") Utilisateur utilisateur, BindingResult result) {

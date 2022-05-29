@@ -22,10 +22,10 @@
         </div>
 
         <div class="form-group">
-            <%--@declare id="composante"--%><label for="composante"> choisissez une composante : </label>
+            <%--@declare id="composante"--%><label for="idComposante"> choisissez une composante : </label>
             <form:select path="idComposante">
-                <form:option value="-" label="--Please Select--"/>
-                <form:options items="${composante}" itemValue="composante" itemLabel="composante"/>
+                <form:option value="NONE" label="--Please Select--"/>
+                <form:options items="${composantes}" />
             </form:select>
         </div>
 
