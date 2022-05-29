@@ -7,6 +7,7 @@
 <c:url var="view" value="/admin/listCorrespondant" />
 
 
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
@@ -30,10 +31,10 @@
                 <td><c:out value="${utilisateur.prenom}" /></td>
                 <td><c:out value="${utilisateur.composante.intitule}" /></td>
                     <td><c:out value="${utilisateur.estAdmin}" /></td>
-                <td><a class="btn btn-outline-primary" href="/utilisateur/addAdmin/${utilisateur.id}" role="submit"> Attribuer un nouveau role </a></td>
+                <td><a  href="/admin/editRoleUser/${utilisateur.id}"role="submit"> Attribuer un nouveau role </a></td>
+
                 </tr>
             </c:forEach>
-
 
 
         </tbody>

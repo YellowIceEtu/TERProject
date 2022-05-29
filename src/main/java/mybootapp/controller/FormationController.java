@@ -190,7 +190,7 @@ public class FormationController {
     }
 
     @RequestMapping(value = "/editAdress/{id}", method = RequestMethod.POST)
-    public String editAdress(@PathVariable Long id, @ModelAttribute("contact") Adresse adresse) {
+    public String editAdress(@PathVariable Long id, @ModelAttribute("adresse") Adresse adresse) {
         Adresse newAdress = adresseRepo.findById(id).orElse(null);
         newAdress.setLigne(adresse.getLigne());
         adresseRepo.save(newAdress);

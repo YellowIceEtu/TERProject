@@ -10,6 +10,8 @@ import mybootapp.repo.UtilisateurRepo;
 import mybootapp.service.PermissionManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -72,19 +74,6 @@ public class UtilisateurController {
 
     }
 
-    /*
-    @RequestMapping(value = "/gestionDesRole")
-    public String addAdminRole(@PathVariable Long id) {
-
-        if(utilisateurRepo.findById(id).isPresent()){
-            Utilisateur utilisateur = utilisateurRepo.findById(id).get();
-            permissionManager.AddAdmin(utilisateur);
-        }
-
-        return "redirect:/adminDetails";
-    }
-*/
-
 
 
     @RequestMapping(value = "/gestionDesRoles")
@@ -92,6 +81,46 @@ public class UtilisateurController {
 
         return new ModelAndView("listUtilisateur", "utilisateurs", utilisateurRepo.findAll());
     }
+
+/*
+    @RequestMapping(value = "/editRole/{id}")
+    public ModelAndView editRole(@PathVariable Long id) {
+
+
+        if(utilisateurRepo.findById(id).isPresent()){
+            Utilisateur utilisateur = utilisateurRepo.findById(id).get();
+            if(utilisateur.isEstAdmin()) {
+            permissionManager.removeAdmin(utilisateur);
+            utilisateurRepo.save(utilisateur);
+            }
+            permissionManager.AddAdmin(utilisateur);
+            utilisateurRepo.save(utilisateur);
+        }
+
+        return new ModelAndView("listUtilisateur", "utilisateurs", utilisateurRepo.findAll());
+    }
+*/
+
+    @RequestMapping(value = "/editRoleUser/{id}")
+    public ModelAndView editRole(@PathVariable Long id) {
+
+
+        if(utilisateurRepo.findById(id).isPresent()){
+            Utilisateur utilisateur = utilisateurRepo.findById(id).get();
+            if(utilisateur.isEstAdmin()) {
+                permissionManager.removeAdmin(utilisateur);
+
+            }
+            else {
+                permissionManager.AddAdmin(utilisateur);
+            }
+            utilisateurRepo.save(utilisateur);
+        }
+        return new ModelAndView("listUtilisateur", "utilisateurs", utilisateurRepo.findAll());
+    }
+
+
+
 
 
 }
