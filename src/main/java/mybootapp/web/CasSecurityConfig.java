@@ -106,8 +106,7 @@ public class CasSecurityConfig {
      * @return
      */
     @Bean
-    public CasAuthenticationProvider casAuthenticationProvider(ServiceProperties sp, TicketValidator ticketValidator, //
-                                                               AuthenticationUserDetailsService<CasAssertionAuthenticationToken> userDetailsService) {
+    public CasAuthenticationProvider casAuthenticationProvider(ServiceProperties sp, TicketValidator ticketValidator, AuthenticationUserDetailsService<CasAssertionAuthenticationToken> userDetailsService) {
         CasAuthenticationProvider provider = new CasAuthenticationProvider();
         provider.setServiceProperties(sp);
         provider.setTicketValidator(ticketValidator);

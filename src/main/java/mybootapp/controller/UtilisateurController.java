@@ -47,6 +47,7 @@ public class UtilisateurController {
         Utilisateur utilisateur1 = new Utilisateur();
         Utilisateur utilisateur2 = new Utilisateur();
         Utilisateur utilisateur3 = new Utilisateur();
+        Utilisateur utilisateur4 = new Utilisateur();
 
 
         composanteRepo.save(c1);
@@ -57,20 +58,30 @@ public class UtilisateurController {
         utilisateur1.setComposante(c1);
         utilisateur1.setNom("HALLAI");
         utilisateur1.setPrenom("Katia");
+        utilisateur1.setIdCAS("h76483922");
 
         utilisateur2.setEstAdmin(true);
         utilisateur2.setComposante(c2);
         utilisateur2.setNom("SELLAH");
         utilisateur2.setPrenom("Lysa");
+        utilisateur2.setIdCAS("s19383292");
 
         utilisateur3.setEstAdmin(false);
         utilisateur3.setComposante(c1);
         utilisateur3.setNom("miao");
         utilisateur3.setPrenom("miao");
+        utilisateur3.setIdCAS("m19288383");
+
+        utilisateur4.setEstAdmin(false);
+        utilisateur4.setComposante(c1);
+        utilisateur4.setNom("Ould-Chibani");
+        utilisateur4.setPrenom("Abdessettar");
+        utilisateur4.setIdCAS("o18025131");
 
         utilisateurRepo.save(utilisateur1);
         utilisateurRepo.save(utilisateur2);
         utilisateurRepo.save(utilisateur3);
+        utilisateurRepo.save(utilisateur4);
 
     }
 
@@ -82,24 +93,7 @@ public class UtilisateurController {
         return new ModelAndView("listUtilisateur", "utilisateurs", utilisateurRepo.findAll());
     }
 
-/*
-    @RequestMapping(value = "/editRole/{id}")
-    public ModelAndView editRole(@PathVariable Long id) {
 
-
-        if(utilisateurRepo.findById(id).isPresent()){
-            Utilisateur utilisateur = utilisateurRepo.findById(id).get();
-            if(utilisateur.isEstAdmin()) {
-            permissionManager.removeAdmin(utilisateur);
-            utilisateurRepo.save(utilisateur);
-            }
-            permissionManager.AddAdmin(utilisateur);
-            utilisateurRepo.save(utilisateur);
-        }
-
-        return new ModelAndView("listUtilisateur", "utilisateurs", utilisateurRepo.findAll());
-    }
-*/
 
     @RequestMapping(value = "/editRoleUser/{id}")
     public ModelAndView editRole(@PathVariable Long id) {
@@ -109,10 +103,12 @@ public class UtilisateurController {
             Utilisateur utilisateur = utilisateurRepo.findById(id).get();
             if(utilisateur.isEstAdmin()) {
                 permissionManager.removeAdmin(utilisateur);
+                permissionManager.disableRoleAdmin(utilisateur);
 
             }
             else {
                 permissionManager.AddAdmin(utilisateur);
+                permissionManager.enableRoleAdmin(utilisateur);
             }
             utilisateurRepo.save(utilisateur);
         }
