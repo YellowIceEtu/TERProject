@@ -17,6 +17,7 @@ import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -107,8 +108,9 @@ public class UtilisateurController {
     }
 
     @RequestMapping(value = "/gestionUtilisateur/addCorrespondant", method = RequestMethod.GET)
-    public String addCorrespondantForm(@ModelAttribute Utilisateur utilisateur) {
-
+    public String addCorrespondantForm(Model model) {
+        Collection<Composante> composantes = composanteRepo.findAll();
+        model.addAttribute("composante",composantes);
         return "correspondantForm";
     }
 

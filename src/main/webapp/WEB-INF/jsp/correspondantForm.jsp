@@ -22,9 +22,11 @@
         </div>
 
         <div class="form-group">
-            <label for="idComposante"> Tapez la composante : </label>
-            <form:input path="idComposante" class="form-control" />
-            <form:errors path="idComposante" cssClass="alert alert-warning" element="div" />
+            <%--@declare id="composante"--%><label for="composante"> choisissez une composante : </label>
+            <form:select path="idComposante">
+                <form:option value="-" label="--Please Select--"/>
+                <form:options items="${composante}" itemValue="composante" itemLabel="composante"/>
+            </form:select>
         </div>
 
         <div class="form-group">
