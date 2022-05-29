@@ -15,31 +15,31 @@
 <div class="container">
 
 
+
+
     <table class="table">
-        <h1> Liste des administrateurs : </h1>
+        <h1> Liste des administrateurs :  </h1>
         <thead>
         <tr>
             <th scope="col">Nom</th>
             <th scope="col">Prénom</th>
+            <th scope="col">Composante</th>
+            <th scope="col">Administrateur</th>
         </tr>
-        <thead>
+        </thead>
         <tbody>
-        <c:forEach items="${composante}" var="composante">
-            <c:forEach items="${composante.correspondant}" var="utilisateur">
-                <td><c:out value="${utilisateur.nom}" /></td>
-                <td><c:out value="${utilisateur.prenom}" /></td>
-
-            <tr>
-                <td></td>
-                <td></td>
-
-                <td><a href=#">Supprimer</a></td>
-            </tr>
-            </c:forEach>
+        <tr>
+            <c:forEach items="${utilisateur}" var="utilisateur">
+            <td><c:out value="${utilisateur.nom}" /></td>
+            <td><c:out value="${utilisateur.prenom}" /></td>
+            <td><c:out value="${utilisateur.idComposante.intitule}" /></td>
+            <td><c:out value="${utilisateur.admin}" /></td>
+            <td><a href=#">Supprimer</a></td>
+        </tr>
         </c:forEach>
-
         </tbody>
     </table>
+
 
     <table class="table">
         <h1> Liste des correspondants d'une composante :  </h1>
@@ -51,11 +51,11 @@
         </thead>
         <tbody>
 
-            <tr>
-                <td></td>
-                <td></td>
-                <td><a href=#">Supprimer</a></td>
-            </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td><a href=#">Supprimer</a></td>
+        </tr>
 
         </tbody>
     </table>

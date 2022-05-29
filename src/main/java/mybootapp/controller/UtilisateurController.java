@@ -56,15 +56,14 @@ public class UtilisateurController {
         utilisateurRepo.save(utilisateur);*/
 
 
-      //  for(int i = 0; i < 2; i++){
+
             Composante c = new Composante();
-          //  c.setIntitule("composanteForPermission".concat(Integer.toString(i)));
+
         c.setIntitule("composante");
             c.setFormations(new ArrayList<>());
 
             Utilisateur utilisateurs = new Utilisateur();
-           // utilisateurs.setNom("Laporte".concat(Integer.toString(i)));
-           // utilisateurs.setPrenom("Laurent".concat(Integer.toString(i)));
+
         utilisateurs.setNom("Laporte");
        utilisateurs.setPrenom("Laurent");
             utilisateurs.setAdmin(true);
@@ -72,8 +71,6 @@ public class UtilisateurController {
 
             utilisateurRepo.save(utilisateurs);
 
-        //    c.addUser(utilisateurs.getPrenom(), utilisateurs.getNom());
-       // System.out.println("ici " + utilisateurs.getNom());
             composanteRepo.save(c);
         //    }
 
@@ -83,19 +80,17 @@ public class UtilisateurController {
     }
 
 
-
-
     @RequestMapping(value = "/gestionUtilisateur", method = RequestMethod.GET)
     public ModelAndView gestionUtilisateurPage() {
-        Collection<Composante> composantes = composanteRepo.findAll();
-        return new ModelAndView("gestionUser", "composante",composantes);
+        //Collection<Composante> composantes = composanteRepo.findAll();
+        Collection<Utilisateur> test = utilisateurRepo.findAll();
+        return new ModelAndView("gestionUser", "utilisateur",test);
     }
-
 
     @RequestMapping(value = "/gestionUtilisateur/addAdmin", method = RequestMethod.GET)
     public String addAdminForm(@ModelAttribute Utilisateur utilisateur) {
 
-       return "adminForm";
+        return "adminForm";
     }
 
 
@@ -106,6 +101,7 @@ public class UtilisateurController {
         if (result.hasErrors()) {
             return "adminForm";
         }
+        utilisateurRepo.save(utilisateur);
 
         return "redirect:";
     }
@@ -120,9 +116,15 @@ public class UtilisateurController {
     public String addCorrespondantForm(@ModelAttribute("utilisateur") Utilisateur utilisateur, BindingResult result) {
 
         if (result.hasErrors()) {
-            return "adminForm";
+            return "correspondantForm";
         }
+        utilisateurRepo.save(utilisateur);
+        //  Composante c = composanteRepo.findAll().get(0);
+        Composante c = composanteRepo.getById(utilisateur.getIdComposante().getId());
+
+        composanteRepo.save(c);
 
         return "redirect:";
     }
+
 }
