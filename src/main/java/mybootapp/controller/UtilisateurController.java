@@ -20,6 +20,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -102,6 +103,7 @@ public class UtilisateurController {
         if (result.hasErrors()) {
             return "adminForm";
         }
+        utilisateur.setAdmin(true);
         utilisateurRepo.save(utilisateur);
 
         return "redirect:";
@@ -116,19 +118,38 @@ public class UtilisateurController {
         return "correspondantForm";
     }*/
 
+
 @RequestMapping(value = "/gestionUtilisateur/addCorrespondant", method = RequestMethod.GET)
 public String addCorrespondantForm(@ModelAttribute Utilisateur utilisateur, Model model) {
 
     Collection<Composante> composantes = composanteRepo.findAll();
     model.addAttribute("composantes", composantes);
+
     return "correspondantForm";
 }
-/*
-    @RequestMapping(value = "/gestionUtilisateur/addCorrespondant", method = RequestMethod.GET)
+
+    /*
+@RequestMapping(value = "/gestionUtilisateur/addCorrespondant", method = RequestMethod.GET)
+public String addCorrespondantForm(@ModelAttribute Utilisateur utilisateur, Model model) {
+
+    Collection<Composante> composantes = composanteRepo.findAll();
+    Collection<String> composanteNames = new ArrayList<>();
+    for (Composante composante : composantes) {
+        composanteNames.add(composante.getIntitule());
+    }
+    // Collection<Composante> composantes = composanteRepo.findAll();
+
+
+    return "correspondantForm";
+}*/
+    /*
+
+   @RequestMapping(value = "/gestionUtilisateur/addCorrespondant", method = RequestMethod.GET)
     public ModelAndView addCorrespondantForm() {
-        //Collection<Composante> composantes = composanteRepo.findAll();
-        Collection<Utilisateur> test = utilisateurRepo.findAll();
-        return new ModelAndView("correspondantForm", "utilisateur",test);
+
+        Collection<Composante> test = composanteRepo.findAll();
+       // Collection<Utilisateur> test = utilisateurRepo.findAll();
+        return new ModelAndView("correspondantForm", "composante",test);
     }
 */
 
@@ -145,6 +166,13 @@ public String addCorrespondantForm(@ModelAttribute Utilisateur utilisateur, Mode
         composanteRepo.save(c);
 
         return "redirect:";
+    }
+
+
+    @RequestMapping(value = "/deleteUser/{id}")
+    public String deleteUser(@PathVariable Long id) {
+        utilisateurRepo.deleteById(id);
+        return "redirect:/gestionUser";
     }
 
 }

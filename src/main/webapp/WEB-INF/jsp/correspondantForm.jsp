@@ -24,9 +24,10 @@
         <div class="form-group">
             <%--@declare id="composante"--%><label for="idComposante"> choisissez une composante : </label>
             <form:select path="idComposante">
-                <form:option value="NONE" label="--Please Select--"/>
+                <form:option value="">Select</form:option>
                 <form:options items="${composantes}" />
             </form:select>
+
         </div>
 
         <div class="form-group">
