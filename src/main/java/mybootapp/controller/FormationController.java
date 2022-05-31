@@ -218,7 +218,7 @@ public class FormationController {
     public String addAdresse(@ModelAttribute Adresse adresse) {return "adresseForm";}
 
     @RequestMapping(value = "/correspondant/addAdress", method = RequestMethod.POST)
-    public String addAdresse(@ModelAttribute("adresse") Adresse adresse, BindingResult result) {
+    public String addAdresse(@ModelAttribute("adresse") @Valid Adresse adresse, BindingResult result) {
 
 
         if (result.hasErrors()) {

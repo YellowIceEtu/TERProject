@@ -25,7 +25,7 @@
             <%--@declare id="composante"--%><label for="idComposante"> choisissez une composante : </label>
             <form:select path="idComposante">
                 <form:option value="">Select</form:option>
-                <form:options items="${composantes}" />
+                <form:options items="${ListComposantes}" />
             </form:select>
 
         </div>

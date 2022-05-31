@@ -26,9 +26,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.PostConstruct;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 @RequestMapping("/admin")
@@ -118,16 +116,33 @@ public class UtilisateurController {
         return "correspondantForm";
     }*/
 
-
+/*
 @RequestMapping(value = "/gestionUtilisateur/addCorrespondant", method = RequestMethod.GET)
 public String addCorrespondantForm(@ModelAttribute Utilisateur utilisateur, Model model) {
 
     Collection<Composante> composantes = composanteRepo.findAll();
-    model.addAttribute("composantes", composantes);
+    Map<Composante, String> compoList = new LinkedHashMap<>();
+    for(Composante c : composantes)
+        compoList.put(c, c.getIntitule());
+    model.addAttribute("composantes", compoList);
+
+    return "correspondantForm";
+}
+*/
+@RequestMapping(value = "/gestionUtilisateur/addCorrespondant", method = RequestMethod.GET)
+public String addCorrespondantForm(@ModelAttribute Utilisateur utilisateur) {
 
     return "correspondantForm";
 }
 
+    @ModelAttribute("ListComposantes")
+    public Map<Composante, String> ListComposantes() {
+        Map<Composante, String> compoList = new LinkedHashMap<>();
+        List<Composante> composantes = composanteRepo.findAll();
+        for(Composante c : composantes)
+            compoList.put(c, c.getIntitule());
+        return compoList;
+    }
     /*
 @RequestMapping(value = "/gestionUtilisateur/addCorrespondant", method = RequestMethod.GET)
 public String addCorrespondantForm(@ModelAttribute Utilisateur utilisateur, Model model) {
