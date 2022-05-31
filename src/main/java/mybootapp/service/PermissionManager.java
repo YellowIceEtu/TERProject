@@ -25,7 +25,7 @@ public class PermissionManager {
 
     }
 
-    public void enableRoleAdmin (Utilisateur utilisateur) {
+    /*public void enableRoleAdmin (Utilisateur utilisateur) {
         CasUserDetailService casUserDetailService = new CasUserDetailService();
         SecurityContext context = SecurityContextHolder.getContext();
         Authentication authentication = context.getAuthentication();
@@ -34,8 +34,8 @@ public class PermissionManager {
             userDetails.getAuthorities().clear();
             new SimpleGrantedAuthority("ROLE_ADMIN");
         }
-    }
-    public void disableRoleAdmin (Utilisateur utilisateur) {
+    }*/
+    /*public void disableRoleAdmin (Utilisateur utilisateur) {
         CasUserDetailService casUserDetailService = new CasUserDetailService();
         SecurityContext context = SecurityContextHolder.getContext();
         Authentication authentication = context.getAuthentication();
@@ -44,7 +44,7 @@ public class PermissionManager {
             userDetails.getAuthorities().clear();
             new SimpleGrantedAuthority("ROLE_USER");
         }
-    }
+    }*/
 
     public void removeAdmin (Utilisateur utilisateur){
         utilisateur.setEstAdmin(false);

@@ -103,12 +103,12 @@ public class UtilisateurController {
             Utilisateur utilisateur = utilisateurRepo.findById(id).get();
             if(utilisateur.isEstAdmin()) {
                 permissionManager.removeAdmin(utilisateur);
-                permissionManager.disableRoleAdmin(utilisateur);
+                //permissionManager.disableRoleAdmin(utilisateur);
 
             }
             else {
                 permissionManager.AddAdmin(utilisateur);
-                permissionManager.enableRoleAdmin(utilisateur);
+                //permissionManager.enableRoleAdmin(utilisateur);
             }
             utilisateurRepo.save(utilisateur);
         }
