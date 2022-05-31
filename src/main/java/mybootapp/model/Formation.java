@@ -35,21 +35,25 @@ public class Formation extends BaseData implements Serializable {
     private String etatEdition;
 
     @NotBlank(message = "le champ ne doit pas être vide")
+    @Size(max = 255, message = "max 255 caractères")
     @Basic()
     @Column(name = "intitule")
     private String intitule;
 
     @NotBlank(message = "le champ ne doit pas être vide")
+    @Size(max = 3000, message = "max 3000 caractères")
     @Basic()
     @Column(name = "objectif")
     private String objectif;
 
     @NotBlank(message = "le champ ne doit pas être vide")
+    @Size(max = 3000, message = "max 3000 caractères")
     @Basic()
     @Column(name = "resultatsAttendus")
     private String resultatsAttendus;
 
     @NotBlank(message = "le champ ne doit pas être vide")
+    @Size(max = 3000, message = "max 3000 caractères")
     @Basic()
     @Column(name = "contenu")
     private String contenu;
@@ -92,6 +96,8 @@ public class Formation extends BaseData implements Serializable {
         this.setObjectif("objectif".concat(Integer.toString(i)));
         this.setContenu("contenu".concat(Integer.toString(i)));
         this.setResultatsAttendus("resultats".concat(Integer.toString(i)));
-        this.getAction().setNom("action".concat(Integer.toString(i)));
+        this.setObjectifGeneral(i);
+        this.setTypeParcours(i);
+        this.getAction().init(i);
     }
 }

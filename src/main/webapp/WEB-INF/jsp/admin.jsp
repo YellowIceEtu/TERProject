@@ -24,7 +24,6 @@
                 <c:forEach items="${composante}" var="composante">
                     <tr>
                         <td><h3> <c:out value="${composante.intitule}"/></h3></td>
-                        <td> <a href="${addForm}?id=${composante.id}"> <i> ajouter une formation </i></a></td>
                     </tr>
                 </c:forEach>
 

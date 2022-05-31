@@ -32,97 +32,97 @@ import java.util.Map;
 @RequestMapping("/admin")
 public class UtilisateurController {
 
-    @Autowired
-    UtilisateurRepo utilisateurRepo;
-    @Autowired
-    AuthenticationService authenticationService;
-    @Autowired
-    CasUserDetailService casUserDetailService;
-    @Autowired
-    ComposanteRepo composanteRepo;
-
-    @PostConstruct
-    public void init(){
-     /*   SecurityContext context = SecurityContextHolder.getContext();
-        CasAssertionAuthenticationToken authentication = (CasAssertionAuthenticationToken) context.getAuthentication();
-        AttributePrincipal principal =  authentication.getAssertion().getPrincipal();
-        Map attributes = principal.getAttributes();
-        UserDetails userDetails = casUserDetailService.loadUserDetails(authentication);
-        String casID = userDetails.getUsername();
-        Utilisateur utilisateur = new Utilisateur();
-        utilisateur.setIdCAS(casID);
-        utilisateur.setPrenom((String) attributes.get("givenName"));
-        utilisateur.setNom((String) attributes.get("sn"));
-        utilisateurRepo.save(utilisateur);*/
-
-
-      //  for(int i = 0; i < 2; i++){
-            Composante c = new Composante();
-          //  c.setIntitule("composanteForPermission".concat(Integer.toString(i)));
-        c.setIntitule("composante");
-            c.setFormations(new ArrayList<>());
-
-            Utilisateur utilisateurs = new Utilisateur();
-           // utilisateurs.setNom("Laporte".concat(Integer.toString(i)));
-           // utilisateurs.setPrenom("Laurent".concat(Integer.toString(i)));
-        utilisateurs.setNom("Laporte");
-       utilisateurs.setPrenom("Laurent");
-            utilisateurs.setAdmin(true);
-             utilisateurs.setIdComposante(c);
-
-            utilisateurRepo.save(utilisateurs);
-
-        //    c.addUser(utilisateurs.getPrenom(), utilisateurs.getNom());
-       // System.out.println("ici " + utilisateurs.getNom());
-            composanteRepo.save(c);
-        //    }
-
-
-
-
-    }
-
-
-
-
-    @RequestMapping(value = "/gestionUtilisateur", method = RequestMethod.GET)
-    public ModelAndView gestionUtilisateurPage() {
-        Collection<Composante> composantes = composanteRepo.findAll();
-        return new ModelAndView("gestionUser", "composante",composantes);
-    }
-
-
-    @RequestMapping(value = "/gestionUtilisateur/addAdmin", method = RequestMethod.GET)
-    public String addAdminForm(@ModelAttribute Utilisateur utilisateur) {
-
-       return "adminForm";
-    }
-
-
-    @RequestMapping(value = "/gestionUtilisateur/addAdmin", method = RequestMethod.POST)
-    public String addAdminForm(@ModelAttribute("utilisateur") Utilisateur utilisateur, BindingResult result) {
-
-
-        if (result.hasErrors()) {
-            return "adminForm";
-        }
-
-        return "redirect:";
-    }
-
-    @RequestMapping(value = "/gestionUtilisateur/addCorrespondant", method = RequestMethod.GET)
-    public String addCorrespondantForm(@ModelAttribute Utilisateur utilisateur) {
-
-        return "correspondantForm";
-    }
-
-    @RequestMapping(value = "/gestionUtilisateur/addCorrespondant", method = RequestMethod.POST)
-    public String addCorrespondantForm(@ModelAttribute("utilisateur") Utilisateur utilisateur, BindingResult result) {
-
-        if (result.hasErrors()) {
-            return "adminForm";
-        }
-
-        return "redirect:";
-    }
+//    @Autowired
+//    UtilisateurRepo utilisateurRepo;
+//    @Autowired
+//    AuthenticationService authenticationService;
+//    @Autowired
+//    CasUserDetailService casUserDetailService;
+//    @Autowired
+//    ComposanteRepo composanteRepo;
+//
+//    @PostConstruct
+//    public void init(){
+//     /*   SecurityContext context = SecurityContextHolder.getContext();
+//        CasAssertionAuthenticationToken authentication = (CasAssertionAuthenticationToken) context.getAuthentication();
+//        AttributePrincipal principal =  authentication.getAssertion().getPrincipal();
+//        Map attributes = principal.getAttributes();
+//        UserDetails userDetails = casUserDetailService.loadUserDetails(authentication);
+//        String casID = userDetails.getUsername();
+//        Utilisateur utilisateur = new Utilisateur();
+//        utilisateur.setIdCAS(casID);
+//        utilisateur.setPrenom((String) attributes.get("givenName"));
+//        utilisateur.setNom((String) attributes.get("sn"));
+//        utilisateurRepo.save(utilisateur);*/
+//
+//
+//      //  for(int i = 0; i < 2; i++){
+//            Composante c = new Composante();
+//          //  c.setIntitule("composanteForPermission".concat(Integer.toString(i)));
+//        c.setIntitule("composante");
+//            c.setFormations(new ArrayList<>());
+//
+//            Utilisateur utilisateurs = new Utilisateur();
+//           // utilisateurs.setNom("Laporte".concat(Integer.toString(i)));
+//           // utilisateurs.setPrenom("Laurent".concat(Integer.toString(i)));
+//        utilisateurs.setNom("Laporte");
+//       utilisateurs.setPrenom("Laurent");
+//            utilisateurs.setAdmin(true);
+//             utilisateurs.setIdComposante(c);
+//
+//            utilisateurRepo.save(utilisateurs);
+//
+//        //    c.addUser(utilisateurs.getPrenom(), utilisateurs.getNom());
+//       // System.out.println("ici " + utilisateurs.getNom());
+//            composanteRepo.save(c);
+//        //    }
+//
+//
+//
+//
+//    }
+//
+//
+//
+//
+//    @RequestMapping(value = "/gestionUtilisateur", method = RequestMethod.GET)
+//    public ModelAndView gestionUtilisateurPage() {
+//        Collection<Composante> composantes = composanteRepo.findAll();
+//        return new ModelAndView("gestionUser", "composante",composantes);
+//    }
+//
+//
+//    @RequestMapping(value = "/gestionUtilisateur/addAdmin", method = RequestMethod.GET)
+//    public String addAdminForm(@ModelAttribute Utilisateur utilisateur) {
+//
+//       return "adminForm";
+//    }
+//
+//
+//    @RequestMapping(value = "/gestionUtilisateur/addAdmin", method = RequestMethod.POST)
+//    public String addAdminForm(@ModelAttribute("utilisateur") Utilisateur utilisateur, BindingResult result) {
+//
+//
+//        if (result.hasErrors()) {
+//            return "adminForm";
+//        }
+//
+//        return "redirect:";
+//    }
+//
+//    @RequestMapping(value = "/gestionUtilisateur/addCorrespondant", method = RequestMethod.GET)
+//    public String addCorrespondantForm(@ModelAttribute Utilisateur utilisateur) {
+//
+//        return "correspondantForm";
+//    }
+//
+//    @RequestMapping(value = "/gestionUtilisateur/addCorrespondant", method = RequestMethod.POST)
+//    public String addCorrespondantForm(@ModelAttribute("utilisateur") Utilisateur utilisateur, BindingResult result) {
+//
+//        if (result.hasErrors()) {
+//            return "adminForm";
+//        }
+//
+//        return "redirect:";
+//    }
 }

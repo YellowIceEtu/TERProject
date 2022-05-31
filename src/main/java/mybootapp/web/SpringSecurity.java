@@ -20,7 +20,6 @@ import org.springframework.stereotype.Component;
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true, jsr250Enabled = true)
 public class SpringSecurity extends WebSecurityConfigurerAdapter {
 
-
     @Autowired
     private AuthenticationProvider authenticationProvider;
 

@@ -35,6 +35,7 @@
                             <td><c:out value="${formation.code}" /></td>
                             <td><c:out value="${formation.etatEdition}" /></td>
                             <td> <a href="${view}?id=${formation.id}"> <i class="fas fa-eye"></i></a></td>
+
                         </tr>
 
                     </c:forEach>

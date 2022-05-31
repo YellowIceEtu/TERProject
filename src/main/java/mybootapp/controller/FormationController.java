@@ -1,19 +1,15 @@
 package mybootapp.controller;
 
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.security.Principal;
 
 import java.util.*;
 
 
-import mybootapp.model.Adresse;
-import mybootapp.model.Composante;
-import mybootapp.model.Formation;
-import mybootapp.model.Utilisateur;
-import mybootapp.repo.AdresseRepo;
-import mybootapp.repo.ComposanteRepo;
-import mybootapp.repo.FormationRepo;
-import mybootapp.repo.UtilisateurRepo;
+import mybootapp.model.*;
+import mybootapp.repo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -47,6 +43,13 @@ public class FormationController {
             for(int j = 0; j < 2; j++){
                 Formation f = new Formation();
                 f.init(2 * i + j);
+                Session s = new Session();
+                s.setSessionOuverte(1);
+                s.setDebut("2021/11/16");
+                s.setFin("2021/11/17");
+                f.getAction().getSessions().add(s);
+                composanteRepo.save(c);
+                f.setComposante(c);
                 formationRepo.save(f);
                 c.addFormation(f);
             }
@@ -86,6 +89,26 @@ public class FormationController {
 
 
     @ModelAttribute("formation")
+    @RequestMapping(value = "/formationDetails/sessions", method = RequestMethod.GET)
+    public ModelAndView printSessions(@RequestParam(value = "id") Long id){
+        Formation formation = formationRepo.getById(id);
+        return new ModelAndView("session/sessionList", "formation", formation);
+    }
+
+    @RequestMapping(value = "formationDetails/sessions/add", method = RequestMethod.GET)
+    public String addSession(@ModelAttribute Session session) {
+        return "session/sessionCreate";
+    }
+
+    @RequestMapping(value = "formationDetails/sessions/add", method = RequestMethod.POST)
+    public String addSession(@ModelAttribute @Valid Session session, BindingResult result, @RequestParam(value = "id") Long formationid) {
+        if (result.hasErrors()) {
+            return "session/sessionCreate";
+        }
+    //(user.hasright()formationid));
+        return "session/sessionList";
+    }
+
     @RequestMapping(value = "/formationDetails", method = RequestMethod.GET)
     public ModelAndView printFormation(@RequestParam(value = "id") Long id){
         Formation formation = formationRepo.getById(id);
@@ -104,23 +127,12 @@ public class FormationController {
 
     @RequestMapping(value = "formationDetails/edit", method = RequestMethod.POST)
     public String saveProduct(@ModelAttribute @Valid Formation formation, BindingResult result) {
-
-    /*    Collection<Composante> composantes = composanteRepo.findAll();
-        for (Composante c: composantes){
-            Collection<Formation> formations = c.getFormations();
-            for (Formation f: formations){
-                if(f.getId().equals(formation.getId())){
-                    formations.remove(f);
-                    formations.add(formation);
-                    c.setFormations(formations);
-                    composanteRepo.save(c);
-                }
-            }
-        }*/
         if (result.hasErrors()) {
             return "formation/formationForm";
-        }formationRepo.save(formation);
-        return "formation/formationList";
+        }
+        formation.setEtatEdition("brouillon");
+        formationRepo.save(formation);
+        return "redirect:/formationList";
     }
 
 
@@ -166,7 +178,6 @@ public class FormationController {
 
     @RequestMapping(value = "/admin/formationCreate", method = RequestMethod.GET)
     public String addFormationForm(@ModelAttribute Formation formation) {return "formation/formationCreate";}
-
     @ModelAttribute("ListComposantes")
     public Map<Composante, String> ListComposantes() {
         Map<Composante, String> compoList = new LinkedHashMap<>();
@@ -219,8 +230,6 @@ public class FormationController {
 
     @RequestMapping(value = "/correspondant/addAdress", method = RequestMethod.POST)
     public String addAdresse(@ModelAttribute("adresse") Adresse adresse, BindingResult result) {
-
-
         if (result.hasErrors()) {
             return "adresseForm";
         }
@@ -254,16 +263,5 @@ public class FormationController {
     public String deleteAdress(@PathVariable Long id) {
         adresseRepo.deleteById(id);
         return "redirect:/correspondant";
-    }
-
-
-
-    public void cleanFormation(){
-        List<Formation> formations= formationRepo.findAll();
-        for (Formation f : formations){
-            if(f.getEtatEdition().equals("creation")){
-                formationRepo.delete(f);
-            }
-        }
     }
 }
