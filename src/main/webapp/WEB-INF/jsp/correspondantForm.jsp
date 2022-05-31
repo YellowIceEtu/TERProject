@@ -22,6 +22,14 @@
         </div>
 
         <div class="form-group">
+            <label for="idCAS"> Tapez l'id CAS : </label>
+            <form:input path="idCAS" class="form-control" />
+            <form:errors path="idCAS" cssClass="alert alert-warning" element="div" />
+        </div>
+
+
+
+        <div class="form-group">
             <%--@declare id="composante"--%><label for="idComposante"> choisissez une composante : </label>
             <form:select path="idComposante">
                 <form:option value="">Select</form:option>

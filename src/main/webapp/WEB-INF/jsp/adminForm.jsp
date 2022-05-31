@@ -20,6 +20,13 @@
             <form:errors path="prenom" cssClass="alert alert-warning" element="div" />
         </div>
 
+        <div class="form-group">
+            <label for="idCAS"> Tapez l'id CAS : </label>
+            <form:input path="idCAS" class="form-control" />
+            <form:errors path="idCAS" cssClass="alert alert-warning" element="div" />
+        </div>
+
+
 
         <div class="form-group">
             <button type="submit" class="btn btn-info">Submit</button>
