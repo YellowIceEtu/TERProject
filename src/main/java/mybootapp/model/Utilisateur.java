@@ -5,6 +5,7 @@ import mybootapp.model.base.BaseData;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 
@@ -41,6 +42,12 @@ public class Utilisateur extends BaseData implements Serializable {
     @Basic()
     @Column(name = "role")
     private boolean estAdmin;
+
+    @Basic()
+    @NotNull
+    @NotBlank
+    @Column(name = "idCAS")
+    private String idCAS;
 
 
 
