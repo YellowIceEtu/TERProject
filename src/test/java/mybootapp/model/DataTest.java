@@ -60,6 +60,15 @@ class DataTest {
 
     }
 
-
+    @Test
+    public void utilisateurComposante() {
+        Composante c = new Composante();
+        c.setIntitule("test");
+        Utilisateur u = new Utilisateur();
+        u.setNom("utilisateur test");
+        c.setCorrespondant(u);
+        u.setIdComposante(c);
+        assertTrue(u.getIdComposante().getIntitule().equals("test"));
+    }
 
 }

@@ -7,13 +7,26 @@
 
     <form:form method="POST" modelAttribute="utilisateur" >
 
-        <form:errors path="*" cssClass="alert alert-danger" element="div" />
 
         <div class="form-group">
             <label for="nom"> Tapez le nom : </label>
             <form:input path="nom" class="form-control" />
             <form:errors path="nom" cssClass="alert alert-warning" element="div" />
         </div>
+
+        <div class="form-group">
+            <label for="prenom"> Tapez le prénom : </label>
+            <form:input path="prenom" class="form-control" />
+            <form:errors path="prenom" cssClass="alert alert-warning" element="div" />
+        </div>
+
+        <div class="form-group">
+            <label for="idCAS"> Tapez l'id CAS : </label>
+            <form:input path="idCAS" class="form-control" />
+            <form:errors path="idCAS" cssClass="alert alert-warning" element="div" />
+        </div>
+
+
 
         <div class="form-group">
             <button type="submit" class="btn btn-info">Submit</button>
