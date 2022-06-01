@@ -43,42 +43,26 @@ public class UtilisateurController {
 
     @PostConstruct
     public void init(){
-     /*   SecurityContext context = SecurityContextHolder.getContext();
-        CasAssertionAuthenticationToken authentication = (CasAssertionAuthenticationToken) context.getAuthentication();
-        AttributePrincipal principal =  authentication.getAssertion().getPrincipal();
-        Map attributes = principal.getAttributes();
-        UserDetails userDetails = casUserDetailService.loadUserDetails(authentication);
-        String casID = userDetails.getUsername();
-        Utilisateur utilisateur = new Utilisateur();
-        utilisateur.setIdCAS(casID);
-        utilisateur.setPrenom((String) attributes.get("givenName"));
-        utilisateur.setNom((String) attributes.get("sn"));
-        utilisateurRepo.save(utilisateur);*/
-
-
-
-            Composante c = new Composante();
+        Composante c = new Composante();
 
         c.setIntitule("composante");
-            c.setFormations(new ArrayList<>());
+        c.setFormations(new ArrayList<>());
 
-            Utilisateur utilisateurs = new Utilisateur();
+        Utilisateur utilisateurs = new Utilisateur();
 
-        utilisateurs.setNom("Laporte");
-       utilisateurs.setPrenom("Laurent");
-            utilisateurs.setAdmin(true);
-             utilisateurs.setIdComposante(c);
+        utilisateurs.setNom("Ould-Chibani");
+        utilisateurs.setPrenom("Abdessettar");
+        utilisateurs.setAdmin(true);
+        utilisateurs.setIdComposante(c);
+        utilisateurs.setIdCAS("o18025131");
 
-            utilisateurRepo.save(utilisateurs);
+        utilisateurRepo.save(utilisateurs);
 
-            composanteRepo.save(c);
-        //    }
-
+        composanteRepo.save(c);
 
 
 
     }
-
 
     @RequestMapping(value = "/gestionUtilisateur", method = RequestMethod.GET)
     public ModelAndView gestionUtilisateurPage() {
