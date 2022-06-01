@@ -40,13 +40,13 @@ public class Action implements Serializable {
     @NotBlank(message = "une réponse doit être choisie")
     @Basic
     @Column(name = "modaliteEnseignement")
-    private int modaliteEnseignement;
+    private String modaliteEnseignement;
 
     //liste deroulante
     @NotBlank(message = "au moins un type doit être choisit")
     @ElementCollection()
     @Column(name = "rythmeFormation")
-    private Collection<Integer> rythmeFormation;
+    private Collection<String> rythmeFormation;
 
     @Size(max = 3000, message = "max 3000 caractères")
     @Basic
@@ -127,9 +127,10 @@ public class Action implements Serializable {
     private String modalitesHandicap;
 
     //liste deroulante
+    @NotBlank(message = "le champ ne doit pas être vide")
     @Basic
     @Column(name = "modaliteAdmission")
-    private int modaliteAdmission;
+    private String modaliteAdmission;
 
     @Size(max = 250, message = "max 250 caractères")
     @Basic
@@ -168,7 +169,7 @@ public class Action implements Serializable {
     @NotBlank(message = "le champ ne doit pas être vide")
     @Basic
     @Column(name = "tauxTVA")
-    private int tauxTVA;
+    private String tauxTVA;
 
     //reflechir pour limite
     @Size(max = 13, message = "valeur maximale : 9 999 999 999,99")
@@ -206,9 +207,9 @@ public class Action implements Serializable {
     public void init(int i){
         this.setNumeroAction(i);
         this.setNiveauObligatoire(0);
-        this.setModaliteEnseignement(i);
-        this.rythmeFormation.add(0);
-        this.rythmeFormation.add(1);
+        this.setModaliteEnseignement(Integer.toString(i));
+        this.rythmeFormation.add("0");
+        this.rythmeFormation.add("1");
         this.setConditionsSpecifiques("conditions specifiques".concat(Integer.toString(i)));
         this.setModaliteEntreeSortie(i);
         this.setUrl("url".concat(Integer.toString(i)));
@@ -224,13 +225,13 @@ public class Action implements Serializable {
         this.setNombreHeureCentre(i);
         this.setNombreHeureEntreprise(i);
         this.setModalitesHandicap("modalités handicap".concat(Integer.toString(i)));
-        this.setModaliteAdmission(i);
+        this.setModaliteAdmission("0");
         this.setInfosAdmission("infos admissions".concat(Integer.toString(i)));
         this.setFraisANPEC(i);
         this.setDetailsFraisANPEC("detailsfraisAnpec".concat(Integer.toString(i)));
         this.setFraisInclusANPEC(0);
         this.setModeleEconomique(i);
-        this.setTauxTVA(i);
+        this.setTauxTVA("0%");
         this.setFraisHT(i);
         this.setFraisTTC(i);
         this.setPreRequis(0);

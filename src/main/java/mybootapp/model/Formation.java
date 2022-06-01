@@ -24,11 +24,11 @@ public class Formation extends BaseData implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Max(value = 99999, message = "6 caractères maximum")
-    @Min(value = 0, message = "au moins un caractère")
+    @Pattern(regexp="^[0-9]{1,6}$", message = "le champ ne contient que des chiffres et a une longueur de 6 caractères maximum")
+    @NotBlank(message = "le champ ne peut pas être vide")
     @Basic()
     @Column(name = "codeFormation")
-    private int code;
+    private String code;
 
     @Basic()
     @Column(name = "etatEdition")
@@ -58,19 +58,22 @@ public class Formation extends BaseData implements Serializable {
     @Column(name = "contenu")
     private String contenu;
 
+    @NotBlank(message = "le champ ne peut pas être vide")
     @Basic()
     @Column(name = "typeParcours")
-    private int typeParcours;
+    private String typeParcours;
 
+    @Pattern(regexp="^[0-9]{1}$", message = "le champ ne contient que des chiffres et a une longueur de 1")
+    @NotBlank(message = "le champ ne peut pas être vide")
     @Basic()
     @Column(name = "objectifGeneral")
-    private int objectifGeneral;
+    private String objectifGeneral;
 
-    @Max(value = 99999, message = "6 caractères maximum")
-    @Min(value = 0, message = "au moins un caractère")
+    @Pattern(regexp="^[0-9]{1,6}$", message = "le champ ne contient que des chiffres et a une longueur de 6")
+    @NotBlank(message = "le champ ne peut pas être vide")
     @Basic()
     @Column(name = "CERTIFINFO")
-    private int CERTIFINFO;
+    private String CERTIFINFO;
 
     @Embedded
     @JoinColumn( name="action" )
@@ -90,14 +93,15 @@ public class Formation extends BaseData implements Serializable {
     }
 
     public void init(int i){
-        this.setCode(i);
+        this.setCode(Integer.toString(i));
+        this.setCERTIFINFO(Integer.toString(i));
         this.setEtatEdition("brouillon");
         this.setIntitule("formation".concat(Integer.toString(i)));
         this.setObjectif("objectif".concat(Integer.toString(i)));
         this.setContenu("contenu".concat(Integer.toString(i)));
         this.setResultatsAttendus("resultats".concat(Integer.toString(i)));
-        this.setObjectifGeneral(i);
-        this.setTypeParcours(i);
+        this.setObjectifGeneral(Integer.toString(i));
+        this.setTypeParcours(Integer.toString(i));
         this.getAction().init(i);
     }
 }

@@ -2,6 +2,7 @@ package mybootapp.controller;
 
 import mybootapp.model.Composante;
 import mybootapp.model.Formation;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,17 +10,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 @Controller
-@RequestMapping("/formationDetails/edit")
+@RequestMapping("")
 public class ListController {
 
 
-    @ModelAttribute("ObjectifGeneralList")
+        @ModelAttribute("ObjectifGeneralList")
     public Map<Integer, String> ObjectifGeneralList() throws FileNotFoundException {
         Map<Integer, String> list = new LinkedHashMap<>();
         File myObj = new File("static/referentiel/objectifGeneral");

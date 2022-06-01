@@ -24,6 +24,8 @@
         <p> <c:out value="${formation.etatEdition}" /> </p>
         <p class="title"><c:out value="Objectif" /></p>
         <p><c:out value="${formation.objectif}" /></p>
+        <p class="title"><c:out value="Type de Parcours (code)" /></p>
+        <p><c:out value="${formation.typeParcours}" /></p>
         <p></p>
         <p class="title"><c:out value="Niveau obligatoire" /></p>
         <p><c:out value="${formation.action.niveauObligatoire}" /></p>

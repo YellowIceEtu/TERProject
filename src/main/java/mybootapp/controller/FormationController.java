@@ -10,6 +10,7 @@ import java.util.*;
 
 import mybootapp.model.*;
 import mybootapp.repo.*;
+import mybootapp.service.ListBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -34,8 +35,17 @@ public class FormationController {
     @Autowired
     AdresseRepo adresseRepo;
 
+    @Autowired
+    ListBuilder listBuilder;
+
+
+
+//    @Value("#{applicationProperties}")
+//    private Map<String, String> systemPropertiesMap;
+
     @PostConstruct
     public void init(){
+        Map<String, String> list = new LinkedHashMap<>();
         for(int i = 0; i < 2; i++){
             Composante c = new Composante();
             c.setIntitule("composante".concat(Integer.toString(i)));
@@ -112,7 +122,6 @@ public class FormationController {
     @RequestMapping(value = "/formationDetails", method = RequestMethod.GET)
     public ModelAndView printFormation(@RequestParam(value = "id") Long id){
         Formation formation = formationRepo.getById(id);
-
         return new ModelAndView("formation/formationDetails", "formation", formation);
     }
 
@@ -121,6 +130,34 @@ public class FormationController {
     public ModelAndView editFormation( @RequestParam(value = "id") Long id) {
         Formation formation = formationRepo.getById(id);
         return new ModelAndView("formation/formationForm", "formation", formation);
+    }
+    @ModelAttribute("typeDeParcours")
+    public Map<String, String> typeDeParcoursList() {
+        return listBuilder.typeDeParcoursList();
+    }
+    @ModelAttribute("objectif")
+    public Map<String, String> objectifGeneralList() {
+        return listBuilder.objectifGeneralList();
+    }
+    @ModelAttribute("modaliteEnseignement")
+    public Map<String, String> modaliteEnseignementList() {
+        return listBuilder.modaliteEnseignementList();
+    }
+    @ModelAttribute("rythmeFormation")
+    public Map<String, String> rythmeFormationList() {
+        return listBuilder.rythmeFormationList();
+    }
+    @ModelAttribute("modaliteAdmission")
+    public Map<String, String> modaliteAdmissionList() {
+        return listBuilder.modaliteAdmissionList();
+    }
+    @ModelAttribute("langueFormation")
+    public Map<String, String> langueFormationList() {
+        return listBuilder.langueFormationList();
+    }
+    @ModelAttribute("tauxTVA")
+    public Map<String, String> tauxTVAList() {
+        return listBuilder.tauxTVAList();
     }
 
 
@@ -186,7 +223,6 @@ public class FormationController {
             compoList.put(c, c.getIntitule());
         return compoList;
     }
-
 
     @RequestMapping(value = "/admin/formationCreate", method = RequestMethod.POST)
     public String saveFormationCreation(@ModelAttribute @Valid Formation formation, BindingResult result) {
