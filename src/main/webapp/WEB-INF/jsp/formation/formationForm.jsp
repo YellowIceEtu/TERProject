@@ -61,7 +61,7 @@
             <label for="action.niveauObligatoire">niveau obligatoire requis  :</label>
             <form:select path="action.niveauObligatoire" multiple="false" class="form-control">
                 <form:option value="" label="--- Select ---" />
-                <form:options items="${niveauObligatoire}" />
+                <form:options items="${preRequis}" />
             </form:select>
             <form:errors path="action.niveauObligatoire" cssClass="alert alert-warning" element="div" />
         </div>
