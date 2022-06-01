@@ -32,6 +32,18 @@ public class ListBuilder {
     @Value("#{'${ref.tauxTVA}'.split('---')}")
     private ArrayList<String> tauxTVA;
 
+    @Value("#{'${ref.fraisInclusANPEC}'.split('---')}")
+    private ArrayList<String> fraisInclusANPEC;
+
+    @Value("#{'${ref.niveauObligatoire}'.split('---')}")
+    private ArrayList<String> niveauObligatoire;
+
+    @Value("#{'${ref.fraisInclusANPEC}'.split('---')}")
+    private ArrayList<String> modaliteEntreeSortie;
+
+    @Value("#{'${ref.fraisInclusANPEC}'.split('---')}")
+    private ArrayList<String> preRequis;
+
     public Map<String, String> typeDeParcoursList() {
         Map<String, String> list = new LinkedHashMap<>();
         for (String s: typeDeParcours){
@@ -86,6 +98,40 @@ public class ListBuilder {
     public Map<String, String> tauxTVAList() {
         Map<String, String> list = new LinkedHashMap<>();
         for (String s: tauxTVA){
+            String [] res = s.split("--");
+            list.put(res[0], res[1]);
+        }
+        return list;
+    }
+
+    public Map<String, String> fraisInclusANPECList() {
+        Map<String, String> list = new LinkedHashMap<>();
+        for (String s: fraisInclusANPEC){
+            String [] res = s.split("--");
+            list.put(res[0], res[1]);
+        }
+        return list;
+    }
+
+    public Map<String, String> modaliteEntreeSortieList() {
+        Map<String, String> list = new LinkedHashMap<>();
+        for (String s: modaliteEntreeSortie){
+            String [] res = s.split("--");
+            list.put(res[0], res[1]);
+        }
+        return list;
+    }
+    public Map<String, String> preRequisList() {
+        Map<String, String> list = new LinkedHashMap<>();
+        for (String s: preRequis){
+            String [] res = s.split("--");
+            list.put(res[0], res[1]);
+        }
+        return list;
+    }
+    public Map<String, String> niveauObligatoireList() {
+        Map<String, String> list = new LinkedHashMap<>();
+        for (String s: niveauObligatoire){
             String [] res = s.split("--");
             list.put(res[0], res[1]);
         }

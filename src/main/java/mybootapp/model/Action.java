@@ -24,7 +24,6 @@ import java.util.Date;
 @Embeddable
 public class Action implements Serializable {
 
-    @NotBlank(message = "le champ ne doit pas être vide")
     @Size(max = 30, message = "max 30 caractères")
     @Basic
     @Column(name = "numeroAction")
@@ -34,7 +33,7 @@ public class Action implements Serializable {
     @NotBlank(message = "une réponse doit être choisie")
     @Basic
     @Column(name = "niveauObligatoire")
-    private int niveauObligatoire;
+    private String niveauObligatoire;
 
     //liste deroulante
     @NotBlank(message = "une réponse doit être choisie")
@@ -56,7 +55,7 @@ public class Action implements Serializable {
     @NotBlank(message = "le champ ne doit pas être vide")
     @Basic
     @Column(name = "modaliteEntreeSortie")
-    private int modaliteEntreeSortie;
+    private String modaliteEntreeSortie;
 
     //dans le formulaire, proposer de choisir entre http:// et https://
     @Size(max = 400, message = "max 400 caractères")
@@ -147,7 +146,7 @@ public class Action implements Serializable {
     @NotBlank(message = "le champ ne doit pas être vide")
     @Basic
     @Column(name = "fraisInclusANPEC")
-    private int fraisInclusANPEC;
+    private String fraisInclusANPEC;
 
     @Size(max = 3000, message = "max 3000 caractères")
     @Basic
@@ -190,7 +189,7 @@ public class Action implements Serializable {
     @NotBlank(message = "le champ ne doit pas être vide")
     @Basic
     @Column(name = "preRequis")
-    private int preRequis;
+    private String preRequis;
 
     @ElementCollection
     @JoinColumn( name="sessions" )
@@ -206,12 +205,12 @@ public class Action implements Serializable {
 
     public void init(int i){
         this.setNumeroAction(i);
-        this.setNiveauObligatoire(0);
+        this.setNiveauObligatoire("0");
         this.setModaliteEnseignement(Integer.toString(i));
         this.rythmeFormation.add("0");
         this.rythmeFormation.add("1");
         this.setConditionsSpecifiques("conditions specifiques".concat(Integer.toString(i)));
-        this.setModaliteEntreeSortie(i);
+        this.setModaliteEntreeSortie("0");
         this.setUrl("url".concat(Integer.toString(i)));
         this.setRestauration("restauration".concat(Integer.toString(i)));
         this.setHebergement("hebergement".concat(Integer.toString(i)));
@@ -229,11 +228,11 @@ public class Action implements Serializable {
         this.setInfosAdmission("infos admissions".concat(Integer.toString(i)));
         this.setFraisANPEC(i);
         this.setDetailsFraisANPEC("detailsfraisAnpec".concat(Integer.toString(i)));
-        this.setFraisInclusANPEC(0);
+        this.setFraisInclusANPEC("0");
         this.setModeleEconomique(i);
         this.setTauxTVA("0%");
         this.setFraisHT(i);
         this.setFraisTTC(i);
-        this.setPreRequis(0);
+        this.setPreRequis("0");
     }
 }

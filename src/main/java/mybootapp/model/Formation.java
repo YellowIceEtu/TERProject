@@ -30,6 +30,7 @@ public class Formation extends BaseData implements Serializable {
     @Column(name = "codeFormation")
     private String code;
 
+    @NotBlank(message = "le champ ne peut pas être vide")
     @Basic()
     @Column(name = "etatEdition")
     private String etatEdition;

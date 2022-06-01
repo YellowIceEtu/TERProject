@@ -22,12 +22,6 @@
                          element="div" />
         </div>
         <div class="form-group">
-            <label for="objectif">Objectif :</label>
-            <form:textarea class="form-control" path="objectif" rows="4" />
-            <form:errors path="objectif" cssClass="alert alert-warning"
-                         element="div" />
-        </div>
-        <div class="form-group">
             <label for="resultatsAttendus">résultats attendus :</label>
             <form:textarea class="form-control" path="resultatsAttendus" rows="4" />
             <form:errors path="resultatsAttendus" cssClass="alert alert-warning"
@@ -65,8 +59,10 @@
         </div>
         <div class="form-group">
             <label for="action.niveauObligatoire">niveau obligatoire requis  :</label>
-            non <form:radiobutton path="action.niveauObligatoire" value="0"/>
-            oui <form:radiobutton path="action.niveauObligatoire" value="1"/>
+            <form:select path="action.niveauObligatoire" multiple="false" class="form-control">
+                <form:option value="" label="--- Select ---" />
+                <form:options items="${niveauObligatoire}" />
+            </form:select>
             <form:errors path="action.niveauObligatoire" cssClass="alert alert-warning" element="div" />
         </div>
 <%--        <div class="form-group">--%>
@@ -107,8 +103,10 @@
         </div>
         <div class="form-group">
             <label for="action.modaliteEntreeSortie">Modalités d'entrée/sortie :</label>
-            A dates fixes <form:radiobutton path="action.modaliteEntreeSortie" value="0"/>
-            Permanentes (sans dates fixes)<form:radiobutton path="action.modaliteEntreeSortie" value="1"/>
+            <form:select path="action.modaliteEntreeSortie" multiple="false" class="form-control">
+                <form:option value="" label="--- Select ---" />
+                <form:options items="${modaliteEntreeSortie}" />
+            </form:select>
             <form:errors path="action.modaliteEntreeSortie" cssClass="alert alert-warning"
                          element="div" />
         </div>
@@ -210,8 +208,10 @@
         </div>
         <div class="form-group">
             <label for="action.fraisInclusANPEC">Frais ANPEC inclus dans le coût d'inscription :</label>
-            non <form:radiobutton path="action.fraisInclusANPEC" value="0"/>
-            oui <form:radiobutton path="action.fraisInclusANPEC" value="1"/>
+            <form:select path="action.fraisInclusANPEC" multiple="false" class="form-control">
+                <form:option value="" label="--- Select ---" />
+                <form:options items="${fraisInclusANPEC}" />
+            </form:select>
             <form:errors path="action.fraisInclusANPEC" cssClass="alert alert-warning"
                          element="div" />
         </div>
@@ -244,8 +244,10 @@
         </div>
         <div class="form-group">
             <label for="action.preRequis">Existence de pré-requis :</label>
-            non <form:radiobutton path="action.preRequis" value="0"/>
-            oui <form:radiobutton path="action.preRequis" value="1"/>
+            <form:select path="action.preRequis" multiple="false" class="form-control">
+                <form:option value="" label="--- Select ---" />
+                <form:options items="${preRequis}" />
+            </form:select>
             <form:errors path="action.preRequis" cssClass="alert alert-warning"
                          element="div" />
         </div>
