@@ -38,7 +38,7 @@ public class Composante implements Serializable {
     private Utilisateur correspondant;
 
     @OneToMany
-    @JoinColumn( name="ormations" )
+    @JoinColumn( name="formations" )
     private Collection<Formation> formations;
 
     @OneToMany(fetch = FetchType.EAGER)

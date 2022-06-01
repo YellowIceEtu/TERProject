@@ -28,8 +28,8 @@
                          element="div" />
         </div>
         <div class="form-group">
-            <label for="resultatsAttendus">résultats attendus   CHANGER EN LISTE DEROULANTE:</label>
-            <form:textarea class="form-control" path="resultatsAttendus" rows="1" />
+            <label for="resultatsAttendus">résultats attendus :</label>
+            <form:textarea class="form-control" path="resultatsAttendus" rows="4" />
             <form:errors path="resultatsAttendus" cssClass="alert alert-warning"
                          element="div" />
         </div>
@@ -39,16 +39,28 @@
             <form:errors path="contenu" cssClass="alert alert-warning"
                          element="div" />
         </div>
+<%--        <div class="form-group">--%>
+<%--            <label for="typeParcours">Type de parcours CHANGER EN LISTE DEROULANTE:</label>--%>
+<%--            <form:textarea class="form-control" path="typeParcours" rows="1" />--%>
+<%--            <form:errors path="typeParcours" cssClass="alert alert-warning"--%>
+<%--                         element="div" />--%>
+<%--        </div>--%>
         <div class="form-group">
-            <label for="typeParcours">Type de parcours CHANGER EN LISTE DEROULANTE:</label>
-            <form:textarea class="form-control" path="typeParcours" rows="1" />
+            <label for="typeParcours">Choisissez un type de parcours :</label>
+            <form:select path="typeParcours" multiple="false" class="form-control">
+                <form:option value="" label="--- Select ---" />
+                <form:options items="${typeDeParcours}" />
+            </form:select>
             <form:errors path="typeParcours" cssClass="alert alert-warning"
                          element="div" />
         </div>
         <div class="form-group">
-            <label for="objectifGeneral">Objectif général CHANGER EN LISTE DEROULANTE:</label>
-            <form:textarea class="form-control" path="objectifGeneral" rows="1" />
-            <form:errors path="objectifGeneral" cssClass="alert alert-warning"
+            <label for="objectif">Objectif de la formation :</label>
+            <form:select path="objectif" multiple="false" class="form-control">
+                <form:option value="" label="--- Select ---" />
+                <form:options items="${objectif}" />
+            </form:select>
+            <form:errors path="objectif" cssClass="alert alert-warning"
                          element="div" />
         </div>
         <div class="form-group">
@@ -57,15 +69,33 @@
             oui <form:radiobutton path="action.niveauObligatoire" value="1"/>
             <form:errors path="action.niveauObligatoire" cssClass="alert alert-warning" element="div" />
         </div>
+<%--        <div class="form-group">--%>
+<%--            <label for="action.modaliteEnseignement">Modalités d'enseignement CHANGER EN LISTE DEROULANTE:</label>--%>
+<%--            <form:textarea class="form-control" path="action.modaliteEnseignement" rows="1" />--%>
+<%--            <form:errors path="action.modaliteEnseignement" cssClass="alert alert-warning"--%>
+<%--                         element="div" />--%>
+<%--        </div>--%>
         <div class="form-group">
-            <label for="action.modaliteEnseignement">Modalités d'enseignement CHANGER EN LISTE DEROULANTE:</label>
-            <form:textarea class="form-control" path="action.modaliteEnseignement" rows="1" />
+            <label for="action.modaliteEnseignement">Modalités d'enseignement :</label>
+            <form:select path="action.modaliteEnseignement" multiple="false" class="form-control">
+                <form:option value="" label="--- Select ---" />
+                <form:options items="${modaliteEnseignement}" />
+            </form:select>
             <form:errors path="action.modaliteEnseignement" cssClass="alert alert-warning"
                          element="div" />
         </div>
+<%--        <div class="form-group">--%>
+<%--            <label for="action.rythmeFormation">rythme de formation CHANGER EN LISTE DEROULANTE MULTICHOIX:</label>--%>
+<%--            <form:textarea class="form-control" path="action.rythmeFormation" rows="1" />--%>
+<%--            <form:errors path="action.rythmeFormation" cssClass="alert alert-warning"--%>
+<%--                         element="div" />--%>
+<%--        </div>--%>
         <div class="form-group">
-            <label for="action.rythmeFormation">rythme de formation CHANGER EN LISTE DEROULANTE MULTICHOIX:</label>
-            <form:textarea class="form-control" path="action.rythmeFormation" rows="1" />
+            <label for="action.rythmeFormation">Rythme de formation :</label>
+            <form:select path="action.rythmeFormation" multiple="true" class="form-control">
+                <form:option value="" label="--- Select ---" />
+                <form:options items="${rythmeFormation}" />
+            </form:select>
             <form:errors path="action.rythmeFormation" cssClass="alert alert-warning"
                          element="div" />
         </div>
@@ -112,9 +142,18 @@
             <form:errors path="action.accesHandicapes" cssClass="alert alert-warning"
                          element="div" />
         </div>
+<%--        <div class="form-group">--%>
+<%--            <label for="action.langueFormation">Langue de la formation CHANGER EN LISTE DEROULANTE MULTICHOIX:</label>--%>
+<%--            <form:textarea class="form-control" path="action.langueFormation" rows="1" />--%>
+<%--            <form:errors path="action.langueFormation" cssClass="alert alert-warning"--%>
+<%--                         element="div" />--%>
+<%--        </div>--%>
         <div class="form-group">
-            <label for="action.langueFormation">Langue de la formation CHANGER EN LISTE DEROULANTE MULTICHOIX:</label>
-            <form:textarea class="form-control" path="action.langueFormation" rows="1" />
+            <label for="action.langueFormation">Langue de la formation :</label>
+            <form:select path="action.langueFormation" multiple="false" class="form-control">
+                <form:option value="" label="--- Select ---" />
+                <form:options items="${langueFormation}" />
+            </form:select>
             <form:errors path="action.langueFormation" cssClass="alert alert-warning"
                          element="div" />
         </div>
@@ -142,9 +181,18 @@
             <form:errors path="action.modalitesHandicap" cssClass="alert alert-warning"
                          element="div" />
         </div>
+<%--        <div class="form-group">--%>
+<%--            <label for="action.modaliteAdmission">Modalités d'admission CHANGER EN LISTE DEROULANTE MULTICHOIX:</label>--%>
+<%--            <form:textarea class="form-control" path="action.modaliteAdmission" rows="1" />--%>
+<%--            <form:errors path="action.modaliteAdmission" cssClass="alert alert-warning"--%>
+<%--                         element="div" />--%>
+<%--        </div>--%>
         <div class="form-group">
-            <label for="action.modaliteAdmission">Modalités d'amdmission CHANGER EN LISTE DEROULANTE MULTICHOIX:</label>
-            <form:textarea class="form-control" path="action.modaliteAdmission" rows="1" />
+            <label for="action.modaliteAdmission">Modalités d'admission :</label>
+            <form:select path="action.modaliteAdmission" multiple="false" class="form-control">
+                <form:option value="" label="--- Select ---" />
+                <form:options items="${modaliteAdmission}" />
+            </form:select>
             <form:errors path="action.modaliteAdmission" cssClass="alert alert-warning"
                          element="div" />
         </div>
@@ -167,9 +215,18 @@
             <form:errors path="action.fraisInclusANPEC" cssClass="alert alert-warning"
                          element="div" />
         </div>
+<%--        <div class="form-group">--%>
+<%--            <label for="action.tauxTVA">Taux TVA CHANGER EN LISTE DEROULANTE MULTICHOIX:</label>--%>
+<%--            <form:textarea class="form-control" path="action.tauxTVA" rows="1" />--%>
+<%--            <form:errors path="action.tauxTVA" cssClass="alert alert-warning"--%>
+<%--                         element="div" />--%>
+<%--        </div>--%>
         <div class="form-group">
-            <label for="action.tauxTVA">Taux TVA CHANGER EN LISTE DEROULANTE MULTICHOIX:</label>
-            <form:textarea class="form-control" path="action.tauxTVA" rows="1" />
+            <label for="action.tauxTVA">Taux TVA :</label>
+            <form:select path="action.tauxTVA" multiple="false" class="form-control">
+                <form:option value="" label="--- Select ---" />
+                <form:options items="${tauxTVA}" />
+            </form:select>
             <form:errors path="action.tauxTVA" cssClass="alert alert-warning"
                          element="div" />
         </div>
