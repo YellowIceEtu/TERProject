@@ -3,6 +3,7 @@ package mybootapp.model;
 import mybootapp.repo.ComposanteRepo;
 import mybootapp.repo.FormationRepo;
 import mybootapp.repo.UtilisateurRepo;
+import mybootapp.service.UtilisateurService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -26,6 +27,9 @@ class DataTest {
 
     @Autowired
     UtilisateurRepo utilisateurRepo;
+
+    @Autowired
+    UtilisateurService utilisateurService;
 
 
 
@@ -70,5 +74,19 @@ class DataTest {
         u.setIdComposante(c);
         assertTrue(u.getIdComposante().getIntitule().equals("test"));
     }
+    @Test
+    public void findByidCAS(){
+        Utilisateur utilisateur = new Utilisateur();
+        utilisateur.setIdCAS("o18025131");
+        assertTrue(utilisateurService.findByidCAS(utilisateur.getIdCAS()));
 
+    }
+
+    @Test
+    public void getByidCAS(){
+        Utilisateur utilisateur = new Utilisateur();
+        utilisateur.setIdCAS("o18025131");
+        assertTrue(utilisateurService.getByidCAS("o18025131").getIdCAS().equals(utilisateur.getIdCAS()));
+
+    }
 }

@@ -25,6 +25,7 @@ public class AuthenticationService {
 
 
     }
+
     public void removeAdmin(Utilisateur utilisateur){}
     public void addCoreespondant(Composante composante, Utilisateur utilisateur){}
     public void removeCorrespondant(Composante composante, Utilisateur utilisateur){}
