@@ -160,15 +160,15 @@ public class FormationController {
         return listBuilder.tauxTVAList();
     }
 
-
-
     @RequestMapping(value = "formationDetails/edit", method = RequestMethod.POST)
     public String saveProduct(@ModelAttribute @Valid Formation formation, BindingResult result) {
+        System.out.println("yo2");
         if (result.hasErrors()) {
             return "formation/formationForm";
         }
         formation.setEtatEdition("brouillon");
         formationRepo.save(formation);
+        System.out.println("yo2");
         return "redirect:/formationList";
     }
 

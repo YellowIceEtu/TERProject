@@ -69,8 +69,8 @@
 
         <div class="form-group">
             <label for="conformiteReglementaire"> Tapez le conformiteReglementaire : </label>
-            Oui<form:checkbox path="conformiteReglementaire" value="1"/>
-            Non<form:checkbox path="conformiteReglementaire" value="0"/>
+            Oui<form:radiobutton path="conformiteReglementaire" value="1"/>
+            Non<form:radiobutton path="conformiteReglementaire" value="0"/>
 
             <form:errors path="conformiteReglementaire" cssClass="alert alert-warning" element="div" />
         </div>

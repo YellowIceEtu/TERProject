@@ -47,6 +47,9 @@
                     <thead>
                     <tr>
                         <th scope="col">Ligne</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+
                     </tr>
                     </thead>
                     <tbody>
