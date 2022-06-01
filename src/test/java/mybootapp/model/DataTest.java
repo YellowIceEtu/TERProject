@@ -74,19 +74,14 @@ class DataTest {
         u.setIdComposante(c);
         assertTrue(u.getIdComposante().getIntitule().equals("test"));
     }
-    @Test
-    public void findByidCAS(){
-        Utilisateur utilisateur = new Utilisateur();
-        utilisateur.setIdCAS("o18025131");
-        assertTrue(utilisateurService.findByidCAS(utilisateur.getIdCAS()));
 
-    }
 
     @Test
     public void getByidCAS(){
         Utilisateur utilisateur = new Utilisateur();
         utilisateur.setIdCAS("o18025131");
-        assertTrue(utilisateurService.getByidCAS("o18025131").getIdCAS().equals(utilisateur.getIdCAS()));
+        Utilisateur utilisateur1 = utilisateurService.getByidCAS("o18025131");
+        assertTrue(utilisateur1.getIdCAS().equals(utilisateur.getIdCAS()));
 
     }
 }

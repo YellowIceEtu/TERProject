@@ -39,18 +39,14 @@ public class CasUserDetailService implements AuthenticationUserDetailsService<Ca
             collection.add(new SimpleGrantedAuthority("ROLE_USER"));
         }*/
         Collection<SimpleGrantedAuthority> collection = new ArrayList<SimpleGrantedAuthority>();
-        if (utilisateurService.findByidCAS(username)) {
-            if (utilisateurService.getByidCAS(username).isAdmin())
+
+            if (utilisateurService.getByidCAS(username).isAdmin()){
                 collection.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+            }
             else {
                 collection.add(new SimpleGrantedAuthority("ROLE_USER"));
 
             }
-        }
-        else {
-                collection.add(new SimpleGrantedAuthority("ROLE_USER"));
-            }
-
             var user = new User(username, "", collection);
             return user;
     }

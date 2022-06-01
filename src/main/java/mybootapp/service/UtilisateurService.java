@@ -17,21 +17,9 @@ public class UtilisateurService {
 
 
 
-    public boolean findByidCAS(String idCAS){
-        Collection<Utilisateur> utilisateurs = utilisateurRepo.findAll();
-        for(Utilisateur utilisateur:utilisateurs){
-            if (utilisateur.getIdCAS().equals(idCAS))
-                return true;
-        }
-        return false;
-    }
     public Utilisateur getByidCAS(String idCAS){
-        Collection<Utilisateur> utilisateurs = utilisateurRepo.findAll();
-        for(Utilisateur utilisateur:utilisateurs){
-            if (utilisateur.getIdCAS().equals(idCAS))
-                return utilisateur;
-        }
-        return null;
+        Utilisateur utilisateur = utilisateurRepo.getByIdCAS(idCAS).get(0);
+        return utilisateur;
     }
 
     public Map<Utilisateur,Boolean> getAdmins(){
