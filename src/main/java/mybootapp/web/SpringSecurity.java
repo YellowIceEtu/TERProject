@@ -45,8 +45,10 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/user/**")
                 .hasRole("USER")
-                .antMatchers("/", "/login/cas", "/favicon.ico", "/error").hasRole("USER")
+                .antMatchers("/", "/login/cas", "/favicon.ico", "/error")
+                .permitAll()
                 .antMatchers("/admin").hasRole("ADMIN")
+                //.antMatchers("/correspondant").hasRole("USER")
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -61,4 +63,5 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
                 //Process logout
                 .addFilterBefore(requestSingleLogoutFilter, LogoutFilter.class);
     }
+
 }

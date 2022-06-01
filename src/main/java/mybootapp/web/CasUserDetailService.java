@@ -8,6 +8,7 @@ import java.util.Map;
 import mybootapp.model.Utilisateur;
 import mybootapp.service.UtilisateurService;
 import org.jasig.cas.client.authentication.AttributePrincipal;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.cas.authentication.CasAssertionAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.AuthenticationUserDetailsService;
@@ -19,10 +20,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class CasUserDetailService implements AuthenticationUserDetailsService<CasAssertionAuthenticationToken> {
 
+
+    @Autowired
+    UtilisateurService utilisateurService;
+
     @Override
     public UserDetails loadUserDetails(CasAssertionAuthenticationToken authentication)
             throws UsernameNotFoundException {
-        UtilisateurService utilisateurService = new UtilisateurService();
+
         AttributePrincipal principal = authentication.getAssertion().getPrincipal();
         Map attributes = principal.getAttributes();
         String email = (String) attributes.get("mail");
@@ -31,23 +36,23 @@ public class CasUserDetailService implements AuthenticationUserDetailsService<Ca
         System.out.println("username = " + username);
         System.out.println("email = " + email);
         System.out.println("affi = " + affi);
-       /* Collection<SimpleGrantedAuthority> collection = new ArrayList<SimpleGrantedAuthority>();
-        if (affi.equals("faculty")) {
-            collection.add(new SimpleGrantedAuthority("ROLE_USER"));
-        }
-        if (affi.equals("student")) {
-            collection.add(new SimpleGrantedAuthority("ROLE_USER"));
-        }*/
+
+
+        Utilisateur utilisateur = utilisateurService.getByidCAS(username);
         Collection<SimpleGrantedAuthority> collection = new ArrayList<SimpleGrantedAuthority>();
 
-            if (utilisateurService.getByidCAS(username).isAdmin()){
-                collection.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
-            }
-            else {
-                collection.add(new SimpleGrantedAuthority("ROLE_USER"));
-
-            }
-            var user = new User(username, "", collection);
-            return user;
+        if (utilisateur.isAdmin()){
+            collection.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+        } else {
+            collection.add(new SimpleGrantedAuthority("ROLE_USER"));
+        }
+        var composante = utilisateur.getIdComposante();
+        if(composante != null ){
+            var role ="ROLE_COMPOSANTE" + composante.getId();
+            collection.add(new SimpleGrantedAuthority(role));
+        }
+        var user = new User(username, "", collection);
+        return user;
     }
 }
+

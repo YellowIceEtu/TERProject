@@ -14,9 +14,6 @@ public class UtilisateurService {
     @Autowired
     UtilisateurRepo utilisateurRepo;
 
-
-
-
     public Utilisateur getByidCAS(String idCAS){
         Utilisateur utilisateur = utilisateurRepo.getByIdCAS(idCAS).get(0);
         return utilisateur;

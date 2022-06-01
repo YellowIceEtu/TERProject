@@ -26,17 +26,19 @@
             <th scope="col">Nom</th>
             <th scope="col">Prénom</th>
             <th scope="col">Administrateur</th>
+            <th scope="col">Login</th>
         </tr>
         </thead>
         <tbody>
         <tr>
             <c:forEach items="${utilisateur}" var="utilisateur">
-                <c:choose>
+            <c:choose>
             <c:when test="${utilisateur.admin == true}">
             <td><c:out value="${utilisateur.nom}" /></td>
             <td><c:out value="${utilisateur.prenom}" /></td>
             <td><c:out value="${utilisateur.admin}" /></td>
-                <td><a href="${suppr}${utilisateur.id}">Supprimer</a></td>
+            <td><c:out value="${utilisateur.idCAS}" /></td>
+            <td><a href="${suppr}${utilisateur.id}">Supprimer</a></td>
         </tr>
         </c:when>
         </c:choose>
@@ -53,20 +55,22 @@
             <th scope="col">Nom</th>
             <th scope="col">Prénom</th>
             <th scope="col">Composante</th>
+            <th scope="col">Login</th>
 
         </tr>
         </thead>
         <tbody>
 
         <tr>
-    <c:forEach items="${utilisateur}" var="utilisateur">
-        <c:choose>
+            <c:forEach items="${utilisateur}" var="utilisateur">
+            <c:choose>
             <c:when test="${utilisateur.idComposante != null}">
 
 
-    <td><c:out value="${utilisateur.nom}" /></td>
-    <td><c:out value="${utilisateur.prenom}" /></td>
-    <td><c:out value="${utilisateur.idComposante.intitule}" /></td>
+            <td><c:out value="${utilisateur.nom}" /></td>
+            <td><c:out value="${utilisateur.prenom}" /></td>
+            <td><c:out value="${utilisateur.idComposante.intitule}" /></td>
+            <td><c:out value="${utilisateur.idCAS}" /></td>
             <td><a href="${suppr}${utilisateur.id}">Supprimer</a></td>
         </tr>
         </c:when>
