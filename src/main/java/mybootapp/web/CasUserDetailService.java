@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import mybootapp.model.Composante;
 import mybootapp.model.Utilisateur;
 import mybootapp.service.UtilisateurService;
 import org.jasig.cas.client.authentication.AttributePrincipal;
@@ -45,7 +46,9 @@ public class CasUserDetailService implements AuthenticationUserDetailsService<Ca
         } else {
             collection.add(new SimpleGrantedAuthority("ROLE_USER"));
         }
-        var composante = utilisateur.getIdComposante();
+        var composante = new Composante();
+        if (utilisateur!= null){
+            composante = utilisateur.getIdComposante();}
         if(composante != null ){
             var role ="ROLE_COMPOSANTE" + composante.getId();
             collection.add(new SimpleGrantedAuthority(role));
