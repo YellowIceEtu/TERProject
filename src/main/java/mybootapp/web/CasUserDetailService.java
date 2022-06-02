@@ -40,8 +40,7 @@ public class CasUserDetailService implements AuthenticationUserDetailsService<Ca
 
         Utilisateur utilisateur = utilisateurService.getByidCAS(username);
         Collection<SimpleGrantedAuthority> collection = new ArrayList<SimpleGrantedAuthority>();
-
-        if (utilisateur.isAdmin()){
+        if (utilisateur != null && utilisateur.isAdmin()){
             collection.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
         } else {
             collection.add(new SimpleGrantedAuthority("ROLE_USER"));
