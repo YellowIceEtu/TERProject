@@ -30,7 +30,8 @@
 
         <div class="form-group">
             <label for="etatRecrutement">Etat de recrutement :</label>
-            <form:input class="form-control" path="etatRecrutement"/>
+            Ouvert <form:radiobutton path="etatRecrutement" value="1"/>
+            Fermé <form:radiobutton path="etatRecrutement" value="2"/>
             <form:errors path="etatRecrutement" cssClass="alert alert-warning" element="div" />
         </div>
 

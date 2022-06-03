@@ -48,7 +48,7 @@ public class Session implements Serializable {
     @NotBlank(message = "une réponse doit être choisie")
     @Basic()
     @Column(name = "etatRecrutement")
-    private int etatRecrutement;
+    private String etatRecrutement;
 
     @NotBlank(message = "le champ ne doit pas être vide")
     @Size(max = 3000, message = "max 3000 caractères")
