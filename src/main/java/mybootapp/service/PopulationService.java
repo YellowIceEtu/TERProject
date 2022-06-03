@@ -43,7 +43,7 @@ public class PopulationService {
                 s.setFin("2021/11/17");
                 f.getAction().getSessions().add(s);
                 composanteRepo.save(c);
-                f.setComposante(c);
+               // f.setComposante(c);
                 formationRepo.save(f);
                 c.addFormation(f);
             }
