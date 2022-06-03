@@ -158,7 +158,6 @@ public class FormationController {
         return listBuilder.preRequisList();
     }
 
-    @ModelAttribute("formation")
     @RequestMapping(value = "formationDetails/edit", method = RequestMethod.POST)
     public String saveFormation(@ModelAttribute("formation") @Valid Formation formation, BindingResult result) {
         if (result.hasErrors()) {
