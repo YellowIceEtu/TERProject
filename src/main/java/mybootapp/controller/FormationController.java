@@ -160,13 +160,13 @@ public class FormationController {
 
 
     @RequestMapping(value = "formationDetails/edit", method = RequestMethod.POST)
-    public String saveProduct(@ModelAttribute("formation") @Valid Formation formation, BindingResult result) {
+    public String saveFormation(@ModelAttribute("formation") @Valid Formation formation, BindingResult result) {
         if (result.hasErrors()) {
             return "formation/formationForm";
         }
-        formation.setEtatEdition("brouillon");
+        formation.setEtatEdition("stable");
         formationRepo.save(formation);
-        return "redirect:/formationDetails";
+        return "redirect:/formationDetails?id=${formation.id}";
     }
 
 
