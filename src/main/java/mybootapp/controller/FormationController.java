@@ -202,11 +202,13 @@ public class FormationController {
 
 
 
+    @ModelAttribute("composante")
     @RequestMapping(value = "correspondant", method = RequestMethod.GET)
-    public ModelAndView correspondantPage() {
+    public ModelAndView correspondantPage(@RequestParam(value = "id") Long id) {
 
         // Collection<Composante> composantes = composanteRepo.findAll();
-        Composante composantes = composanteRepo.findAll().get(0);
+        Composante composantes = composanteRepo.getById(id);
+
         return new ModelAndView("correspondant", "composante",composantes);
     }
 
@@ -247,8 +249,8 @@ public class FormationController {
         // c.addAdresse(adresse);
         composanteRepo.save(c);
         System.out.println("adresses:  "+c.getAdresses());
-
-        return "redirect:/formationList";
+        Long idComposanteOfAdress = composanteServcie.getIdComposanteWithAdress(adresse);
+        return "redirect:/correspondant?id="+idComposanteOfAdress;
     }
 
     /*
@@ -283,8 +285,9 @@ public class FormationController {
         if (result.hasErrors()) {
             return "editAdress";
         }
+        Long idComposanteOfAdress = composanteServcie.getIdComposanteWithAdress(adresse);
         adresseRepo.save(adresse);
-        return "redirect:/formationList";
+        return "redirect:/correspondant?id="+idComposanteOfAdress;
     }
 
 
@@ -294,6 +297,6 @@ public class FormationController {
         Long idComposanteOfAdress = composanteServcie.getIdComposanteWithAdress(adresse);
 
         adresseRepo.deleteById(id);
-        return "redirect:/correspondant"+idComposanteOfAdress;
+        return "redirect:/correspondant?id="+idComposanteOfAdress;
     }
 }
