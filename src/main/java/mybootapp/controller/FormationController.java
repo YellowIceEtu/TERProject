@@ -12,6 +12,7 @@ import mybootapp.model.*;
 import mybootapp.repo.*;
 import mybootapp.service.ComposanteServcie;
 import mybootapp.service.ListBuilder;
+import mybootapp.service.PopulationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -40,41 +41,19 @@ public class FormationController {
     ListBuilder listBuilder;
 
     @Autowired
+    UtilisateurRepo utilisateurRepo;
+
+    @Autowired
     ComposanteServcie composanteServcie;
+
+    @Autowired
+    PopulationService populationService;
 
 
 //    @Value("#{applicationProperties}")
 //    private Map<String, String> systemPropertiesMap;
 
-    @PostConstruct
-    public void init(){
-        Map<String, String> list = new LinkedHashMap<>();
-        for(int i = 0; i < 2; i++){
-            Composante c = new Composante();
-            c.setIntitule("composante".concat(Integer.toString(i)));
-            c.setFormations(new ArrayList<>());
-            for(int j = 0; j < 2; j++){
-                Formation f = new Formation();
-                f.init(2 * i + j);
-                Session s = new Session();
-                s.setSessionOuverte(1);
-                s.setDebut("2021/11/16");
-                s.setFin("2021/11/17");
-                f.getAction().getSessions().add(s);
-                composanteRepo.save(c);
-                f.setComposante(c);
-                formationRepo.save(f);
-                c.addFormation(f);
-            }
-            Collection<Adresse> adresses = new ArrayList<>();
-            Adresse a = new Adresse();
-            c.setAdresses(adresses);
-            a.setLigne("163 Av. de Luminy, 13009 Marseille");
-            adresseRepo.save(a);
-            c.addAdresse(a);
-            composanteRepo.save(c);
-        }
-    }
+
 
     @Value("${application.message:Hello World}")
     private String message;

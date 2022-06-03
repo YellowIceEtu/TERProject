@@ -41,29 +41,6 @@ public class UtilisateurController {
     @Autowired
     ComposanteRepo composanteRepo;
 
-    @PostConstruct
-    public void init(){
-        Composante c = new Composante();
-
-        c.setIntitule("composante");
-        c.setFormations(new ArrayList<>());
-
-        Utilisateur utilisateurs = new Utilisateur();
-
-        utilisateurs.setNom("Ould-Chibani");
-        utilisateurs.setPrenom("Abdessettar");
-        utilisateurs.setAdmin(true);
-        utilisateurs.setIdComposante(c);
-        utilisateurs.setIdCAS("o18025131");
-
-        utilisateurRepo.save(utilisateurs);
-
-        composanteRepo.save(c);
-
-
-
-    }
-
     @RequestMapping(value = "/gestionUtilisateur", method = RequestMethod.GET)
     public ModelAndView gestionUtilisateurPage() {
         //Collection<Composante> composantes = composanteRepo.findAll();
