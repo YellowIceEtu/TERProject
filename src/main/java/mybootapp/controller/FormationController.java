@@ -166,7 +166,7 @@ public class FormationController {
         }
         formation.setEtatEdition("stable");
         formationRepo.save(formation);
-        return "redirect:/formationDetails?id=${formation.id}";
+        return "redirect:/formationDetails";
     }
 
 
