@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 
 @Service
 public class PopulationService {
@@ -39,11 +40,12 @@ public class PopulationService {
                 f.init(2 * i + j);
                 Session s = new Session();
                 s.setSessionOuverte(1);
-                s.setDebut("2021/11/16");
-                s.setFin("2021/11/17");
+                s.setDebut(new Date());
+                s.setFin(new Date());
                 f.getAction().getSessions().add(s);
                 composanteRepo.save(c);
-               // f.setComposante(c);
+
+               //f.setComposante(c);
                 formationRepo.save(f);
                 c.addFormation(f);
             }

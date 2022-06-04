@@ -4,27 +4,42 @@
 
 <div class="container">
     <h1>Edit Formation</h1>
-    <p class="title"><c:out value="Composante :" /></p>
-    <p><c:out value="${formation.composante.intitule}" /></p>
-    <p class="title"><c:out value="Code formation :" /></p>
-    <p><c:out value="${formation.code}" /></p>
-    <p class="title"><c:out value="Etat d'édition :" /></p>
-    <p> <c:out value="${formation.etatEdition}" /> </p>
-    <p class="title"><c:out value="Code CERTIFINFO :" /></p>
-    <p> <c:out value="${formation.CERTIFINFO}" /> </p>
-
+    <p class="title"></p>
     <form:form method="POST" modelAttribute="formation">
-
         <div class="form-group">
-            <label for="intitule">Intitule :</label>
-            <form:input path="intitule" class="form-control" />
+            <label for="intitule"><c:out value="Intitulé de la formation : " /></label>
+            <form:input type="" path="intitule" class="form-control" />
             <form:errors path="intitule" cssClass="alert alert-warning"
+                         element="div" />
+        </div>
+        <div class="form-group">
+            <label for="code"><c:out value="Code de la formation : " /><strong><c:out value="${formation.code}" /></strong></label>
+            <form:input type="hidden" path="code" class="form-control" />
+            <form:errors path="code" cssClass="alert alert-warning"
+                         element="div" />
+        </div>
+        <div class="form-group">
+            <label for="etatEdition"><c:out value="Etat d'édition : " /><strong><c:out value="${formation.etatEdition}" /></strong></label>
+            <form:input type="hidden" path="etatEdition" class="form-control" />
+            <form:errors path="etatEdition" cssClass="alert alert-warning"
+                         element="div" />
+        </div>
+        <div class="form-group">
+            <label for="CERTIFINFO"><c:out value="Code CERTIFINFO de la formation : " /><strong><c:out value="${formation.CERTIFINFO}" /></strong></label>
+            <form:input type="hidden" path="CERTIFINFO" class="form-control" />
+            <form:errors path="CERTIFINFO" cssClass="alert alert-warning"
                          element="div" />
         </div>
         <div class="form-group">
             <label for="resultatsAttendus">résultats attendus :</label>
             <form:textarea class="form-control" path="resultatsAttendus" rows="4" />
             <form:errors path="resultatsAttendus" cssClass="alert alert-warning"
+                         element="div" />
+        </div>
+        <div class="form-group">
+            <label for="objectif">Objectif de la formation :</label>
+            <form:textarea class="form-control" path="objectif" rows="4" />
+            <form:errors path="objectif" cssClass="alert alert-warning"
                          element="div" />
         </div>
         <div class="form-group">
@@ -49,12 +64,12 @@
                          element="div" />
         </div>
         <div class="form-group">
-            <label for="objectif">Objectif de la formation :</label>
-            <form:select path="objectif" multiple="false" class="form-control">
+            <label for="objectifGeneral">Objectif général de la formation :</label>
+            <form:select path="objectifGeneral" multiple="false" class="form-control">
                 <form:option value="" label="--- Select ---" />
-                <form:options items="${objectif}" />
+                <form:options items="${objectifGeneral}" />
             </form:select>
-            <form:errors path="objectif" cssClass="alert alert-warning"
+            <form:errors path="objectifGeneral" cssClass="alert alert-warning"
                          element="div" />
         </div>
         <div class="form-group">

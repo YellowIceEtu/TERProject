@@ -85,9 +85,9 @@ public class Formation extends BaseData implements Serializable {
     private Adresse adresse;
 
 
-    @ManyToOne
+    /*@ManyToOne
     @JoinColumn( name="composante" )
-    private Composante composante;
+    private Composante composante;*/
 
     public Formation() {
         this.action = new Action();

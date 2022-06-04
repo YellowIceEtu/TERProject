@@ -6,7 +6,7 @@ import mybootapp.repo.AdresseRepo;
 import mybootapp.repo.ComposanteRepo;
 import mybootapp.repo.FormationRepo;
 import mybootapp.repo.UtilisateurRepo;
-import mybootapp.service.ComposanteServcie;
+import mybootapp.service.ComposanteService;
 import mybootapp.service.ListBuilder;
 import mybootapp.service.PopulationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +37,7 @@ public class AdresseController {
     UtilisateurRepo utilisateurRepo;
 
     @Autowired
-    ComposanteServcie composanteServcie;
+    ComposanteService composanteServcie;
 
     @Autowired
     PopulationService populationService;

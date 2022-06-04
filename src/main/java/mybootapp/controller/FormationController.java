@@ -1,8 +1,6 @@
 package mybootapp.controller;
 
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.security.Principal;
 
 import java.util.*;
@@ -10,19 +8,17 @@ import java.util.*;
 
 import mybootapp.model.*;
 import mybootapp.repo.*;
-import mybootapp.service.ComposanteServcie;
+import mybootapp.service.ComposanteService;
 import mybootapp.service.DateValidator;
 import mybootapp.service.ListBuilder;
 import mybootapp.service.PopulationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.annotation.PostConstruct;
 import javax.validation.Valid;
 
 @RequestMapping("/")
@@ -45,7 +41,7 @@ public class FormationController {
     UtilisateurRepo utilisateurRepo;
 
     @Autowired
-    ComposanteServcie composanteServcie;
+    ComposanteService composanteService;
 
     @Autowired
     PopulationService populationService;
@@ -122,7 +118,7 @@ public class FormationController {
     public Map<String, String> typeDeParcoursList() {
         return listBuilder.typeDeParcoursList();
     }
-    @ModelAttribute("objectif")
+    @ModelAttribute("objectifGeneral")
     public Map<String, String> objectifGeneralList() {
         return listBuilder.objectifGeneralList();
     }
@@ -171,7 +167,7 @@ public class FormationController {
         }
         formation.setEtatEdition("stable");
         formationRepo.save(formation);
-        return "redirect:/formationDetails";
+        return "redirect:/formationDetails?id="+formation.getId();
     }
 
 
@@ -200,7 +196,7 @@ public class FormationController {
         }
         formation.setEtatEdition("brouillon");
         formationRepo.save(formation);
-        Composante c = composanteRepo.getById(formation.getComposante().getId());
+        Composante c = composanteRepo.getById(composanteService.getIdComposanteWithFormation(formation));
         c.addFormation(formation);
         composanteRepo.save(c);
         return "redirect:/formationList";
