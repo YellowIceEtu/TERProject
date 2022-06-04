@@ -8,6 +8,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 @Controller
@@ -15,6 +17,17 @@ public class ComposanteController {
 
     @Autowired
     ComposanteRepo composanteRepo;
+
+
+    @ModelAttribute("composante")
+    @RequestMapping(value = "/correspondant", method = RequestMethod.GET)
+    public ModelAndView correspondantPage(@RequestParam(value = "id") Long id) {
+
+        // Collection<Composante> composantes = composanteRepo.findAll();
+        Composante composantes = composanteRepo.getById(id);
+
+        return new ModelAndView("correspondant", "composante",composantes);
+    }
 
 
 

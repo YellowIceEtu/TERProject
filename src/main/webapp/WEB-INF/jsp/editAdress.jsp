@@ -8,9 +8,9 @@
 <div class="container">
     <h1> Edition de l'adresse</h1>
 
-    <form:form method="post" action="/editAdress/${id}">
+    <form:form method="post" modelAttribute="adresse">
 
-        <form:errors path="*" cssClass="alert alert-danger" element="div" />
+
 
         <div class="form-group">
             <label for="ligne"> Tapez l'adresse : </label>

@@ -158,6 +158,7 @@ public class FormationController {
         return listBuilder.preRequisList();
     }
 
+
     @RequestMapping(value = "formationDetails/edit", method = RequestMethod.POST)
     public String saveFormation(@ModelAttribute("formation") @Valid Formation formation, BindingResult result) {
         if (result.hasErrors()) {
@@ -202,15 +203,6 @@ public class FormationController {
 
 
 
-    @ModelAttribute("composante")
-    @RequestMapping(value = "correspondant", method = RequestMethod.GET)
-    public ModelAndView correspondantPage(@RequestParam(value = "id") Long id) {
-
-        // Collection<Composante> composantes = composanteRepo.findAll();
-        Composante composantes = composanteRepo.getById(id);
-
-        return new ModelAndView("correspondant", "composante",composantes);
-    }
 
     /*
     @RequestMapping(value = "/correspondant/addAdress", method = RequestMethod.GET)
@@ -231,72 +223,5 @@ public class FormationController {
     }
 */
 
-    @RequestMapping(value = "/correspondant/addAdress/{id}", method = RequestMethod.GET)
-    public String addAdresse(@ModelAttribute Adresse adresse) {
-        return "adresseForm";}
 
-
-    @RequestMapping(value = "/correspondant/addAdress/{idComposante}", method = RequestMethod.POST)
-    public String saveAdresse(@ModelAttribute("adresse") @Valid Adresse adresse, BindingResult result, @PathVariable Long idComposante ) {
-
-        if (result.hasErrors()) {
-            return "adresseForm";
-        }
-        //  Adresse
-        adresseRepo.save(adresse);
-        Composante c = composanteRepo.getById(idComposante);
-        c.getAdresses().add(adresse);
-        // c.addAdresse(adresse);
-        composanteRepo.save(c);
-        System.out.println("adresses:  "+c.getAdresses());
-        Long idComposanteOfAdress = composanteServcie.getIdComposanteWithAdress(adresse);
-        return "redirect:/correspondant?id="+idComposanteOfAdress;
-    }
-
-    /*
-    @RequestMapping(value = "/editAdress/{id}")
-    public String showNewAdress(@PathVariable Long id, Model model) {
-        model.addAttribute("id", id);
-        model.addAttribute("command", adresseRepo.findById(id).orElse(null));
-        return "editAdress";
-    }
-
-    @RequestMapping(value = "/editAdress/{id}", method = RequestMethod.POST)
-    public String editAdress(@PathVariable Long id, @ModelAttribute("contact") Adresse adresse) {
-        Adresse newAdress = adresseRepo.findById(id).orElse(null);
-        newAdress.setLigne(adresse.getLigne());
-        adresseRepo.save(newAdress);
-        return "redirect:/correspondant";
-    }
-*/
-
-    @ModelAttribute("adresse")
-    @RequestMapping(value = "/correspondant/editAdress", method = RequestMethod.GET)
-    public ModelAndView editAdress( @RequestParam(value = "id") Long id) {
-        // Formation formation = formationRepo.getById(id);
-        Adresse adresse = adresseRepo.getById(id);
-        return new ModelAndView("editAdress", "adresse", adresse);
-    }
-
-    @RequestMapping(value = "/correspondant/editAdress", method = RequestMethod.POST)
-    public String editAdress( @ModelAttribute Adresse adresse, BindingResult result) {
-        //  Adresse newAdress = adresseRepo.findById(id).orElse(null);
-        //newAdress.setLigne(adresse.getLigne());
-        if (result.hasErrors()) {
-            return "editAdress";
-        }
-        Long idComposanteOfAdress = composanteServcie.getIdComposanteWithAdress(adresse);
-        adresseRepo.save(adresse);
-        return "redirect:/correspondant?id="+idComposanteOfAdress;
-    }
-
-
-    @RequestMapping(value = "/deleteAdress/{id}")
-    public String deleteAdress(@PathVariable Long id) {
-        Adresse adresse = adresseRepo.getById(id);
-        Long idComposanteOfAdress = composanteServcie.getIdComposanteWithAdress(adresse);
-
-        adresseRepo.deleteById(id);
-        return "redirect:/correspondant?id="+idComposanteOfAdress;
-    }
 }

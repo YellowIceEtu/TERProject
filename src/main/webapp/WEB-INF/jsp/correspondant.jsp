@@ -7,7 +7,7 @@
 <c:url var="view" value="/formationDetails" />
 <c:url var="add" value="/correspondant/addAdress" />
 <c:url var="edit" value="/correspondant/editAdress" />
-<c:url var="remove" value="/correspondant" />
+<c:url var="remove" value="/deleteAdress" />
 
 
 
@@ -56,8 +56,8 @@
         <c:forEach items="${composante.adresses}" var="adresse">
             <tr>
                 <td><c:out value="${adresse.ligne}" /></td>
-                <td><a href="/editAdress/${adresse.id}">modifier</a></td>
-                <td><a href="/deleteAdress/${adresse.id}">Supprimer</a></td>
+                <td><a href="${edit}?id=${adresse.id}">modifier</a></td>
+                <td><a href="${remove}/${adresse.id}">Supprimer</a></td>
             </tr>
         </c:forEach>
         </tbody>
