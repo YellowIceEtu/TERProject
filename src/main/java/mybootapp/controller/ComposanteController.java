@@ -3,6 +3,7 @@ package mybootapp.controller;
 import mybootapp.model.Composante;
 import mybootapp.repo.ComposanteRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -19,12 +20,13 @@ public class ComposanteController {
     ComposanteRepo composanteRepo;
 
 
+    @PreAuthorize("@authenticationService.isCorrepondant(#idComposante)")
     @ModelAttribute("composante")
     @RequestMapping(value = "/correspondant", method = RequestMethod.GET)
-    public ModelAndView correspondantPage(@RequestParam(value = "id") Long id) {
+    public ModelAndView correspondantPage(@RequestParam(value = "idComposante") Long idComposante) {
 
         // Collection<Composante> composantes = composanteRepo.findAll();
-        Composante composantes = composanteRepo.getById(id);
+        Composante composantes = composanteRepo.getById(idComposante);
 
         return new ModelAndView("correspondant", "composante",composantes);
     }
