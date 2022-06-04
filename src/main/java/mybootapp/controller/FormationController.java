@@ -11,6 +11,7 @@ import java.util.*;
 import mybootapp.model.*;
 import mybootapp.repo.*;
 import mybootapp.service.ComposanteServcie;
+import mybootapp.service.DateValidator;
 import mybootapp.service.ListBuilder;
 import mybootapp.service.PopulationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +49,9 @@ public class FormationController {
 
     @Autowired
     PopulationService populationService;
+
+    @Autowired
+    DateValidator validator;
 
 
 //    @Value("#{applicationProperties}")
@@ -94,6 +98,7 @@ public class FormationController {
 
     @RequestMapping(value = "formationDetails/sessions/add", method = RequestMethod.POST)
     public String addSession(@ModelAttribute @Valid Session session, BindingResult result, @RequestParam(value = "id") Long formationid) {
+        validator.validate(session,result);
         if (result.hasErrors()) {
             return "session/sessionCreate";
         }

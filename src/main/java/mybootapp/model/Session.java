@@ -27,16 +27,16 @@ public class Session implements Serializable {
     private int numero;
 
     @NotBlank(message = "le champ ne doit pas être vide")
-    @Pattern(regexp="[0-9]{4}[/]{1}[0-1]{1}[0-9]{1}[/]{1}[0-3]{1}[0-9]{1}", message = "format AAAA/MM/DD")
+    @Temporal(TemporalType.DATE)
     @Basic()
     @Column(name = "debut")
-    private String debut;
+    private Date debut;
 
     @NotBlank(message = "le champ ne doit pas être vide")
-    @Pattern(regexp="[0-9]{4}[0-1][0-1]{1}[0-9]{1}[0-3]{2}[0-9]{2}", message = "format AAAA/MM/DD")
+    @Temporal(TemporalType.DATE)
     @Basic()
     @Column(name = "fin")
-    private String fin;
+    private Date fin;
 
     //checkbox non/oui -> 0/1
     @NotBlank(message = "une réponse doit être choisie")

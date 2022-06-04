@@ -19,12 +19,12 @@
 
         <div class="form-group">
             <label for="debut">Date de début :</label>
-            <form:input class="form-control" path="debut"/>
+            <form:input type="date" class="form-control" path="debut"/>
             <form:errors path="debut" cssClass="alert alert-warning" element="div" />
         </div>
         <div class="form-group">
             <label for="debut">Date de fin :</label>
-            <form:input class="form-control" path="fin"/>
+            <form:input type="date" class="form-control" path="fin"/>
             <form:errors path="fin" cssClass="alert alert-warning" element="div" />
         </div>
 
