@@ -1,13 +1,16 @@
 package mybootapp.service;
 
+import mybootapp.model.Adresse;
+import mybootapp.model.Composante;
+import mybootapp.model.Formation;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class ListBuilder {
@@ -171,5 +174,13 @@ public class ListBuilder {
             list.put(res[0], res[1]);
         }
         return list;
+    }
+
+public Map<Adresse, String> ListAdressesOfComposante(Composante composante) {
+        Map<Adresse, String> addressesList = new LinkedHashMap<>();
+        Collection<Adresse> adresses = composante.getAdresses();
+        for(Adresse a : adresses)
+            addressesList.put(a, a.getLigne());
+        return addressesList;
     }
 }

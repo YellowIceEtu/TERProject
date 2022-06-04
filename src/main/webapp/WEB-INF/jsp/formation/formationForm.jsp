@@ -267,6 +267,15 @@
                          element="div" />
         </div>
         <div class="form-group">
+            <label for="adresse">Choisissez une adresse de formation :</label>
+            <form:select path="adresse" multiple="false" class="form-control">
+                <form:option value="" label="--- Select ---" />
+                <form:options items="${listAdresses}" />
+            </form:select>
+            <form:errors path="typeParcours" cssClass="alert alert-warning"
+                         element="div" />
+        </div>
+        <div class="form-group">
             <button type="submit" class="btn btn-info">Submit</button>
         </div>
     </form:form>

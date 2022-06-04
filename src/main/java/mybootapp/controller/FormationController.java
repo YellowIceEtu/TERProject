@@ -112,7 +112,12 @@ public class FormationController {
     @RequestMapping(value = "formationDetails/edit", method = RequestMethod.GET)
     public ModelAndView editFormation( @RequestParam(value = "id") Long id){
         Formation formation = formationRepo.getById(id);
-        return new ModelAndView("formation/formationForm", "formation", formation);
+        ModelAndView modelAndView = new ModelAndView("formation/formationForm", "formation", formation);
+        Composante c = composanteRepo.getById(composanteService.getIdComposanteWithFormation(formation));
+        Map<Adresse, String> adresses = listBuilder.ListAdressesOfComposante(c);
+
+        modelAndView.addObject("listAdresses", adresses);
+        return modelAndView;
     }
     @ModelAttribute("typeDeParcours")
     public Map<String, String> typeDeParcoursList() {
@@ -158,7 +163,6 @@ public class FormationController {
     public Map<String, String> preRequisList() {
         return listBuilder.preRequisList();
     }
-
 
     @RequestMapping(value = "formationDetails/edit", method = RequestMethod.POST)
     public String saveFormation(@ModelAttribute("formation") @Valid Formation formation, BindingResult result) {

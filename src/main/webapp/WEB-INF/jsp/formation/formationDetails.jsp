@@ -85,6 +85,8 @@
         <p><c:out value="${formation.action.fraisTTC}" /></p>
         <p class="title"><c:out value="pré-requis" /></p>
         <p><c:out value="${formation.action.preRequis}" /></p>
+        <p class="title"><c:out value="adresse" /></p>
+        <p><c:out value="${formation.adresse.ligne}" /></p>
     </div>
 
     <p>
