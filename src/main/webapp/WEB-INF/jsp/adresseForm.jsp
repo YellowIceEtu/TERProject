@@ -1,4 +1,5 @@
 <%@ include file="/WEB-INF/jsp/header.jsp"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
@@ -75,6 +76,35 @@
             <form:errors path="conformiteReglementaire" cssClass="alert alert-warning" element="div" />
         </div>
 
+        <div class="form-group">
+            <label for="indiceRepetition">Choisissez un indice de répétition :</label>
+            <form:select path="indiceRepetition" multiple="false" class="form-control">
+                <form:option value="" label="--- Select ---" />
+                <form:options items="${indiceRepetition}" />
+            </form:select>
+            <form:errors path="indiceRepetition" cssClass="alert alert-warning"
+                         element="div" />
+        </div>
+
+        <div class="form-group">
+            <label for="natureDeVoie">Choisissez la nature de la voie :</label>
+            <form:select path="natureDeVoie" multiple="false" class="form-control">
+                <form:option value="" label="--- Select ---" />
+                <form:options items="${natureVoie}" />
+            </form:select>
+            <form:errors path="natureDeVoie" cssClass="alert alert-warning"
+                         element="div" />
+        </div>
+
+        <div class="form-group">
+            <label for="codePays">Choisissez la nature de la voie :</label>
+            <form:select path="codePays" multiple="false" class="form-control">
+                <form:option value="" label="--- Select ---" />
+                <form:options items="${codePays}" />
+            </form:select>
+            <form:errors path="codePays" cssClass="alert alert-warning"
+                         element="div" />
+        </div>
 
 
 

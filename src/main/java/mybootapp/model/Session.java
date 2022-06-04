@@ -23,26 +23,27 @@ public class Session implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int numero;
+    private Long id;
 
-    @NotBlank(message = "le champ ne doit pas être vide")
-    @Pattern(regexp="[0-9]{4}[/]{1}[0-1]{1}[0-9]{1}[/]{1}[0-3]{1}[0-9]{1}", message = "format AAAA/MM/DD")
+    @NotNull(message = "le champ ne doit pas être vide")
+    @Temporal(TemporalType.DATE)
     @Basic()
     @Column(name = "debut")
-    private String debut;
+    private Date debut;
 
-    @NotBlank(message = "le champ ne doit pas être vide")
-    @Pattern(regexp="[0-9]{4}[0-1][0-1]{1}[0-9]{1}[0-3]{2}[0-9]{2}", message = "format AAAA/MM/DD")
+    @NotNull(message = "le champ ne doit pas être vide")
+    @Temporal(TemporalType.DATE)
     @Basic()
     @Column(name = "fin")
-    private String fin;
+    private Date fin;
 
     //checkbox non/oui -> 0/1
     @NotBlank(message = "une réponse doit être choisie")
     @Basic()
     @Column(name = "sessionOuverte")
-    private int sessionOuverte;
+    private String sessionOuverte;
 
     //liste deroulante
     @NotBlank(message = "une réponse doit être choisie")

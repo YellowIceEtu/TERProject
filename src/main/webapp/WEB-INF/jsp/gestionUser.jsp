@@ -5,7 +5,7 @@
 
 <c:url var="addAdmini" value="/admin/gestionUtilisateur/addAdmin" />
 <c:url var="addCorres" value="/admin/gestionUtilisateur/addCorrespondant" />
-<c:url var="suppr" value="/deleteUser" />
+<c:url var="suppr" value="/deleteUtilisateur" />
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
@@ -71,7 +71,7 @@
             <td><c:out value="${utilisateur.prenom}" /></td>
             <td><c:out value="${utilisateur.idComposante.intitule}" /></td>
             <td><c:out value="${utilisateur.idCAS}" /></td>
-            <td><a href="${suppr}${utilisateur.id}">Supprimer</a></td>
+            <td><a href="${suppr}/${utilisateur.id}">Supprimer</a></td>
         </tr>
         </c:when>
         </c:choose>
