@@ -47,11 +47,12 @@ public class CasUserDetailService implements AuthenticationUserDetailsService<Ca
             collection.add(new SimpleGrantedAuthority("ROLE_USER"));
         }
         var composante = new Composante();
-        if (utilisateur!= null){
-            composante = utilisateur.getIdComposante();}
+        //if (utilisateur!= null){
+        composante = utilisateur.getIdComposante();
         if(composante != null ){
             var role ="ROLE_COMPOSANTE" + composante.getId();
             collection.add(new SimpleGrantedAuthority(role));
+            collection.add(new SimpleGrantedAuthority("ROLE_COMPOSANTE"));
         }
         var user = new User(username, "", collection);
         return user;

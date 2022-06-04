@@ -8,13 +8,14 @@ import java.security.Principal;
 import java.util.*;
 
 
+import com.sun.security.auth.UserPrincipal;
 import mybootapp.model.*;
 import mybootapp.repo.*;
-import mybootapp.service.ComposanteServcie;
-import mybootapp.service.ListBuilder;
-import mybootapp.service.PopulationService;
+import mybootapp.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -48,6 +49,10 @@ public class FormationController {
 
     @Autowired
     PopulationService populationService;
+    @Autowired
+    UtilisateurService utilisateurService;
+
+
 
 
 //    @Value("#{applicationProperties}")
@@ -199,18 +204,30 @@ public class FormationController {
         composanteRepo.save(c);
         return "redirect:/formationList";
     }
-
-
-
+    @PreAuthorize("@authenticationService.isCorrepondant(#idComposante)")
     @ModelAttribute("composante")
-    @RequestMapping(value = "correspondant", method = RequestMethod.GET)
-    public ModelAndView correspondantPage(@RequestParam(value = "id") Long id) {
+    @RequestMapping(value = "/correspondant", method = RequestMethod.GET)
+    public ModelAndView correspondantPage(@RequestParam(value = "idComposante") Long idComposante) {
 
         // Collection<Composante> composantes = composanteRepo.findAll();
-        Composante composantes = composanteRepo.getById(id);
+        Composante composantes = composanteRepo.getById(idComposante);
 
         return new ModelAndView("correspondant", "composante",composantes);
     }
+
+
+   /* @PreAuthorize("@authenticationService.isCorrepondant( #composanteId)")
+    @ModelAttribute("composante")
+    @RequestMapping(value = "correspondant", method = RequestMethod.GET)
+    public String correspondantPage( Long composanteId) {
+
+         Collection<Composante> composantes = composanteRepo.findAll();
+        UserPrincipal currentUser = (UserPrincipal) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Utilisateur utilisateur = utilisateurService.getByidCAS(currentUser.getName());
+        Composante composantes = utilisateur.getIdComposante();
+
+        return "redirect:/correspondant?id="+composanteId;
+    }*/
 
     /*
     @RequestMapping(value = "/correspondant/addAdress", method = RequestMethod.GET)

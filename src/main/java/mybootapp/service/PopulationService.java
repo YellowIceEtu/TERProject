@@ -43,7 +43,7 @@ public class PopulationService {
                 s.setFin("2021/11/17");
                 f.getAction().getSessions().add(s);
                 composanteRepo.save(c);
-                f.setComposante(c);
+                //f.setComposante(c);
                 formationRepo.save(f);
                 c.addFormation(f);
             }
@@ -62,13 +62,15 @@ public class PopulationService {
 
         Utilisateur utilisateurs = new Utilisateur();
 
-        utilisateurs.setNom("Coquard");
-        utilisateurs.setPrenom("Damien");
+        utilisateurs.setNom("Abdessettar");
+        utilisateurs.setPrenom("Ould-Chibani");
         utilisateurs.setAdmin(true);
         utilisateurs.setIdComposante(c);
-        utilisateurs.setIdCAS("c18024224");
+        utilisateurs.setIdCAS("o18025131");
 
         utilisateurRepo.save(utilisateurs);
+
+
 
         composanteRepo.save(c);
     }
