@@ -31,8 +31,8 @@
                 <td><c:out value="${session.debut}" /></td>
                 <td><c:out value="${session.fin}" /></td>
                 <td><c:out value="${session.sessionOuverte}" /></td>
-                <td> <a href="${form}?id=${session.numero}"> modifier la session</a></td>
-                <td> <a href="${form}?id=${session.numero}"> supprimer la session</a></td>
+            <td><a href="/sessionEdit/${session.id}">modifier</a></td>
+                <td> <a href="${form}?id=${session.id}"> supprimer la session</a></td>
 
 
             </tr>
@@ -41,7 +41,7 @@
 
 
     </ul>
-    <button class="ajouter-session-button"><a href="${addSession}?fid=${formation.id}">Ajouter une session</a></button>
+    <button class="ajouter-session-button"><a href="${addSession}">Ajouter une session</a></button>
 
 </div>
 

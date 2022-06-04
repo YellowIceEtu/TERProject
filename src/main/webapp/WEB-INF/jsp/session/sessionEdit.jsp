@@ -13,7 +13,7 @@
 <div class="container">
     <h1>Ajout d'une Session</h1>
 
-    <form:form method="POST" modelAttribute="session" >
+    <form:form method="post" action="/sessionEdit/${id}">
 
         <form:errors path="*" cssClass="alert alert-danger" element="div" />
 

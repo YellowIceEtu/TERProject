@@ -10,9 +10,7 @@ import java.util.*;
 
 import mybootapp.model.*;
 import mybootapp.repo.*;
-import mybootapp.service.ComposanteServcie;
-import mybootapp.service.ListBuilder;
-import mybootapp.service.PopulationService;
+import mybootapp.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -38,6 +36,9 @@ public class FormationController {
     AdresseRepo adresseRepo;
 
     @Autowired
+    SessionRepository sessionRepository;
+
+    @Autowired
     ListBuilder listBuilder;
 
     @Autowired
@@ -47,7 +48,13 @@ public class FormationController {
     ComposanteServcie composanteServcie;
 
     @Autowired
+    FormationService formationService;
+
+    @Autowired
     PopulationService populationService;
+
+    @Autowired
+    DateValidator dateValidator;
 
 
 //    @Value("#{applicationProperties}")
@@ -87,18 +94,47 @@ public class FormationController {
         return new ModelAndView("session/sessionList", "formation", formation);
     }
 
-    @RequestMapping(value = "formationDetails/sessions/add", method = RequestMethod.GET)
+    @RequestMapping(value = "formationDetails/sessions/add/{id}", method = RequestMethod.GET)
     public String addSession(@ModelAttribute Session session) {
         return "session/sessionCreate";
     }
 
     @RequestMapping(value = "formationDetails/sessions/add", method = RequestMethod.POST)
     public String addSession(@ModelAttribute @Valid Session session, BindingResult result, @RequestParam(value = "id") Long formationid) {
+        dateValidator.validate(session, result);
         if (result.hasErrors()) {
             return "session/sessionCreate";
         }
     //(user.hasright()formationid));
         return "session/sessionList";
+    }
+
+    @ModelAttribute("session")
+    @RequestMapping(value = "/formationDetails/sessions/sessionEdit", method = RequestMethod.GET)
+    public ModelAndView sessionEdit( @RequestParam(value = "id") Long id) {
+        // Formation formation = formationRepo.getById(id);
+        Session session = sessionRepository.getById(id);
+        return new ModelAndView("session/sessionEdit", "session", session);
+    }
+
+    @RequestMapping(value = "/formationDetails/sessions/sessionEdit", method = RequestMethod.POST)
+    public String editSession( @ModelAttribute Session session, BindingResult result) {
+        dateValidator.validate(session, result);
+        if (result.hasErrors()) {
+            return "editAdress";
+        }
+        sessionRepository.save(session);
+        return "redirect:/formationDetails/sessions";
+    }
+
+
+    @RequestMapping(value = "/deleteSession/{id}")
+    public String deleteSession(@PathVariable Long id) {
+        Session session = sessionRepository.getById(id);
+        Long idFormationOfSession = formationService.getIdFormationWithSession(session);
+
+        adresseRepo.deleteById(id);
+        return "redirect:/correspondant"+idFormationOfSession;
     }
 
     @RequestMapping(value = "/formationDetails", method = RequestMethod.GET)

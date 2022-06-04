@@ -1,16 +1,14 @@
 package mybootapp.service;
 
 import mybootapp.model.*;
-import mybootapp.repo.AdresseRepo;
-import mybootapp.repo.ComposanteRepo;
-import mybootapp.repo.FormationRepo;
-import mybootapp.repo.UtilisateurRepo;
+import mybootapp.repo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 
 @Service
 public class PopulationService {
@@ -27,6 +25,9 @@ public class PopulationService {
     @Autowired
     UtilisateurRepo utilisateurRepo;
 
+    @Autowired
+    SessionRepository sessionRepository;
+
 
     @PostConstruct
     public void init(){
@@ -38,9 +39,10 @@ public class PopulationService {
                 Formation f = new Formation();
                 f.init(2 * i + j);
                 Session s = new Session();
-                s.setSessionOuverte(1);
-                s.setDebut("2021/11/16");
-                s.setFin("2021/11/17");
+                s.setSessionOuverte("1");
+                s.setDebut(new Date());
+                s.setFin(new Date());
+                sessionRepository.save(s);
                 f.getAction().getSessions().add(s);
                 composanteRepo.save(c);
                 f.setComposante(c);

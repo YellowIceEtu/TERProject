@@ -33,7 +33,7 @@
 
     <div class="top">
         <button class="ajouter-formation-button"><a href="${addForm}">Ajouter une formation</a></button>
-        <button class="ajouter-composante-button"><a href=#>Ajouter une composante</a></button>
+<%--        <button class="ajouter-composante-button"><a href=#>Ajouter une composante</a></button>--%>
 
     </div>
 
