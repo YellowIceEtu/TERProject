@@ -19,19 +19,19 @@
 
         <div class="form-group">
             <label for="debut">Date de début :</label>
-            <form:input type="date"  class="form-control" path="debut"/>
+            <form:input class="form-control" path="debut"/>
             <form:errors path="debut" cssClass="alert alert-warning" element="div" />
         </div>
         <div class="form-group">
             <label for="debut">Date de fin :</label>
-            <form:input type="date"  class="form-control" path="fin"/>
+            <form:input class="form-control" path="fin"/>
             <form:errors path="fin" cssClass="alert alert-warning" element="div" />
         </div>
 
         <div class="form-group">
             <label for="etatRecrutement">Etat de recrutement :</label>
-            ouvert <form:radiobutton path="etatRecrutement" value="1"/>
-            fermé <form:radiobutton path="etatRecrutement" value="2"/>
+            Ouvert <form:radiobutton path="etatRecrutement" value="1"/>
+            Fermé <form:radiobutton path="etatRecrutement" value="2"/>
             <form:errors path="etatRecrutement" cssClass="alert alert-warning" element="div" />
         </div>
 

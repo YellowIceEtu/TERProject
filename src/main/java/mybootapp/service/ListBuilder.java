@@ -44,6 +44,15 @@ public class ListBuilder {
     @Value("#{'${ref.fraisInclusANPEC}'.split('---')}")
     private ArrayList<String> preRequis;
 
+    @Value("#{'${ref.indiceRepetition}'.split('---')}")
+    private ArrayList<String> indiceRepetition;
+
+    @Value("#{'${ref.natureVoie}'.split('---')}")
+    private ArrayList<String> natureVoieList;
+
+    @Value("#{'${ref.codePays}'.split('---')}")
+    private ArrayList<String> codePaysList;
+
     public Map<String, String> typeDeParcoursList() {
         Map<String, String> list = new LinkedHashMap<>();
         for (String s: typeDeParcours){
@@ -132,6 +141,32 @@ public class ListBuilder {
     public Map<String, String> niveauObligatoireList() {
         Map<String, String> list = new LinkedHashMap<>();
         for (String s: niveauObligatoire){
+            String [] res = s.split("--");
+            list.put(res[0], res[1]);
+        }
+        return list;
+    }
+
+    public Map<String, String> indiceRepetitionList() {
+        Map<String, String> list = new LinkedHashMap<>();
+        for (String s: indiceRepetition){
+            String [] res = s.split("--");
+            list.put(res[0], res[1]);
+        }
+        return list;
+    }
+
+    public Map<String, String> natureVoieList() {
+        Map<String, String> list = new LinkedHashMap<>();
+        for (String s: natureVoieList){
+            String [] res = s.split("--");
+            list.put(res[0], res[1]);
+        }
+        return list;
+    }
+    public Map<String, String> codePaysList() {
+        Map<String, String> list = new LinkedHashMap<>();
+        for (String s: codePaysList){
             String [] res = s.split("--");
             list.put(res[0], res[1]);
         }
