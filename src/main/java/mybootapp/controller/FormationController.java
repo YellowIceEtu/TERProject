@@ -3,6 +3,7 @@ package mybootapp.controller;
 
 import java.security.Principal;
 
+import java.text.Normalizer;
 import java.util.*;
 
 
@@ -51,23 +52,8 @@ public class FormationController {
     @Autowired
     FormationCreationValidator formationCreationValidator;
 
-
-//    @Value("#{applicationProperties}")
-//    private Map<String, String> systemPropertiesMap;
-
-
-
     @Value("${application.message:Hello World}")
     private String message;
-/*
-    @RequestMapping(value = "/")
-    public String home(Principal p) {
-        if (p == null) {
-            return "<p>Anonymous</p>" + "<p><a href='user'>User</a></p>";
-        }
-        return user(p);
-    }*/
-
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public ModelAndView home2(Principal p) {
@@ -95,11 +81,14 @@ public class FormationController {
     }
 
     @RequestMapping(value = "formationDetails/sessions/add", method = RequestMethod.POST)
-    public String addSession(@ModelAttribute @Valid Session session, BindingResult result, @RequestParam(value = "id") Long formationid) {
+    public String addSession(@ModelAttribute @Valid Session session, BindingResult result, @RequestParam(value = "formationid") Long formationid) {
         validator.validate(session,result);
         if (result.hasErrors()) {
             return "session/sessionCreate";
         }
+        Formation f = formationRepo.getById(formationid);
+        f.getAction().getSessions().add(session);
+        formationRepo.save(f);
     //(user.hasright()formationid));
         return "session/sessionList";
     }

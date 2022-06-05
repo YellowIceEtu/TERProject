@@ -193,7 +193,7 @@ public class Action implements Serializable {
 
     @ElementCollection
     @JoinColumn( name="sessions" )
-    private Collection<Session> sessions;
+    private ArrayList<Session> sessions;
 
 
     public Action() {
