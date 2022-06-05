@@ -52,7 +52,7 @@ public class PopulationService {
         for (String formation: formationTypes) {
             f = new Formation();
             f.init(composante.getIntitule(), formation);
-            s.setSessionOuverte(1);
+            s.setSessionOuverte("1");
             s.setDebut(new Date());
             s.setFin(new Date());
             f.getAction().getSessions().add(s);
@@ -80,7 +80,7 @@ public class PopulationService {
             f = new Formation();
             f.init(composante.getIntitule(), formation);
             s = new Session();
-            s.setSessionOuverte(1);
+            s.setSessionOuverte("1");
             s.setDebut(new Date());
             s.setFin(new Date());
             f.getAction().getSessions().add(s);
@@ -108,7 +108,7 @@ public class PopulationService {
             f = new Formation();
             f.init(composante.getIntitule(), formation);
             s = new Session();
-            s.setSessionOuverte(1);
+            s.setSessionOuverte("1");
             s.setDebut(new Date());
             s.setFin(new Date());
             f.getAction().getSessions().add(s);
@@ -136,7 +136,7 @@ public class PopulationService {
             f = new Formation();
             f.init(composante.getIntitule(), formation);
             s = new Session();
-            s.setSessionOuverte(1);
+            s.setSessionOuverte("1");
             s.setDebut(new Date());
             s.setFin(new Date());
             f.getAction().getSessions().add(s);

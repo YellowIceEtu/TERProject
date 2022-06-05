@@ -17,6 +17,7 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 @AllArgsConstructor
 @Getter
@@ -193,7 +194,7 @@ public class Action implements Serializable {
 
     @ElementCollection
     @JoinColumn( name="sessions" )
-    private ArrayList<Session> sessions;
+    private List<Session> sessions;
 
 
     public Action() {

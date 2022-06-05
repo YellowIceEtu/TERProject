@@ -26,13 +26,11 @@ public class Session implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int numero;
 
-    @NotBlank(message = "le champ ne doit pas être vide")
     @Temporal(TemporalType.DATE)
     @Basic()
     @Column(name = "debut")
     private Date debut;
 
-    @NotBlank(message = "le champ ne doit pas être vide")
     @Temporal(TemporalType.DATE)
     @Basic()
     @Column(name = "fin")
@@ -42,7 +40,7 @@ public class Session implements Serializable {
     @NotBlank(message = "une réponse doit être choisie")
     @Basic()
     @Column(name = "sessionOuverte")
-    private int sessionOuverte;
+    private String sessionOuverte;
 
     //liste deroulante
     @NotBlank(message = "une réponse doit être choisie")

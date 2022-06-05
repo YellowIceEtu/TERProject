@@ -41,7 +41,7 @@
 
 
     </ul>
-    <button class="ajouter-session-button"><a href="${addSession}?fid=${formation.id}">Ajouter une session</a></button>
+    <button class="ajouter-session-button"><a href="${addSession}">Ajouter une session</a></button>
 
 </div>
 

@@ -75,18 +75,18 @@ public class FormationController {
         return new ModelAndView("session/sessionList", "formation", formation);
     }
 
-    @RequestMapping(value = "formationDetails/sessions/add", method = RequestMethod.GET)
+    @RequestMapping(value = "formationDetails/sessions/add/{id}", method = RequestMethod.GET)
     public String addSession(@ModelAttribute Session session) {
         return "session/sessionCreate";
     }
 
-    @RequestMapping(value = "formationDetails/sessions/add", method = RequestMethod.POST)
-    public String addSession(@ModelAttribute @Valid Session session, BindingResult result, @RequestParam(value = "formationid") Long formationid) {
+    @RequestMapping(value = "formationDetails/sessions/add/{idFormation}", method = RequestMethod.POST)
+    public String addSession(@ModelAttribute @Valid Session session, BindingResult result, @PathVariable Long idFormation ) {
         validator.validate(session,result);
         if (result.hasErrors()) {
             return "session/sessionCreate";
         }
-        Formation f = formationRepo.getById(formationid);
+        Formation f = formationRepo.getById(idFormation);
         f.getAction().getSessions().add(session);
         formationRepo.save(f);
     //(user.hasright()formationid));
