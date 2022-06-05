@@ -235,4 +235,36 @@ public class Action implements Serializable {
         this.setFraisTTC(0);
         this.setPreRequis("0");
     }
+
+    public void finishCreation(){
+        this.setNumeroAction(0);
+        this.setNiveauObligatoire("0");
+        this.setModaliteEnseignement("0");
+        this.rythmeFormation.add("0");
+        this.setConditionsSpecifiques("|");
+        this.setModaliteEntreeSortie("0");
+        this.setUrl("|");
+        this.setRestauration("|");
+        this.setHebergement("|");
+        this.setTransport("|");
+        this.setAccesHandicapes("|");
+        this.setLangueFormation("|");
+        this.setModaliteRecrutement("|");
+        this.setModalitePedagogique("|");
+        this.setPerimetreRecrutement(0);
+        this.setInfoPerimetreRecrutement("|");
+        this.setNombreHeureCentre(0);
+        this.setNombreHeureEntreprise(0);
+        this.setModalitesHandicap("|");
+        this.setModaliteAdmission("0");
+        this.setInfosAdmission("|");
+        this.setFraisANPEC(0);
+        this.setDetailsFraisANPEC("|");
+        this.setFraisInclusANPEC("0");
+        this.setModeleEconomique(0);
+        this.setTauxTVA("0%");
+        this.setFraisHT(0);
+        this.setFraisTTC(0);
+        this.setPreRequis("0");
+    }
 }

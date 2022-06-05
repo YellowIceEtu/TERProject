@@ -107,15 +107,12 @@ public class Formation extends BaseData implements Serializable {
     }
 
     public void finishCreation(){
-        this.setCode("0");
-        this.setCERTIFINFO("000000");
         this.setEtatEdition("brouillon");
-        this.setIntitule("|");
         this.setObjectif("|");
         this.setContenu("|");
         this.setResultatsAttendus("|");
         this.setObjectifGeneral("0");
         this.setTypeParcours("0");
-        this.getAction().init("|", "|");
+        this.getAction().finishCreation();
     }
 }

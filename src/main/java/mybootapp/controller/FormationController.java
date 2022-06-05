@@ -195,12 +195,13 @@ public class FormationController {
     @RequestMapping(value = "/admin/formationCreate", method = RequestMethod.POST)
     public String saveFormationCreation(@ModelAttribute  Formation formation, BindingResult result) {
         formationCreationValidator.validate(formation, result);
+        formation.finishCreation();
         if (result.hasErrors()) {
             return "formation/formationCreate";
         }
         formation.setEtatEdition("brouillon");
         formationRepo.save(formation);
-        Composante c = composanteRepo.getById(composanteService.getIdComposanteWithFormation(formation));
+        Composante c = formation.getComposante();
         c.addFormation(formation);
         composanteRepo.save(c);
         return "redirect:/formationList";
