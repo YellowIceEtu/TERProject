@@ -2,6 +2,7 @@
 
 
 <c:url var="view" value="/formationDetails" />
+<c:url var="suppr" value="/formationList/deleteFormation" />
 
 <div>
     <%@ include file="/WEB-INF/jsp/nav.jsp"%>
@@ -28,7 +29,10 @@
                         <td><c:out value="${formation.intitule}" /></td>
                         <td><c:out value="${formation.code}" /></td>
                         <td><c:out value="${formation.etatEdition}" /></td>
+
                         <td> <a href="${view}?id=${formation.id}"> <i class="fas fa-eye"></i></a></td>
+
+                                    <td><a href="${suppr}/${formation.id}">Supprimer</a></td>
 
                     </tr>
                     </c:forEach>
