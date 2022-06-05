@@ -9,7 +9,13 @@ nav {
 
 }
 
-
+hr {
+    border: none;
+    border-top: 3px double #000000;
+    overflow: visible;
+    text-align: center;
+    height: 5px;
+}
 
 
 

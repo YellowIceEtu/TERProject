@@ -93,16 +93,29 @@ public class Formation extends BaseData implements Serializable {
         this.action = new Action();
     }
 
-    public void init(int i){
-        this.setCode(Integer.toString(i));
-        this.setCERTIFINFO(Integer.toString(i));
+    public void init(String composante, String typeFormation){
+        this.setCode("0000");
+        this.setCERTIFINFO("000000");
         this.setEtatEdition("brouillon");
-        this.setIntitule("formation".concat(Integer.toString(i)));
-        this.setObjectif("objectif".concat(Integer.toString(i)));
-        this.setContenu("contenu".concat(Integer.toString(i)));
-        this.setResultatsAttendus("resultats".concat(Integer.toString(i)));
-        this.setObjectifGeneral(Integer.toString(i));
-        this.setTypeParcours(Integer.toString(i));
-        this.getAction().init(i);
+        this.setIntitule(typeFormation + " " + composante);
+        this.setObjectif("objectif " + typeFormation + " " + composante);
+        this.setContenu("contenu " + typeFormation + " " + composante);
+        this.setResultatsAttendus("resultats " + typeFormation + " " + composante);
+        this.setObjectifGeneral("0");
+        this.setTypeParcours("0");
+        this.getAction().init(composante, typeFormation);
+    }
+
+    public void finishCreation(){
+        this.setCode("0");
+        this.setCERTIFINFO("000000");
+        this.setEtatEdition("brouillon");
+        this.setIntitule("|");
+        this.setObjectif("|");
+        this.setContenu("|");
+        this.setResultatsAttendus("|");
+        this.setObjectifGeneral("0");
+        this.setTypeParcours("0");
+        this.getAction().init("|", "|");
     }
 }

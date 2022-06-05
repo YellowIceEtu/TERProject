@@ -31,7 +31,128 @@ public class PopulationService {
 
     @PostConstruct
     public void init(){
-        for(int i = 0; i < 2; i++){
+        ArrayList<String> formationTypes = new ArrayList<>();
+        formationTypes.add("BUT");
+        formationTypes.add("Licence");
+        formationTypes.add("Master");
+        Formation f;
+        Session s = new Session();
+
+
+        Composante composante = new Composante();
+        Utilisateur u = new Utilisateur();
+        u.setNom("Coquard");
+        u.setPrenom("Damien");
+        u.setAdmin(false);
+        u.setIdComposante(composante);
+        u.setIdCAS("c18024224");
+        utilisateurRepo.save(u);
+        composante.setIntitule("Faculté des Sciences");
+        composanteRepo.save(composante);
+        for (String formation: formationTypes) {
+            f = new Formation();
+            f.init(composante.getIntitule(), formation);
+            s.setSessionOuverte(1);
+            s.setDebut(new Date());
+            s.setFin(new Date());
+            f.getAction().getSessions().add(s);
+            formationRepo.save(f);
+            composante.addFormation(f);
+            composanteRepo.save(composante);
+        }
+        Adresse a = new Adresse();
+        a.setLigne("163 Av. de Luminy, 13009 Marseille");
+        adresseRepo.save(a);
+        composante.addAdresse(a);
+        composanteRepo.save(composante);
+
+        composante = new Composante();
+        u = new Utilisateur();
+        u.setNom("Ould-Chibani");
+        u.setPrenom("Abdessatar");
+        u.setAdmin(true);
+        u.setIdComposante(composante);
+        u.setIdCAS("o18025131");
+        utilisateurRepo.save(u);
+        composante.setIntitule("Faculté des Arts");
+        composanteRepo.save(composante);
+        for (String formation: formationTypes) {
+            f = new Formation();
+            f.init(composante.getIntitule(), formation);
+            s = new Session();
+            s.setSessionOuverte(1);
+            s.setDebut(new Date());
+            s.setFin(new Date());
+            f.getAction().getSessions().add(s);
+            formationRepo.save(f);
+            composante.addFormation(f);
+            composanteRepo.save(composante);
+        }
+        a = new Adresse();
+        a.setLigne("163 Av. de Luminy, 13009 Marseille");
+        adresseRepo.save(a);
+        composante.addAdresse(a);
+        composanteRepo.save(composante);
+
+        composante = new Composante();
+        u = new Utilisateur();
+        u.setNom("Hallai");
+        u.setPrenom("Katia");
+        u.setAdmin(true);
+        u.setIdComposante(composante);
+        u.setIdCAS("h17030347");
+        utilisateurRepo.save(u);
+        composante.setIntitule("Faculté de Droits");
+        composanteRepo.save(composante);
+        for (String formation: formationTypes) {
+            f = new Formation();
+            f.init(composante.getIntitule(), formation);
+            s = new Session();
+            s.setSessionOuverte(1);
+            s.setDebut(new Date());
+            s.setFin(new Date());
+            f.getAction().getSessions().add(s);
+            formationRepo.save(f);
+            composante.addFormation(f);
+            composanteRepo.save(composante);
+        }
+        a = new Adresse();
+        a.setLigne("163 Av. de Luminy, 13009 Marseille");
+        adresseRepo.save(a);
+        composante.addAdresse(a);
+        composanteRepo.save(composante);
+
+        composante = new Composante();
+        u = new Utilisateur();
+        u.setNom("Ngo");
+        u.setPrenom("François");
+        u.setAdmin(true);
+        u.setIdComposante(composante);
+        u.setIdCAS("n17009276");
+        utilisateurRepo.save(u);
+        composante.setIntitule("OSU Pythéas");
+        composanteRepo.save(composante);
+        for (String formation: formationTypes) {
+            f = new Formation();
+            f.init(composante.getIntitule(), formation);
+            s = new Session();
+            s.setSessionOuverte(1);
+            s.setDebut(new Date());
+            s.setFin(new Date());
+            f.getAction().getSessions().add(s);
+            formationRepo.save(f);
+            composante.addFormation(f);
+            composanteRepo.save(composante);
+        }
+        a = new Adresse();
+        a.setLigne("163 Av. de Luminy, 13009 Marseille");
+        adresseRepo.save(a);
+        composante.addAdresse(a);
+        composanteRepo.save(composante);
+
+
+
+        /*for(int i = 0; i < 2; i++){
             Composante c = new Composante();
             c.setIntitule("composante".concat(Integer.toString(i)));
             c.setFormations(new ArrayList<>());
@@ -72,6 +193,6 @@ public class PopulationService {
 
         utilisateurRepo.save(utilisateurs);
 
-        composanteRepo.save(c);
+        composanteRepo.save(c);*/
     }
 }

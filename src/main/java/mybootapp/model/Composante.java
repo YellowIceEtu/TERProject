@@ -8,12 +8,12 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 
 
 @Entity
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
@@ -55,6 +55,11 @@ public class Composante implements Serializable {
 
     public void removeAdress(Adresse a){
         adresses.remove(a);
+    }
+
+    public Composante() {
+        this.setAdresses(new ArrayList<Adresse>());
+        this.setFormations(new ArrayList<Formation>());
 
     }
 

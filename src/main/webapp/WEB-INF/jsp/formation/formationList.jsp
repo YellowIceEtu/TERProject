@@ -13,6 +13,7 @@
     <h1>Formations  </h1>
     <ul>
         <c:forEach items="${composante}" var="composante">
+            <hr>
             <li><h3>Composante : <c:out value="${composante.intitule}"/></h3></li>
             <li>
                 <table class="table">

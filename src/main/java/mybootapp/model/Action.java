@@ -203,36 +203,36 @@ public class Action implements Serializable {
 
     }
 
-    public void init(int i){
-        this.setNumeroAction(i);
+    public void init(String composante, String typeFormation){
+        this.setNumeroAction(0);
         this.setNiveauObligatoire("0");
-        this.setModaliteEnseignement(Integer.toString(i));
+        this.setModaliteEnseignement("0");
         this.rythmeFormation.add("0");
         this.rythmeFormation.add("1");
-        this.setConditionsSpecifiques("conditions specifiques".concat(Integer.toString(i)));
+        this.setConditionsSpecifiques("conditions specifiques " + typeFormation + " " + composante);
         this.setModaliteEntreeSortie("0");
-        this.setUrl("url".concat(Integer.toString(i)));
-        this.setRestauration("restauration".concat(Integer.toString(i)));
-        this.setHebergement("hebergement".concat(Integer.toString(i)));
-        this.setTransport("transport".concat(Integer.toString(i)));
-        this.setAccesHandicapes("acces handicapés".concat(Integer.toString(i)));
-        this.setLangueFormation("langue".concat(Integer.toString(i)));
-        this.setModaliteRecrutement("modalités recrutement".concat(Integer.toString(i)));
-        this.setModalitePedagogique("modalités pédagogiques".concat(Integer.toString(i)));
-        this.setPerimetreRecrutement(i);
-        this.setInfoPerimetreRecrutement("infos perimètre recrutement".concat(Integer.toString(i)));
-        this.setNombreHeureCentre(i);
-        this.setNombreHeureEntreprise(i);
-        this.setModalitesHandicap("modalités handicap".concat(Integer.toString(i)));
+        this.setUrl("url " + typeFormation + " " + composante);
+        this.setRestauration("restauration " + typeFormation + " " + composante);
+        this.setHebergement("hebergement " + typeFormation + " " + composante);
+        this.setTransport("transport " + typeFormation + " " + composante);
+        this.setAccesHandicapes("acces handicapés " + typeFormation + " " + composante);
+        this.setLangueFormation("langue " + typeFormation + " " + composante);
+        this.setModaliteRecrutement("modalités recrutement " + typeFormation + " " + composante);
+        this.setModalitePedagogique("modalités pédagogiques " + typeFormation + " " + composante);
+        this.setPerimetreRecrutement(0);
+        this.setInfoPerimetreRecrutement("infos perimètre recrutement " + typeFormation + " " + composante);
+        this.setNombreHeureCentre(0);
+        this.setNombreHeureEntreprise(0);
+        this.setModalitesHandicap("modalités handicap " + typeFormation + " " + composante);
         this.setModaliteAdmission("0");
-        this.setInfosAdmission("infos admissions".concat(Integer.toString(i)));
-        this.setFraisANPEC(i);
-        this.setDetailsFraisANPEC("detailsfraisAnpec".concat(Integer.toString(i)));
+        this.setInfosAdmission("infos admissions " + typeFormation + " " + composante);
+        this.setFraisANPEC(0);
+        this.setDetailsFraisANPEC("detailsfraisAnpec " + typeFormation + " " + composante);
         this.setFraisInclusANPEC("0");
-        this.setModeleEconomique(i);
+        this.setModeleEconomique(0);
         this.setTauxTVA("0%");
-        this.setFraisHT(i);
-        this.setFraisTTC(i);
+        this.setFraisHT(0);
+        this.setFraisTTC(0);
         this.setPreRequis("0");
     }
 }

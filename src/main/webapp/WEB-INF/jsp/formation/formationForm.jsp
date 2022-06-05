@@ -56,7 +56,6 @@
         <div class="form-group">
             <label for="typeParcours">Choisissez un type de parcours :</label>
             <form:select path="typeParcours" multiple="false" class="form-control">
-                <form:option value="" label="--- Select ---" />
                 <form:options items="${typeDeParcours}" />
             </form:select>
             <form:errors path="typeParcours" cssClass="alert alert-warning"
@@ -65,7 +64,6 @@
         <div class="form-group">
             <label for="objectifGeneral">Objectif général de la formation :</label>
             <form:select path="objectifGeneral" multiple="false" class="form-control">
-                <form:option value="" label="--- Select ---" />
                 <form:options items="${objectifGeneral}" />
             </form:select>
             <form:errors path="objectifGeneral" cssClass="alert alert-warning"
@@ -74,7 +72,6 @@
         <div class="form-group">
             <label for="action.niveauObligatoire">niveau obligatoire requis  :</label>
             <form:select path="action.niveauObligatoire" multiple="false" class="form-control">
-                <form:option value="" label="--- Select ---" />
                 <form:options items="${preRequis}" />
             </form:select>
             <form:errors path="action.niveauObligatoire" cssClass="alert alert-warning" element="div" />
@@ -88,7 +85,6 @@
         <div class="form-group">
             <label for="action.modaliteEnseignement">Modalités d'enseignement :</label>
             <form:select path="action.modaliteEnseignement" multiple="false" class="form-control">
-                <form:option value="" label="--- Select ---" />
                 <form:options items="${modaliteEnseignement}" />
             </form:select>
             <form:errors path="action.modaliteEnseignement" cssClass="alert alert-warning"
@@ -103,7 +99,6 @@
         <div class="form-group">
             <label for="action.rythmeFormation">Rythme de formation :</label>
             <form:select path="action.rythmeFormation" multiple="true" class="form-control">
-                <form:option value="" label="--- Select ---" />
                 <form:options items="${rythmeFormation}" />
             </form:select>
             <form:errors path="action.rythmeFormation" cssClass="alert alert-warning"
@@ -118,7 +113,6 @@
         <div class="form-group">
             <label for="action.modaliteEntreeSortie">Modalités d'entrée/sortie :</label>
             <form:select path="action.modaliteEntreeSortie" multiple="false" class="form-control">
-                <form:option value="" label="--- Select ---" />
                 <form:options items="${modaliteEntreeSortie}" />
             </form:select>
             <form:errors path="action.modaliteEntreeSortie" cssClass="alert alert-warning"
@@ -163,7 +157,6 @@
         <div class="form-group">
             <label for="action.langueFormation">Langue de la formation :</label>
             <form:select path="action.langueFormation" multiple="false" class="form-control">
-                <form:option value="" label="--- Select ---" />
                 <form:options items="${langueFormation}" />
             </form:select>
             <form:errors path="action.langueFormation" cssClass="alert alert-warning"
@@ -202,7 +195,6 @@
         <div class="form-group">
             <label for="action.modaliteAdmission">Modalités d'admission :</label>
             <form:select path="action.modaliteAdmission" multiple="false" class="form-control">
-                <form:option value="" label="--- Select ---" />
                 <form:options items="${modaliteAdmission}" />
             </form:select>
             <form:errors path="action.modaliteAdmission" cssClass="alert alert-warning"
@@ -223,7 +215,6 @@
         <div class="form-group">
             <label for="action.fraisInclusANPEC">Frais ANPEC inclus dans le coût d'inscription :</label>
             <form:select path="action.fraisInclusANPEC" multiple="false" class="form-control">
-                <form:option value="" label="--- Select ---" />
                 <form:options items="${fraisInclusANPEC}" />
             </form:select>
             <form:errors path="action.fraisInclusANPEC" cssClass="alert alert-warning"
@@ -238,7 +229,6 @@
         <div class="form-group">
             <label for="action.tauxTVA">Taux TVA :</label>
             <form:select path="action.tauxTVA" multiple="false" class="form-control">
-                <form:option value="" label="--- Select ---" />
                 <form:options items="${tauxTVA}" />
             </form:select>
             <form:errors path="action.tauxTVA" cssClass="alert alert-warning"
@@ -259,7 +249,6 @@
         <div class="form-group">
             <label for="action.preRequis">Existence de pré-requis :</label>
             <form:select path="action.preRequis" multiple="false" class="form-control">
-                <form:option value="" label="--- Select ---" />
                 <form:options items="${preRequis}" />
             </form:select>
             <form:errors path="action.preRequis" cssClass="alert alert-warning"
@@ -268,7 +257,6 @@
         <div class="form-group">
             <label for="adresse">Choisissez une adresse de formation :</label>
             <form:select path="adresse" multiple="false" class="form-control">
-                <form:option value="" label="--- Select ---" />
                 <form:options items="${listAdresses}" />
             </form:select>
             <form:errors path="typeParcours" cssClass="alert alert-warning"
