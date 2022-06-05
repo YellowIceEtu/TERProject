@@ -65,7 +65,7 @@ public class AdresseController {
         composanteRepo.save(c);
         System.out.println("adresses:  "+c.getAdresses());
         Long idComposanteOfAdress = composanteServcie.getIdComposanteWithAdress(adresse);
-        return "redirect:/correspondant?id="+idComposanteOfAdress;
+        return "redirect:/correspondant?idComposante="+idComposanteOfAdress;
 }
 
     /*
@@ -102,7 +102,7 @@ public class AdresseController {
         }
         adresseRepo.save(adresse);
         Long idComposanteOfAdress = composanteServcie.getIdComposanteWithAdress(adresse);
-        return "redirect:/correspondant?id="+idComposanteOfAdress;
+        return "redirect:/correspondant?idComposante="+idComposanteOfAdress;
 
     }
 
@@ -113,7 +113,7 @@ public class AdresseController {
         Long idComposanteOfAdress = composanteServcie.getIdComposanteWithAdress(adresse);
 
         adresseRepo.deleteById(id);
-        return "redirect:/correspondant?id="+idComposanteOfAdress;
+        return "redirect:/correspondant?idComposante="+idComposanteOfAdress;
     }
 
     @ModelAttribute("indiceRepetition")

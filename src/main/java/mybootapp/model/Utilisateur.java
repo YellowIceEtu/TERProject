@@ -21,7 +21,7 @@ public class Utilisateur implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
 
 
     @Size(max = 250, message = "max 250 caractères")

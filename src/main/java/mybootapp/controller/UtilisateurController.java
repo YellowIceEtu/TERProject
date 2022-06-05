@@ -145,10 +145,11 @@ public String addCorrespondantForm(@ModelAttribute Utilisateur utilisateur, Mode
     }
 
 
-    @RequestMapping(value = "/deleteUtilisateur/{id}")
-    public String deleteUser(@PathVariable Long id) {
+    @RequestMapping(value = "/gestionUtilisateur/deleteUtilisateur/{id}")
+    public String deleteUtilisateur(@PathVariable Long id) {
 
         utilisateurRepo.deleteById(id);
+
         return "redirect:/admin/gestionUtilisateur";
     }
 
