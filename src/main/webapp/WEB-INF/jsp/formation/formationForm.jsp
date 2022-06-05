@@ -6,7 +6,7 @@
     <h1>Edit Formation</h1>
     <form:form method="POST" modelAttribute="formation">
         <div class="form-group">
-            <label for="intitule"><c:out value="Intitulé de la formation : " /></label>
+            <label for="intitule"><c:out value="Intitulé de la formation : *" /></label>
             <form:input type="" path="intitule" class="form-control" />
             <form:errors path="intitule" cssClass="alert alert-warning"
                          element="div" />
@@ -30,19 +30,19 @@
                          element="div" />
         </div>
         <div class="form-group">
-            <label for="resultatsAttendus">résultats attendus :</label>
+            <label for="resultatsAttendus">résultats attendus :*</label>
             <form:textarea class="form-control" path="resultatsAttendus" rows="4" />
             <form:errors path="resultatsAttendus" cssClass="alert alert-warning"
                          element="div" />
         </div>
         <div class="form-group">
-            <label for="objectif">Objectif de la formation :</label>
+            <label for="objectif">Objectif de la formation :*</label>
             <form:textarea class="form-control" path="objectif" rows="4" />
             <form:errors path="objectif" cssClass="alert alert-warning"
                          element="div" />
         </div>
         <div class="form-group">
-            <label for="contenu">Contenu :</label>
+            <label for="contenu">Contenu :*</label>
             <form:textarea class="form-control" path="contenu" rows="4" />
             <form:errors path="contenu" cssClass="alert alert-warning"
                          element="div" />
@@ -54,7 +54,7 @@
 <%--                         element="div" />--%>
 <%--        </div>--%>
         <div class="form-group">
-            <label for="typeParcours">Choisissez un type de parcours :</label>
+            <label for="typeParcours">Choisissez un type de parcours :*</label>
             <form:select path="typeParcours" multiple="false" class="form-control">
                 <form:options items="${typeDeParcours}" />
             </form:select>
@@ -62,7 +62,7 @@
                          element="div" />
         </div>
         <div class="form-group">
-            <label for="objectifGeneral">Objectif général de la formation :</label>
+            <label for="objectifGeneral">Objectif général de la formation :*</label>
             <form:select path="objectifGeneral" multiple="false" class="form-control">
                 <form:options items="${objectifGeneral}" />
             </form:select>
@@ -70,7 +70,7 @@
                          element="div" />
         </div>
         <div class="form-group">
-            <label for="action.niveauObligatoire">niveau obligatoire requis  :</label>
+            <label for="action.niveauObligatoire">niveau obligatoire requis  :*</label>
             <form:select path="action.niveauObligatoire" multiple="false" class="form-control">
                 <form:options items="${preRequis}" />
             </form:select>
@@ -83,7 +83,7 @@
 <%--                         element="div" />--%>
 <%--        </div>--%>
         <div class="form-group">
-            <label for="action.modaliteEnseignement">Modalités d'enseignement :</label>
+            <label for="action.modaliteEnseignement">Modalités d'enseignement :*</label>
             <form:select path="action.modaliteEnseignement" multiple="false" class="form-control">
                 <form:options items="${modaliteEnseignement}" />
             </form:select>
@@ -97,7 +97,7 @@
 <%--                         element="div" />--%>
 <%--        </div>--%>
         <div class="form-group">
-            <label for="action.rythmeFormation">Rythme de formation :</label>
+            <label for="action.rythmeFormation">Rythme de formation :*</label>
             <form:select path="action.rythmeFormation" multiple="true" class="form-control">
                 <form:options items="${rythmeFormation}" />
             </form:select>
@@ -111,7 +111,7 @@
                          element="div" />
         </div>
         <div class="form-group">
-            <label for="action.modaliteEntreeSortie">Modalités d'entrée/sortie :</label>
+            <label for="action.modaliteEntreeSortie">Modalités d'entrée/sortie :*</label>
             <form:select path="action.modaliteEntreeSortie" multiple="false" class="form-control">
                 <form:options items="${modaliteEntreeSortie}" />
             </form:select>
@@ -143,7 +143,7 @@
                          element="div" />
         </div>
         <div class="form-group">
-            <label for="action.accesHandicapes">Précisions sur l'accès aux handicapés :</label>
+            <label for="action.accesHandicapes">Précisions sur l'accès aux handicapés :*</label>
             <form:textarea class="form-control" path="action.accesHandicapes" rows="2" />
             <form:errors path="action.accesHandicapes" cssClass="alert alert-warning"
                          element="div" />
@@ -155,7 +155,7 @@
 <%--                         element="div" />--%>
 <%--        </div>--%>
         <div class="form-group">
-            <label for="action.langueFormation">Langue de la formation :</label>
+            <label for="action.langueFormation">Langue de la formation :*</label>
             <form:select path="action.langueFormation" multiple="false" class="form-control">
                 <form:options items="${langueFormation}" />
             </form:select>
@@ -169,13 +169,13 @@
                          element="div" />
         </div>
         <div class="form-group">
-            <label for="action.nombreHeureCentre">Nombre d'heures en centre de formation :</label>
+            <label for="action.nombreHeureCentre">Nombre d'heures en centre de formation :*</label>
             <form:textarea class="form-control" path="action.nombreHeureCentre" rows="2" />
             <form:errors path="action.nombreHeureCentre" cssClass="alert alert-warning"
                          element="div" />
         </div>
         <div class="form-group">
-            <label for="action.nombreHeureEntreprise">Nombre d'heures en entreprise :</label>
+            <label for="action.nombreHeureEntreprise">Nombre d'heures en entreprise :*</label>
             <form:textarea class="form-control" path="action.nombreHeureEntreprise" rows="2" />
             <form:errors path="action.nombreHeureEntreprise" cssClass="alert alert-warning"
                          element="div" />
@@ -193,7 +193,7 @@
 <%--                         element="div" />--%>
 <%--        </div>--%>
         <div class="form-group">
-            <label for="action.modaliteAdmission">Modalités d'admission :</label>
+            <label for="action.modaliteAdmission">Modalités d'admission :*</label>
             <form:select path="action.modaliteAdmission" multiple="false" class="form-control">
                 <form:options items="${modaliteAdmission}" />
             </form:select>
@@ -207,13 +207,13 @@
                          element="div" />
         </div>
         <div class="form-group">
-            <label for="action.fraisANPEC">Frais ANPEC :</label>
+            <label for="action.fraisANPEC">Frais ANPEC :*</label>
             <form:textarea class="form-control" path="action.fraisANPEC" rows="1" />
             <form:errors path="action.fraisANPEC" cssClass="alert alert-warning"
                          element="div" />
         </div>
         <div class="form-group">
-            <label for="action.fraisInclusANPEC">Frais ANPEC inclus dans le coût d'inscription :</label>
+            <label for="action.fraisInclusANPEC">Frais ANPEC inclus dans le coût d'inscription :*</label>
             <form:select path="action.fraisInclusANPEC" multiple="false" class="form-control">
                 <form:options items="${fraisInclusANPEC}" />
             </form:select>
@@ -227,7 +227,7 @@
 <%--                         element="div" />--%>
 <%--        </div>--%>
         <div class="form-group">
-            <label for="action.tauxTVA">Taux TVA :</label>
+            <label for="action.tauxTVA">Taux TVA :*</label>
             <form:select path="action.tauxTVA" multiple="false" class="form-control">
                 <form:options items="${tauxTVA}" />
             </form:select>
@@ -235,19 +235,19 @@
                          element="div" />
         </div>
         <div class="form-group">
-            <label for="action.fraisHT">Frais hors taxe :</label>
+            <label for="action.fraisHT">Frais hors taxe :*</label>
             <form:textarea class="form-control" path="action.fraisHT" rows="1" />
             <form:errors path="action.fraisHT" cssClass="alert alert-warning"
                          element="div" />
         </div>
         <div class="form-group">
-            <label for="action.fraisTTC">Frais toutes taxes comprises :</label>
+            <label for="action.fraisTTC">Frais toutes taxes comprises :*</label>
             <form:textarea class="form-control" path="action.fraisTTC" rows="1" />
             <form:errors path="action.fraisTTC" cssClass="alert alert-warning"
                          element="div" />
         </div>
         <div class="form-group">
-            <label for="action.preRequis">Existence de pré-requis :</label>
+            <label for="action.preRequis">Existence de pré-requis :*</label>
             <form:select path="action.preRequis" multiple="false" class="form-control">
                 <form:options items="${preRequis}" />
             </form:select>
@@ -261,6 +261,9 @@
             </form:select>
             <form:errors path="typeParcours" cssClass="alert alert-warning"
                          element="div" />
+        </div>
+        <div>
+            <i>Les champs annotés d'un "*" doivent être remplis</i>
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-info">Submit</button>

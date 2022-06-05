@@ -43,9 +43,9 @@ public class PopulationService {
         Utilisateur u = new Utilisateur();
         u.setNom("Coquard");
         u.setPrenom("Damien");
-        u.setAdmin(false);
-        u.setIdComposante(composante);
         u.setIdCAS("c18024224");
+        u.setAdmin(true);
+        u.setIdComposante(composante);
         utilisateurRepo.save(u);
         composante.setIntitule("Faculté des Sciences");
         composanteRepo.save(composante);
