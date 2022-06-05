@@ -4,7 +4,6 @@
 
 <div class="container">
     <h1>Edit Formation</h1>
-    <p class="title"></p>
     <form:form method="POST" modelAttribute="formation">
         <div class="form-group">
             <label for="intitule"><c:out value="Intitulé de la formation : " /></label>

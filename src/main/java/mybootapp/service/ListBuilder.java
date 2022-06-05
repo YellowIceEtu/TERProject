@@ -3,6 +3,8 @@ package mybootapp.service;
 import mybootapp.model.Adresse;
 import mybootapp.model.Composante;
 import mybootapp.model.Formation;
+import mybootapp.repo.ComposanteRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,10 @@ import java.util.*;
 
 @Service
 public class ListBuilder {
+
+    @Autowired
+    ComposanteRepo composanteRepo;
+
     @Value("#{'${ref.typeDeParcours}'.split('---')}")
     private ArrayList<String> typeDeParcours;
 
@@ -182,5 +188,13 @@ public Map<Adresse, String> ListAdressesOfComposante(Composante composante) {
         for(Adresse a : adresses)
             addressesList.put(a, a.getLigne());
         return addressesList;
+    }
+
+    public Map<Composante, String> ListComposantes() {
+        Map<Composante, String> compoList = new LinkedHashMap<>();
+        List<Composante> composantes = composanteRepo.findAll();
+        for(Composante c : composantes)
+            compoList.put(c, c.getIntitule());
+        return compoList;
     }
 }

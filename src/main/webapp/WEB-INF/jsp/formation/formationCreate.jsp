@@ -14,45 +14,42 @@
 
 
 
-    <div class="container">
-        <h1>Ajout d'une formation</h1>
+<div class="container">
+    <h1>Ajout d'une formation</h1>
 
-        <form:form method="POST" modelAttribute="formation" >
+    <form:form method="POST" modelAttribute="formation" >
+        <div class="form-group">
+            <label for="composante">Choisissez une composante :</label>
+            <form:select path="composante" multiple="false" class="form-control">
+                <form:option value="" label="--- Select ---" />
+                <form:options items="${ListComposantes}" />
+            </form:select>
+            <form:errors path="composante" cssClass="alert alert-warning"
+                         element="div" />
+        </div>
 
-            <form:errors path="*" cssClass="alert alert-danger" element="div" />
+        <div class="form-group">
+            <label for="CERTIFINFO">CERTIFINFO :</label>
+            <form:input class="form-control" path="CERTIFINFO"/>
+            <form:errors path="CERTIFINFO" cssClass="alert alert-warning" element="div" />
+        </div>
 
-            <div class="form-group">
-                <label for="composante">Choisissez une composante :</label>
-                <form:select path="composante" multiple="false" class="form-control">
-                    <form:option value="composante" label="--- Select ---" />
-                    <form:options items="${ListComposantes}" />
-                </form:select>
-                <form:errors path="composante" cssClass="alert alert-warning"
-                             element="div" />
-            </div>
+        <div class="form-group">
+            <label for="code">code de la formation  :</label>
+            <form:input class="form-control" path="code"/>
+            <form:errors path="code" cssClass="alert alert-warning" element="div" />
+        </div>
 
-            <div class="form-group">
-                <label for="CERTIFINFO">CERTIFINFO :</label>
-                <form:input class="form-control" path="CERTIFINFO"/>
-                <form:errors path="CERTIFINFO" cssClass="alert alert-warning" element="div" />
-            </div>
-
-            <div class="form-group">
-                <label for="code">code de la formation  :</label>
-                <form:input class="form-control" path="code"/>
-                <form:errors path="code" cssClass="alert alert-warning" element="div" />
-            </div>
-
-            <div class="form-group">
-                <label for="intitule"> Intitulé</label>
-                <form:input class="form-control" path="intitule"/>
-                <form:errors path="intitule" cssClass="alert alert-warning" element="div" />
-            </div>
+        <div class="form-group">
+            <label for="intitule"> Intitulé</label>
+            <form:input class="form-control" path="intitule"/>
+            <form:errors path="intitule" cssClass="alert alert-warning" element="div" />
+        </div>
 
 
-            <div class="form-group">
-                <button type="submit" class="btn btn-info">Submit</button>
-            </div>
-        </form:form>
-    </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-info">Submit</button>
+        </div>
+    </form:form>
+</div>
 

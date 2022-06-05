@@ -8,10 +8,7 @@ import java.util.*;
 
 import mybootapp.model.*;
 import mybootapp.repo.*;
-import mybootapp.service.ComposanteService;
-import mybootapp.service.DateValidator;
-import mybootapp.service.ListBuilder;
-import mybootapp.service.PopulationService;
+import mybootapp.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -48,6 +45,9 @@ public class FormationController {
 
     @Autowired
     DateValidator validator;
+
+    @Autowired
+    FormationCreationValidator formationCreationValidator;
 
 
 //    @Value("#{applicationProperties}")
@@ -115,7 +115,6 @@ public class FormationController {
         ModelAndView modelAndView = new ModelAndView("formation/formationForm", "formation", formation);
         Composante c = composanteRepo.getById(composanteService.getIdComposanteWithFormation(formation));
         Map<Adresse, String> adresses = listBuilder.ListAdressesOfComposante(c);
-
         modelAndView.addObject("listAdresses", adresses);
         return modelAndView;
     }
@@ -183,18 +182,19 @@ public class FormationController {
     }
 
     @RequestMapping(value = "/admin/formationCreate", method = RequestMethod.GET)
-    public String addFormationForm(@ModelAttribute Formation formation) {return "formation/formationCreate";}
+    public ModelAndView addFormationForm(@ModelAttribute Formation formation)
+
+    {return new ModelAndView("formation/formationCreate","formation", formation);}
+
     @ModelAttribute("ListComposantes")
     public Map<Composante, String> ListComposantes() {
-        Map<Composante, String> compoList = new LinkedHashMap<>();
-        List<Composante> composantes = composanteRepo.findAll();
-        for(Composante c : composantes)
-            compoList.put(c, c.getIntitule());
-        return compoList;
+        return listBuilder.ListComposantes();
     }
 
+
     @RequestMapping(value = "/admin/formationCreate", method = RequestMethod.POST)
-    public String saveFormationCreation(@ModelAttribute @Valid Formation formation, BindingResult result) {
+    public String saveFormationCreation(@ModelAttribute  Formation formation, BindingResult result) {
+        formationCreationValidator.validate(formation, result);
         if (result.hasErrors()) {
             return "formation/formationCreate";
         }
