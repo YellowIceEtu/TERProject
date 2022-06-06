@@ -145,12 +145,40 @@ public String addCorrespondantForm(@ModelAttribute Utilisateur utilisateur, Mode
     }
 
 
-    @RequestMapping(value = "/gestionUtilisateur/deleteUtilisateur/{id}")
-    public String deleteUtilisateur(@PathVariable Long id) {
+    @RequestMapping(value = "/gestionUtilisateur/deleteAdmin/{id}")
+    public ModelAndView deleteAdmin(@PathVariable Long id) {
 
-        utilisateurRepo.deleteById(id);
 
-        return "redirect:/admin/gestionUtilisateur";
+        if(utilisateurRepo.findById(id).isPresent()){
+            Utilisateur utilisateur = utilisateurRepo.findById(id).get();
+            if(utilisateur.isAdmin()) {
+                utilisateur.setAdmin(false);
+
+
+            }
+            else {
+                utilisateur.setAdmin(true);
+            }
+
+            utilisateurRepo.save(utilisateur);
+
+        }
+        return new ModelAndView("gestionUser", "utilisateur", utilisateurRepo.findAll());
+    }
+
+    @RequestMapping(value = "/gestionUtilisateur/deleteCorres/{id}")
+    public ModelAndView deleteCorres(@PathVariable Long id) {
+
+        if(utilisateurRepo.findById(id).isPresent()){
+            Utilisateur utilisateur = utilisateurRepo.findById(id).get();
+            if(utilisateur.getIdComposante() != null) {
+                utilisateur.setIdComposante(null);
+            }
+            utilisateurRepo.save(utilisateur);
+
+        }
+
+        return new ModelAndView("gestionUser", "utilisateur", utilisateurRepo.findAll());
     }
 
 }
