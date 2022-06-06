@@ -22,7 +22,8 @@
                         <th>Intitule :</th>
                         <th>codeFormation :</th>
                         <th>etatEdition :</th>
-                        <th> Profil : </th>
+                        <th></th>
+                        <th></th>
                     </tr>
                     <tr>
                         <c:forEach items="${composante.formations}" var="formation">

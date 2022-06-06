@@ -44,7 +44,7 @@ public class PopulationService {
         u.setNom("Coquard");
         u.setPrenom("Damien");
         u.setIdCAS("c18024224");
-        u.setAdmin(true);
+        u.setAdmin(false);
         u.setIdComposante(composante);
         utilisateurRepo.save(u);
         composante.setIntitule("Faculté des Sciences");
