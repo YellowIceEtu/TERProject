@@ -32,7 +32,7 @@ public class PopulationService {
     @PostConstruct
     public void init(){
         ArrayList<String> formationTypes = new ArrayList<>();
-        formationTypes.add("BUT");
+        formationTypes.add("DUT");
         formationTypes.add("Licence");
         formationTypes.add("Master");
         Formation f;
