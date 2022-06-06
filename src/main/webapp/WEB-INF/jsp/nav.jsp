@@ -14,15 +14,6 @@
 
             <button class="admin-button"><a href="${adminhref}">Admin</a></button>
             <button class="composante-button"><a href="${correspondanthref}">Composante</a></button>
-            <input
-                    type="search"
-                    class="input-search"
-                    placeholder="Search"
-                    aria-label="Search"
-                    aria-describedby="search-addon"
-            />
-
-               <button class="search-button">Find</button>
 
 
             <button class="logout-button"><a href='logout/cas'>Logout</a></button>
