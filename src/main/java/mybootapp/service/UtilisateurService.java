@@ -29,6 +29,5 @@ public class UtilisateurService {
 
         }
         return admins;
-
     }
 }

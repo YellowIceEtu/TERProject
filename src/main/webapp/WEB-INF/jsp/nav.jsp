@@ -2,7 +2,7 @@
 
 <c:url var="home" value="/" />
 <c:url var="adminhref" value="/admin" />
-<c:url var="correspondanthref" value="/correspondant" />
+<c:url var="correspondanthref" value="/correspondant?idComposante=${currentUserCompoID}" />
 
 <nav class="navbar navbar-default">
     <div class="container-fluid">

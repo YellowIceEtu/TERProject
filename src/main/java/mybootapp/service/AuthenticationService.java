@@ -25,12 +25,10 @@ public class AuthenticationService {
     public boolean isCorrepondant(Long id) {
         UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return (userDetails.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_COMPOSANTE"+id)));
-
     }
 
     public boolean isAdmin() {
         UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return (userDetails.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_ADMIN")));
-
     }
 }

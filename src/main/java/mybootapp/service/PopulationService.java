@@ -65,6 +65,7 @@ public class PopulationService {
         adresseRepo.save(a);
         composante.addAdresse(a);
         composanteRepo.save(composante);
+        System.out.println(composante.getId());
 
         composante = new Composante();
         u = new Utilisateur();
@@ -93,6 +94,7 @@ public class PopulationService {
         adresseRepo.save(a);
         composante.addAdresse(a);
         composanteRepo.save(composante);
+        System.out.println(composante.getId());
 
         composante = new Composante();
         u = new Utilisateur();
@@ -121,6 +123,7 @@ public class PopulationService {
         adresseRepo.save(a);
         composante.addAdresse(a);
         composanteRepo.save(composante);
+        System.out.println(composante.getId());
 
         composante = new Composante();
         u = new Utilisateur();
@@ -149,6 +152,7 @@ public class PopulationService {
         adresseRepo.save(a);
         composante.addAdresse(a);
         composanteRepo.save(composante);
+        System.out.println(composante.getId());
 
 
 

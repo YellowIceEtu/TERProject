@@ -7,6 +7,7 @@ import mybootapp.model.Utilisateur;
 import mybootapp.repo.ComposanteRepo;
 import mybootapp.repo.UtilisateurRepo;
 import mybootapp.service.AuthenticationService;
+import mybootapp.service.UtilisateurService;
 import mybootapp.web.CasUserDetailService;
 import org.jasig.cas.client.authentication.AttributePrincipal;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,8 @@ public class UtilisateurController {
     CasUserDetailService casUserDetailService;
     @Autowired
     ComposanteRepo composanteRepo;
+    @Autowired
+    UtilisateurService utilisateurService;
 
     @RequestMapping(value = "/gestionUtilisateur", method = RequestMethod.GET)
     public ModelAndView gestionUtilisateurPage() {
@@ -67,6 +70,14 @@ public class UtilisateurController {
 
         return "redirect:";
     }
+
+    @ModelAttribute("currentUserCompoID")
+    public Long currentUserCompoID() {
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Utilisateur utilisateur =  utilisateurService.getByidCAS(userDetails.getUsername());
+        return utilisateur.getIdComposante().getId();
+    }
+
 /*
     @RequestMapping(value = "/gestionUtilisateur/addCorrespondant", method = RequestMethod.GET)
     public String addCorrespondantForm(Model model) {
