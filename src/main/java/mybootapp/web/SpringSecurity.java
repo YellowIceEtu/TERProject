@@ -20,7 +20,6 @@ import org.springframework.stereotype.Component;
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true, jsr250Enabled = true)
 public class SpringSecurity extends WebSecurityConfigurerAdapter {
 
-
     @Autowired
     private AuthenticationProvider authenticationProvider;
 
@@ -48,6 +47,8 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
                 .hasRole("USER")
                 .antMatchers("/", "/login/cas", "/favicon.ico", "/error")
                 .permitAll()
+               .antMatchers("/admin/**").hasRole("ADMIN")
+                //.antMatchers("/correspondant").hasRole("USER")
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -62,4 +63,5 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
                 //Process logout
                 .addFilterBefore(requestSingleLogoutFilter, LogoutFilter.class);
     }
+
 }

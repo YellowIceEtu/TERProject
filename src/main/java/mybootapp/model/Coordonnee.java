@@ -1,45 +1,16 @@
 package mybootapp.model;
 
-import lombok.*;
-
-import javax.persistence.*;
+import javax.persistence.Embedded;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.io.Serializable;
 
-@Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Setter
-@Table(name="coordonnee")
+
 public class Coordonnee implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idCoordonnee;
-
-    @Basic()
-    @Column(name = "nom")
-    private String nom;
-
-    @Basic()
-    @Column(name = "prenom")
-    private String prenom;
-
-    @Basic()
-    @Column(name = "telFixe")
-    private String telFixe;
-
-    @Basic()
-    @Column(name = "telPortable")
-    private String telPortable;
-
-    @Basic()
-    @Column(name = "courriel")
-    private String courriel;
-
-    @Basic()
-    @Column(name = "extraInfoGarantie")
-    private String extraInfoGarantie;
+    private Long id;
 
 }

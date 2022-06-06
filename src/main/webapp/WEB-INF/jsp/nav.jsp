@@ -1,31 +1,23 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <c:url var="home" value="/" />
-<c:url var="profiles" value="/profiles" />
-<c:url var="log" value="/log" />
-<c:url var="search" value="/result/find" />
+<c:url var="adminhref" value="/admin" />
+<c:url var="correspondanthref" value="/correspondant" />
 
-<nav class="navbar">
+<nav class="navbar navbar-default">
     <div class="container-fluid">
-        <a class="navbar-brand">CPF Manager</a>
-        <div class="menu">
-            <ul class="item-navbar">
-                <li><a class="home" href="#">Home</a></li>
-
-            </ul>
+        <div class="navbar-title">
+        <a href="http://localhost:8081/formationList" class="navbar-brand">CPF Manager</a>
         </div>
-            <form class="d-flex input-group w-auto">
-                <input
-                    type="search"
-                    class="form-control rounded"
-                    placeholder="Search"
-                    aria-label="Search"
-                    aria-describedby="search-addon"
-                    />
-                <span class="input-search" id="search-addon">
-               <button>Find</button>
-                </span>
-            </form>
+        <form class="right-navbar">
+
+
+            <button class="admin-button"><a href="${adminhref}">Admin</a></button>
+            <button class="composante-button"><a href="${correspondanthref}">Composante</a></button>
+
+
+            <button class="logout-button"><a href='logout/cas'>Logout</a></button>
+        </form>
 
     </div>
 </nav>

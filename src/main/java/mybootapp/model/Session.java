@@ -1,57 +1,66 @@
 package mybootapp.model;
 
 import lombok.*;
+import mybootapp.model.base.BaseData;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
 
-@Entity
+@Embeddable
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-@Table(name="session")
 public class Session implements Serializable {
 
-    @Id
+    private static final long serialVersionUID = 1L;
+
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idSession;
+    private int numero;
 
-    @Basic()
-    @Column(name = "codeSession")
-    private int codeSession;
-
-    @Basic()
     @Temporal(TemporalType.DATE)
-    @Column(name = "dateMaj")
-    private Date dateMaj;
-
     @Basic()
-    @Temporal(TemporalType.DATE)
-    @Column(name = "dateCrea")
-    private Date dateCrea;
-
-    @Basic()
-    @Temporal(TemporalType.DATE)
     @Column(name = "debut")
     private Date debut;
 
-    @Basic()
     @Temporal(TemporalType.DATE)
+    @Basic()
     @Column(name = "fin")
     private Date fin;
 
+    //checkbox non/oui -> 0/1
+    @NotBlank(message = "une réponse doit être choisie")
     @Basic()
     @Column(name = "sessionOuverte")
-    private boolean sessionOuverte;
+    private String sessionOuverte;
 
+    //liste deroulante
+    @NotBlank(message = "une réponse doit être choisie")
     @Basic()
     @Column(name = "etatRecrutement")
-    private int etatRecrutement;
+    private String etatRecrutement;
 
+    @NotBlank(message = "le champ ne doit pas être vide")
+    @Size(max = 3000, message = "max 3000 caractères")
     @Basic()
     @Column(name = "extraInfoGarantie")
-    private boolean extraInfoGarantie;
+    private String extraInfoGarantie;
+
+    @Column(updatable = false)
+    @CreationTimestamp
+    private Date dateCrea;
+    @UpdateTimestamp
+    private Date dateMaj;
+
+
+
+
 }

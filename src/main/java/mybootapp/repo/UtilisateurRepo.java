@@ -3,5 +3,9 @@ package mybootapp.repo;
 import mybootapp.model.Utilisateur;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UtilisateurRepo extends JpaRepository<Utilisateur, Long> {
+import java.util.List;
+
+public interface UtilisateurRepo extends JpaRepository<Utilisateur,Long> {
+
+    public List<Utilisateur> getByIdCAS(String idCAS);
 }
