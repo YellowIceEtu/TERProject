@@ -10,6 +10,9 @@ http://cpf.dil.univ-mrs.fr/
 
 L’objectif est d’informatiser cette gestion et de faciliter la modification de ces fiches. Le logiciel comportera les
 fonctions suivantes :
+
 • Authentification des utilisateurs (via le CAS de l’université)
+
 • Création, description et modifications des formations (avec gestion des sessions)
+
 • Construction du fichier XML d’export à destination du CPF.
