@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/jeeWebApp.iml" filepath="$PROJECT_DIR$/jeeWebApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ESeminaire.iml" filepath="$PROJECT_DIR$/ESeminaire.iml" />
     </modules>
   </component>
 </project>
